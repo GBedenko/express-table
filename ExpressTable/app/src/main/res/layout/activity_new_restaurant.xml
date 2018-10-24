@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/restaurantDetailsHeaderView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_alignParentTop="true"
+                android:text="Restaurant Details:"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24sp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/restaurantNameField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Restaurant Name"
+                android:inputType="textCapWords"
+                android:textAlignment="center"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/restaurantTypeField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="What Type of Restaurant?"
+                android:inputType="textCapWords"
+                android:textAlignment="center"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:hint="Enter Number of Tables"
+                android:textColor="@android:color/darker_gray"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="40dp"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/restaurantPostcodeField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textCapCharacters"
+                android:hint="Postcode"
+                android:textColor="@android:color/darker_gray"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/submitRestaurantButton"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit Restaurant Details" />
+        </TableRow>
+    </TableLayout>
+
+
+</RelativeLayout>

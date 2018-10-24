@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">ExpressTable</string>
+    <string-array name="restaurant_types">
+        <item>Choose Restaurant Type</item>
+        <item>Fast Food</item>
+        <item>Chinese</item>
+        <item>Indian</item>
+        <item>Italian</item>
+        <item>British</item>
+        <item>French</item>
+        <item>Portuguese</item>
+        <item>Spanish</item>
+        <item>Japanese</item>
+        <item>Australian</item>
+    </string-array>
 </resources>
