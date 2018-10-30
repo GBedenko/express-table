@@ -19,7 +19,9 @@
         <activity android:name=".NewRestaurantActivity" />
         <activity android:name=".ChooseAccountTypeActivity" />
         <activity android:name=".ShowRestaurantActivity" />
-        <activity android:name=".NewCustomerActivity"></activity>
+        <activity android:name=".NewCustomerActivity" />
+        <activity android:name=".SearchRestaurantsActivity" />
+        <activity android:name=".BookRestaurantActivity"></activity>
     </application>
 
 </manifest>
