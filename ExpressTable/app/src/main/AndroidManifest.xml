@@ -21,7 +21,8 @@
         <activity android:name=".ShowRestaurantActivity" />
         <activity android:name=".NewCustomerActivity" />
         <activity android:name=".SearchRestaurantsActivity" />
-        <activity android:name=".BookRestaurantActivity"></activity>
+        <activity android:name=".BookRestaurantActivity" />
+        <activity android:name=".BookingConfirmationActivity"></activity>
     </application>
 
 </manifest>
