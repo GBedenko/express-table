@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,9 +9,21 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp">
 
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="520dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -28,8 +40,8 @@
                     android:id="@+id/restaurantDetailsHeaderView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:layout_alignParentTop="true"
+                    android:gravity="center_vertical"
                     android:text="Restaurant Details:"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
@@ -108,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="40dp"
-                android:gravity="center_horizontal" >
+                android:gravity="center_horizontal">
 
                 <Button
                     android:id="@+id/enterFloorPlanButton"
@@ -126,11 +138,11 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:hint="Enter Number of Tables"
                     android:inputType="number"
                     android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:hint="Enter Number of Tables"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="20sp" />
             </TableRow>
 
             <TableRow
@@ -143,10 +155,10 @@
                     android:id="@+id/restaurantPostcodeField"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapCharacters"
                     android:hint="Postcode"
-                    android:textColor="@android:color/darker_gray"
+                    android:inputType="textCapCharacters"
                     android:textAlignment="center"
+                    android:textColor="@android:color/darker_gray"
                     android:textSize="20sp" />
             </TableRow>
 
@@ -165,6 +177,4 @@
         </TableLayout>
     </ScrollView>
 
-
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
