@@ -28,7 +28,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="173dp"
-        android:onClick="onLogInButtonClick"
+        android:onClick="onButtonClick"
         android:text="Log In" />
 
     <Button
@@ -38,6 +38,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="99dp"
-        android:onClick="onCreateAccountButtonClick"
+        android:onClick="onButtonClick"
         android:text="Create Account" />
 </RelativeLayout>

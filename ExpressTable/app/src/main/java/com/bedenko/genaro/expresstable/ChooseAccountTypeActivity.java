@@ -15,27 +15,30 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_account_type);
 
-        final Button nextButton = findViewById(R.id.nextFromChooseAccountTypeButton);
+        Button chooseCustomerButton = findViewById(R.id.chooseCustomerAccountButton);
+        Button chooseRestaurantButton = findViewById(R.id.chooseRestaurantAccountButton);
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        chooseCustomerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-//                // Retrieve the radio group object from the UI
-//                RadioGroup accountTypeRadioGroup = findViewById(R.id.chooseAccountRadioGroup);
-//
-//                // Save the chosen radio button option as a string
-//                String accountTypeChosen = findViewById(accountTypeRadioGroup.getCheckedRadioButtonId())
-//
-//                // Depending on which radio button was chosen, go to the corresponding next screen
-//                switch (accountTypeChosen) {
-//                    case "I am a Customer":
-//                        // TODO
-//                    case "I am a Restaurant":
-//                        // TODO
-//                    default:
-//                        // TODO
-//                }
-                startActivity(new Intent(getBaseContext(), NewRestaurantActivity.class));
+                chooseCustomerButtonClicked();
             }
         });
+
+        chooseRestaurantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseRestaurantButtonClicked();
+            }
+        });
+    }
+
+
+    private void chooseCustomerButtonClicked() {
+        startActivity(new Intent(getBaseContext(), NewCustomerActivity.class));
+    }
+
+    private void chooseRestaurantButtonClicked() {
+        startActivity(new Intent(getBaseContext(), NewRestaurantActivity.class));
     }
 }

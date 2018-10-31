@@ -22,7 +22,8 @@
         <activity android:name=".NewCustomerActivity" />
         <activity android:name=".SearchRestaurantsActivity" />
         <activity android:name=".BookRestaurantActivity" />
-        <activity android:name=".BookingConfirmationActivity"></activity>
+        <activity android:name=".BookingConfirmationActivity" />
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>
