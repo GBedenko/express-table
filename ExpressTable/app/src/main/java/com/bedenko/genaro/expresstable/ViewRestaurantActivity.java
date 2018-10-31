@@ -3,11 +3,11 @@ package com.bedenko.genaro.expresstable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ShowRestaurantActivity extends AppCompatActivity {
+public class ViewRestaurantActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_restaurant);
+        setContentView(R.layout.activity_view_restaurant);
     }
 }

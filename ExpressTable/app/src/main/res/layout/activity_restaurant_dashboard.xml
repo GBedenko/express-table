@@ -39,7 +39,6 @@
             android:text="User logged in"
             android:textAlignment="viewEnd"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlCompat" />
 
@@ -91,7 +90,7 @@
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:background="@color/colorPrimaryDark"
-                android:text="Scan Arriving Customer >" />
+                android:text="Scan Arriving Customers >" />
         </TableRow>
     </TableLayout>
 
