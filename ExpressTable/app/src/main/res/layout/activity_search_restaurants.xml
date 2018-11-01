@@ -56,16 +56,22 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="469dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loggedInHeader">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/searchByNameTextView"
+                style="@style/FontTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
@@ -79,33 +85,33 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
 
             <EditText
                 android:id="@+id/searchRestaurantsField"
-                android:layout_width="307dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:ems="10"
+                android:layout_width="230dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="40dp"
                 android:hint="Enter Restaurant Name"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.36"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/searchRestaurantsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">>" />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/searchByFavouritesTextView"
+                style="@style/FontTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
@@ -138,11 +144,11 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/searchByLocationTextView"
+                style="@style/FontTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"

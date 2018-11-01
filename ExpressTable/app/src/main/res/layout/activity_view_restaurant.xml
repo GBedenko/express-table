@@ -54,6 +54,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <TextView
+        style="@style/FontTheme"
         android:id="@+id/textView"
         android:layout_width="151dp"
         android:layout_height="44dp"
