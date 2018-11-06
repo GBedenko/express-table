@@ -27,7 +27,8 @@
         <activity android:name=".CustomerDashboardActivity" />
         <activity android:name=".CustomerBookingsActivity" />
         <activity android:name=".RestaurantDashboardActivity" />
-        <activity android:name=".RestaurantReservationsActivity"></activity>
+        <activity android:name=".RestaurantReservationsActivity" />
+        <activity android:name=".SearchResultsActivity"></activity>
     </application>
 
 </manifest>
