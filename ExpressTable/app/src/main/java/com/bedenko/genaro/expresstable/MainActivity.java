@@ -10,13 +10,10 @@ import com.bedenko.genaro.expresstable.persistence.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        databaseHelper = new DatabaseHelper(this);
 
         Button createAccountButton = findViewById(R.id.createAccountButton);
         Button loginButton = findViewById(R.id.logInButton);

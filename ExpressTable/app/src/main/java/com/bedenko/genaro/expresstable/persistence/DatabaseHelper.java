@@ -12,8 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "express-table-db.db";
     private static final int DATABASE_VERSION = 1;
 
-    public static final String BOOKINGS_TABLE = "bookings";
-    public static final String CUSTOMERS_TABLE = "customers";
+    private static final String CUSTOMERS_TABLE = "customers";
 
     public static final String FLOOR_PLANS_TABLE = "floor_plans";
     public static final String FOOD_ORDERS_TABLE = "food_orders";
@@ -27,12 +26,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + CUSTOMERS_TABLE +" (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
-                "FIRST_NAME TEXT," +
-                "LAST_NAME TEXT," +
-                "EMAIL TEXT UNIQUE," +
-                "PHONE_NO TEXT," +
-                "PASSWORD TEXT)");
+        db.execSQL("CREATE TABLE " + CUSTOMERS_TABLE + " (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
+                    "name TEXT," +
+                    "username TEXT," +
+                    "email_address TEXT UNIQUE," +
+                    "password_hash TEXT)");
     }
 
     @Override
@@ -43,20 +42,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addCustomer(Customer customer){
+    public void write(String tableName, ContentValues values) {
 
-        // 1. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // 2. create ContentValues to add key "column"/value
-        ContentValues values = new ContentValues();
-        values.put("name", customer.getName());
-        values.put("username", customer.getUsername());
-        values.put("email_address", customer.getEmailAddress());
-        values.put("password_hash", customer.getPasswordHash());
-
-        // 3. insert
-        db.insert(CUSTOMERS_TABLE, null, values);
+        db.insert(tableName, null, values);
 
         db.close();
     }
