@@ -80,6 +80,23 @@
                 android:gravity="center_horizontal">
 
                 <EditText
+                    android:id="@+id/restaurantEmailField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Email Address"
+                    android:inputType="textEmailAddress"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="20sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:gravity="center_horizontal">
+
+                <EditText
                     android:id="@+id/restaurantPasswordField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -108,23 +125,6 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:gravity="center_horizontal">
-
-                <EditText
-                    android:id="@+id/restaurantTypeField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="What Type of Restaurant?"
-                    android:inputType="textCapWords"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="20sp" />
-            </TableRow>
-
-            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="40dp"
@@ -137,21 +137,6 @@
                     android:text="Enter Floor Plan >" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:gravity="center_horizontal">
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter Number of Tables"
-                    android:inputType="number"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="20sp" />
-            </TableRow>
 
             <TableRow
                 android:layout_width="fill_parent"

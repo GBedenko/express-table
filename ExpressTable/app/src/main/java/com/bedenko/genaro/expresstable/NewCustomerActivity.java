@@ -1,5 +1,6 @@
 package com.bedenko.genaro.expresstable;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,7 +52,9 @@ public class NewCustomerActivity extends AppCompatActivity {
 
         CustomerRepo customerRepo = new CustomerRepo();
 
-        customerRepo.createCustomer(db, newCustomer);
+        customerRepo.addCustomerToDB(db, newCustomer);
+
+        startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
     }
 
     private String md5HashPassword(String password) {

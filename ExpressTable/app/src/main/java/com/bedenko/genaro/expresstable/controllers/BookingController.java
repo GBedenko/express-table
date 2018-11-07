@@ -7,7 +7,7 @@ public class BookingController {
 
     BookingRepo bookingRepo = new BookingRepo();
 
-    public Booking createBooking(int aCustomerID, int aRestaurantID, String aDate, String aTime, int aTableNumber) {
+    public Booking create(int aCustomerID, int aRestaurantID, String aDate, String aTime, int aTableNumber) {
 
         Booking booking = new Booking();
 

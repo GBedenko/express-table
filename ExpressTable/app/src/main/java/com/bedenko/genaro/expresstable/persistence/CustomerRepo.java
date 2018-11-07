@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class CustomerRepo {
 
-    public void createCustomer(DatabaseHelper db, Customer customer) {
+    public void addCustomerToDB(DatabaseHelper db, Customer customer) {
 
         ContentValues customerValues = new ContentValues();
         customerValues.put("name", customer.getName() );
