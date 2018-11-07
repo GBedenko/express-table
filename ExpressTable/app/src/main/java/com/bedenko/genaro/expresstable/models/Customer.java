@@ -6,11 +6,11 @@ package com.bedenko.genaro.expresstable.models;
  * @author bedenkog
  */
 
-public class Customer extends User {
+public class Customer {
 
 
-    public Customer(String username, String emailAddress, String password_hash) {
-        super(username, emailAddress, password_hash);
+    public Customer() {
+
     }
 
 
