@@ -2,27 +2,87 @@ package com.bedenko.genaro.expresstable.models;
 
 public class Restaurant {
 
-    private String name;
-    private String type;
+    private int restaurantID = -1;
+    private String username;
+    private String restaurantName;
+    private String emailAddress;
+    private String passwordHash;
     private int numberOfTables;
-    private String city;
-    private String coordinates;
+    private String gpsLocation;
     private String postcode;
+    private FloorPlan floorPlan;
 
-    public String getCity() {
-        return city;
+    public Restaurant() {
+
+        // Can create a blank instance if no parameters passed
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public Restaurant(String username, String restaurantName, String emailAddress, String passwordHash, int numberOfTables, String gpsLocation, String postcode) {
+
+        // Create a new instance when all parameters are passed
+        this.username = username;
+        this.restaurantName = restaurantName;
+        this.emailAddress = emailAddress;
+        this.passwordHash = passwordHash;
+        this.numberOfTables = numberOfTables;
+        this.gpsLocation = gpsLocation;
+        this.postcode = postcode;
     }
 
-    public String getCoordinates() {
-        return coordinates;
+    public int getRestaurantID() {
+        return restaurantID;
     }
 
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
+    public void setRestaurantID(int restaurantID) {
+        this.restaurantID = restaurantID;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public int getNumberOfTables() {
+        return numberOfTables;
+    }
+
+    public void setNumberOfTables(int numberOfTables) {
+        this.numberOfTables = numberOfTables;
+    }
+
+    public String getGpsLocation() {
+        return gpsLocation;
+    }
+
+    public void setGpsLocation(String gpsLocation) {
+        this.gpsLocation = gpsLocation;
     }
 
     public String getPostcode() {
@@ -33,36 +93,11 @@ public class Restaurant {
         this.postcode = postcode;
     }
 
-    public Restaurant(String name, String type, int numberOfTables, String postcode) {
-        // Contain any variables assigned to all instances
-        this.name = name;
-        this.type = type;
-        this.numberOfTables = numberOfTables;
-        this.postcode = postcode;
+    public void setFloorPlan(FloorPlan floorPlan) {
+        this.floorPlan = floorPlan;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-
-    public int getNumberOfTables() {
-        return numberOfTables;
-    }
-
-    public void setNumberOfTables(int number_of_tables) {
-        this.numberOfTables = number_of_tables;
+    public FloorPlan getFloorPlan() {
+        return floorPlan;
     }
 }
