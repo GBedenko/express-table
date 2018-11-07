@@ -33,6 +33,9 @@ public class Restaurant {
         this.postcode = postcode;
     }
 
+    public Restaurant() {
+
+    }
     public Restaurant(String name, String type, int numberOfTables, String postcode) {
         // Contain any variables assigned to all instances
         this.name = name;
