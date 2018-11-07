@@ -2,7 +2,7 @@ package com.bedenko.genaro.expresstable.models;
 
 public class Menu {
 
-    private int menuID;
+    private int menuID = -1;
     private int restaurantID;
     private byte[] image;
 

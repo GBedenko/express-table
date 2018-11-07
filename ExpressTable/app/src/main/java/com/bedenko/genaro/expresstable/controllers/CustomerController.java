@@ -1,6 +1,9 @@
 package com.bedenko.genaro.expresstable.controllers;
 
+import android.content.ContentValues;
+
 import com.bedenko.genaro.expresstable.models.Customer;
+import com.bedenko.genaro.expresstable.persistence.CustomerRepo;
 
 public class CustomerController {
 
@@ -12,9 +15,6 @@ public class CustomerController {
         customer.setUsername(aUsername);
         customer.setEmailAddress(aEmailAddress);
         customer.setPasswordHash(aPasswordHash);
-
-        // Function calls to write to database persistence
-        // customerRepo.write(customer);
 
         return(customer);
     }

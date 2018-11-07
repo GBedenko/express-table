@@ -1,8 +1,11 @@
 package com.bedenko.genaro.expresstable.controllers;
 
 import com.bedenko.genaro.expresstable.models.Booking;
+import com.bedenko.genaro.expresstable.persistence.BookingRepo;
 
 public class BookingController {
+
+    BookingRepo bookingRepo = new BookingRepo();
 
     public Booking createBooking(int aCustomerID, int aRestaurantID, String aDate, String aTime, int aTableNumber) {
 

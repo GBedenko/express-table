@@ -2,6 +2,7 @@ package com.bedenko.genaro.expresstable.models;
 
 public class FoodOrder {
 
+    private int floorPlanID = -1;
     private int bookingID;
     private String[] foodOrder;
 
@@ -15,6 +16,14 @@ public class FoodOrder {
         // Create a new instance when all parameters are passed
         this.bookingID = bookingID;
         this.foodOrder = foodOrder;
+    }
+
+    public int getFloorPlanID() {
+        return floorPlanID;
+    }
+
+    public void setFloorPlanID(int floorPlanID) {
+        this.floorPlanID = floorPlanID;
     }
 
     public int getBookingID() {

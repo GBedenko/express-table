@@ -7,7 +7,6 @@ public class Restaurant {
     private String restaurantName;
     private String emailAddress;
     private String passwordHash;
-    private int numberOfTables;
     private String gpsLocation;
     private String postcode;
 
@@ -16,14 +15,13 @@ public class Restaurant {
         // Can create a blank instance if no parameters passed
     }
 
-    public Restaurant(String username, String restaurantName, String emailAddress, String passwordHash, int numberOfTables, String gpsLocation, String postcode) {
+    public Restaurant(String username, String restaurantName, String emailAddress, String passwordHash, String gpsLocation, String postcode) {
 
         // Create a new instance when all parameters are passed
         this.username = username;
         this.restaurantName = restaurantName;
         this.emailAddress = emailAddress;
         this.passwordHash = passwordHash;
-        this.numberOfTables = numberOfTables;
         this.gpsLocation = gpsLocation;
         this.postcode = postcode;
     }
@@ -66,14 +64,6 @@ public class Restaurant {
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
-    }
-
-    public int getNumberOfTables() {
-        return numberOfTables;
-    }
-
-    public void setNumberOfTables(int numberOfTables) {
-        this.numberOfTables = numberOfTables;
     }
 
     public String getGpsLocation() {
