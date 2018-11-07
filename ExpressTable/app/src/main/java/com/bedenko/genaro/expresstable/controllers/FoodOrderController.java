@@ -11,8 +11,6 @@ public class FoodOrderController {
         foodOrder.setBookingID(aBookingID);
         foodOrder.setFoodOrder(aFoodOrder);
 
-        return(foodOrder);
-
         // Function calls to write to database persistence
         // foodOrderRepo.write(foodOrder);
 
