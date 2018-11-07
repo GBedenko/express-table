@@ -4,13 +4,17 @@ import com.bedenko.genaro.expresstable.models.Customer;
 
 public class CustomerController {
 
-    public Customer createCustomer(String aName, String aUsername, String emailAddress, String aPasswordHash) {
+    public Customer createCustomer(String aName, String aUsername, String aEmailAddress, String aPasswordHash) {
 
         Customer customer = new Customer();
 
-        // Set values for what a customer will store
-        // customer.setCustomerID(aCustomerID);
-        // Rest to follow
+        customer.setName(aName);
+        customer.setUsername(aUsername);
+        customer.setEmailAddress(aEmailAddress);
+        customer.setPasswordHash(aPasswordHash);
+
+        // Function calls to write to database persistence
+        // customerRepo.write(customer);
 
         return(customer);
     }

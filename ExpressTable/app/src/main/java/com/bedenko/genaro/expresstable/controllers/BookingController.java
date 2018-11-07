@@ -8,9 +8,14 @@ public class BookingController {
 
         Booking booking = new Booking();
 
-        // Set values for what a booking will store
-        // booking.setCustomerID(aCustomerID);
-        // Rest to follow
+        booking.setCustomerID(aCustomerID);
+        booking.setRestaurantID(aRestaurantID);
+        booking.setDate(aDate);
+        booking.setTime(aTime);
+        booking.setTableNumber(aTableNumber);
+
+        // Function calls to write to database persistence
+        // bookingRepo.write(customer);
 
         return(booking);
     }

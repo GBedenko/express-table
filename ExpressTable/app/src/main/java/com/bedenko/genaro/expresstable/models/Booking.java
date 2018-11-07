@@ -2,7 +2,7 @@ package com.bedenko.genaro.expresstable.models;
 
 public class Booking {
 
-    private int bookingID;
+    private int bookingID = -1;
     private int customerID;
     private int restaurantID;
     private String date;

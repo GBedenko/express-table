@@ -8,7 +8,7 @@ package com.bedenko.genaro.expresstable.models;
 
 public class Customer {
 
-    private int customerID;
+    private int customerID = -1;
     private String name;
     private String username;
     private String emailAddress;
