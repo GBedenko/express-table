@@ -5,33 +5,64 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.bedenko.genaro.expresstable.models.Customer;
-
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "express-table-db.db";
+    private static final String DATABASE_NAME = "express-table.db";
     private static final int DATABASE_VERSION = 1;
 
+    private static final String BOOKINGS_TABLE = "bookings";
     private static final String CUSTOMERS_TABLE = "customers";
-
-    public static final String FLOOR_PLANS_TABLE = "floor_plans";
-    public static final String FOOD_ORDERS_TABLE = "food_orders";
-    public static final String MENUS_TABLE = "menus";
-    public static final String RESTAURANTS_TABLE = "restaurants";
+    private static final String FLOOR_PLANS_TABLE = "floor_plans";
+    private static final String FOOD_ORDERS_TABLE = "food_orders";
+    private static final String MENUS_TABLE = "menus";
+    private static final String RESTAURANTS_TABLE = "restaurants";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        SQLiteDatabase db = this.getWritableDatabase();
+//        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL("CREATE TABLE " + BOOKINGS_TABLE + " (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
+                    "customer_id INTEGER," +
+                    "restaurant_id INTEGER," +
+                    "date TEXT," +
+                    "time TEXT," +
+                    "table_number INTEGER)");
+
         db.execSQL("CREATE TABLE " + CUSTOMERS_TABLE + " (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
                     "name TEXT," +
-                    "username TEXT," +
+                    "username TEXT UNIQUE," +
                     "email_address TEXT UNIQUE," +
                     "password_hash TEXT)");
+
+        db.execSQL("CREATE TABLE " + FLOOR_PLANS_TABLE + " (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
+                    "restaurant_id INTEGER," +
+                    "image TEXT)");
+
+        db.execSQL("CREATE TABLE " + FOOD_ORDERS_TABLE + " (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
+                    "booking_id INTEGER," +
+                    "food_order TEXT)");
+
+        db.execSQL("CREATE TABLE " + MENUS_TABLE + " (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
+                    "restaurant_id INTEGER," +
+                    "image TEXT)");
+
+        db.execSQL("CREATE TABLE " + RESTAURANTS_TABLE + " (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
+                    "username TEXT UNIQUE," +
+                    "restaurant_name TEXT," +
+                    "email_address TEXT UNIQUE," +
+                    "password_hash TEXT," +
+                    "gps_location TEXT," +
+                    "postcode TEXT)");
     }
 
     @Override

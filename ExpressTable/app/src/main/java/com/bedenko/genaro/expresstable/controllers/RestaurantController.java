@@ -5,8 +5,8 @@ import com.bedenko.genaro.expresstable.models.Restaurant;
 
 public class RestaurantController {
 
-    public Restaurant createRestaurant(String aUsername, String aEmailAddress, String aPasswordHash, String aRestaurantName,
-                                       int aNumberOfTables, String aPostcode, String aGpsLocation) {
+    public Restaurant createRestaurant(String aUsername, String aEmailAddress, String aPasswordHash,
+                                       String aRestaurantName, String aPostcode, String aGpsLocation) {
 
         Restaurant restaurant = new Restaurant();
 
@@ -14,7 +14,6 @@ public class RestaurantController {
         restaurant.setEmailAddress(aEmailAddress);
         restaurant.setPasswordHash(aPasswordHash);
         restaurant.setRestaurantName(aRestaurantName);
-        restaurant.setNumberOfTables(aNumberOfTables);
         restaurant.setPostcode(aPostcode);
         restaurant.setGpsLocation(aGpsLocation);
 
