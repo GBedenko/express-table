@@ -10,7 +10,6 @@ public class Restaurant {
     private int numberOfTables;
     private String gpsLocation;
     private String postcode;
-    private FloorPlan floorPlan;
 
     public Restaurant() {
 
@@ -93,11 +92,4 @@ public class Restaurant {
         this.postcode = postcode;
     }
 
-    public void setFloorPlan(FloorPlan floorPlan) {
-        this.floorPlan = floorPlan;
-    }
-
-    public FloorPlan getFloorPlan() {
-        return floorPlan;
-    }
 }

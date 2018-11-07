@@ -1,4 +1,4 @@
-package com.bedenko.genaro.expresstable.local_db;
+package com.bedenko.genaro.expresstable.persistence;
 
 import com.bedenko.genaro.expresstable.models.Booking;
 
