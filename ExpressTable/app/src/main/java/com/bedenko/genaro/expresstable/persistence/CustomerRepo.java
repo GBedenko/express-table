@@ -1,5 +1,8 @@
 package com.bedenko.genaro.expresstable.persistence;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
 import com.bedenko.genaro.expresstable.models.Customer;
 
 import java.util.ArrayList;
