@@ -27,7 +27,7 @@ public class Restaurant {
         this.gpsLocation = gpsLocation;
         this.postcode = postcode;
     }
-    
+
     public int getRestaurantID() {
         return restaurantID;
     }
