@@ -8,7 +8,11 @@ public class FloorPlanController {
 
         FloorPlan floorPlan = new FloorPlan();
 
-        // Calls to set values to follow
+        floorPlan.setRestaurantID(aRestaurantID);
+        floorPlan.setImage(aFloorPlanImage);
+
+        // Function calls to write to database persistence
+        // floorPlanRepo.write(floorPlan);
 
         return(floorPlan);
     }

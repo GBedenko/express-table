@@ -15,7 +15,7 @@ public class BookingController {
         booking.setTableNumber(aTableNumber);
 
         // Function calls to write to database persistence
-        // bookingRepo.write(customer);
+        // bookingRepo.write(booking);
 
         return(booking);
     }

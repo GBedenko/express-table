@@ -2,7 +2,7 @@ package com.bedenko.genaro.expresstable.models;
 
 public class Restaurant {
 
-    private int restaurantID;
+    private int restaurantID = -1;
     private String username;
     private String restaurantName;
     private String emailAddress;
@@ -10,6 +10,7 @@ public class Restaurant {
     private int numberOfTables;
     private String gpsLocation;
     private String postcode;
+    private FloorPlan floorPlan;
 
     public Restaurant() {
 
@@ -90,5 +91,13 @@ public class Restaurant {
 
     public void setPostcode(String postcode) {
         this.postcode = postcode;
+    }
+
+    public void setFloorPlan(FloorPlan floorPlan) {
+        this.floorPlan = floorPlan;
+    }
+
+    public FloorPlan getFloorPlan() {
+        return floorPlan;
     }
 }

@@ -4,19 +4,19 @@ public class Menu {
 
     private int menuID;
     private int restaurantID;
-    private int imageID;
+    private byte[] image;
 
     public Menu() {
 
         // Can create a blank instance if no parameters passed
     }
 
-    public Menu(int menuID, int restaurantID, int imageID) {
+    public Menu(int menuID, int restaurantID, byte[] image) {
 
         // Create a new instance when all parameters are passed
         this.menuID = menuID;
         this.restaurantID = restaurantID;
-        this.imageID = imageID;
+        this.image = image;
     }
 
     public int getMenuID() {
@@ -35,11 +35,11 @@ public class Menu {
         this.restaurantID = restaurantID;
     }
 
-    public int getImageID() {
-        return imageID;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setImageID(int imageID) {
-        this.imageID = imageID;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

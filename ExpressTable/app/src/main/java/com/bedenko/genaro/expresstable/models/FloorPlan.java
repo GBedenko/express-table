@@ -2,21 +2,21 @@ package com.bedenko.genaro.expresstable.models;
 
 public class FloorPlan {
 
-    private int floorPlanID;
+    private int floorPlanID = -1;
     private int restaurantID;
-    private int imageID;
+    private byte[] image;
 
     public FloorPlan() {
 
         // Can create a blank instance if no parameters passed
     }
 
-    public FloorPlan(int floorPlanID, int restaurantID, int imageID) {
+    public FloorPlan(int floorPlanID, int restaurantID, byte[] image) {
 
         // Create a new instance when all parameters are passed
         this.floorPlanID = floorPlanID;
         this.restaurantID = restaurantID;
-        this.imageID = imageID;
+        this.image = image;
     }
 
     public int getFloorPlanID() {
@@ -35,11 +35,11 @@ public class FloorPlan {
         this.restaurantID = restaurantID;
     }
 
-    public int getImageID() {
-        return imageID;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setImageID(int imageID) {
-        this.imageID = imageID;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

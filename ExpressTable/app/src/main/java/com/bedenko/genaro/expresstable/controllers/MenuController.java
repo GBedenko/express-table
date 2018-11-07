@@ -8,7 +8,11 @@ public class MenuController {
 
         Menu menu = new Menu();
 
-        // Calls to set values to follow
+        menu.setRestaurantID(aRestaurantID);
+        menu.setImage(aMenuImage);
+
+        // Function calls to write to database persistence
+        // menuRepo.write(menu);
 
         return(menu);
     }

@@ -4,11 +4,17 @@ import com.bedenko.genaro.expresstable.models.FoodOrder;
 
 public class FoodOrderController {
 
-    public FoodOrder createFoodOrder(int aRestaurantID, String[] orderedFood) {
+    public FoodOrder createFoodOrder(int aBookingID, String[] aFoodOrder) {
 
         FoodOrder foodOrder = new FoodOrder();
 
-        // Calls to set values to follow
+        foodOrder.setBookingID(aBookingID);
+        foodOrder.setFoodOrder(aFoodOrder);
+
+        return(foodOrder);
+
+        // Function calls to write to database persistence
+        // foodOrderRepo.write(foodOrder);
 
         return(foodOrder);
     }
