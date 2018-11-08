@@ -11,9 +11,6 @@ public class MenuController {
         menu.setRestaurantID(aRestaurantID);
         menu.setImage(aMenuImage);
 
-        // Function calls to write to database persistence
-        // menuRepo.write(menu);
-
         return(menu);
     }
 }

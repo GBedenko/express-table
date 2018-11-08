@@ -11,9 +11,6 @@ public class FloorPlanController {
         floorPlan.setRestaurantID(aRestaurantID);
         floorPlan.setImage(aFloorPlanImage);
 
-        // Function calls to write to database persistence
-        // floorPlanRepo.write(floorPlan);
-
         return(floorPlan);
     }
 }

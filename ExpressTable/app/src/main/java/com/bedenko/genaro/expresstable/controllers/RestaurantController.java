@@ -1,6 +1,5 @@
 package com.bedenko.genaro.expresstable.controllers;
 
-import com.bedenko.genaro.expresstable.models.FloorPlan;
 import com.bedenko.genaro.expresstable.models.Restaurant;
 
 public class RestaurantController {
@@ -16,9 +15,6 @@ public class RestaurantController {
         restaurant.setRestaurantName(aRestaurantName);
         restaurant.setPostcode(aPostcode);
         restaurant.setGpsLocation(aGpsLocation);
-
-        // Function calls to write to database persistence
-        // restaurantRepo.write(restaurant);
 
         return(restaurant);
     }
