@@ -13,12 +13,11 @@
 
     <ImageView
         android:id="@+id/mainLogoView"
-        android:layout_width="345dp"
-        android:layout_height="327dp"
+        android:layout_width="314dp"
+        android:layout_height="246dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="56dp"
         android:contentDescription="ExpressTable Logo"
         android:src="@drawable/expresstable_logo"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,25 +27,30 @@
         android:id="@+id/logInButton"
         android:layout_width="234dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
         android:onClick="onButtonClick"
         android:text="Log In"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainLogoView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/mainLogoView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/createAccountButton"
         android:layout_width="234dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
         android:onClick="onButtonClick"
         android:text="Create Account"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logInButton" />
+        app:layout_constraintTop_toBottomOf="@+id/logInButton"
+        app:layout_constraintVertical_bias="0.265" />
 </android.support.constraint.ConstraintLayout>
