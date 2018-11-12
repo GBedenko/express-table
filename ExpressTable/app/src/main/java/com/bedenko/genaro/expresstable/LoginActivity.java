@@ -56,9 +56,12 @@ public class LoginActivity extends AppCompatActivity {
             case "Customer":
                 // Query if customer details correct
                 Customer potentialExistingCustomer = new Customer(username, passwordHash);
-                customerController.getCustomerFromDB(db, potentialExistingCustomer);
-
-                startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+                String existingCustomerName = customerController.getCustomerFromDB(db, potentialExistingCustomer);
+                if(existingCustomerName.equals(username)) {
+                    Toast.makeText(getApplicationContext(), "Username already exists.", Toast.LENGTH_SHORT).show();
+                } else {
+                    startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+                }
                 break;
             case "Restaurant":
                 // Query if restaurant details correct

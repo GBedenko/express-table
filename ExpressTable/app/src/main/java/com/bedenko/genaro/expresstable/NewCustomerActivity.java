@@ -49,9 +49,10 @@ public class NewCustomerActivity extends AppCompatActivity {
 
         Customer newCustomer = customerController.createCustomer(customerName, customerUsername, customerEmail, customerPasswordHash);
 
-        customerController.addCustomerToDB(db, newCustomer);
-        Toast.makeText(getApplicationContext(),"Customer Account Created", Toast.LENGTH_SHORT).show();
+        String usernameInDB = customerController.getCustomerFromDB(db, newCustomer);
 
-        startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+            customerController.addCustomerToDB(db, newCustomer);
+            Toast.makeText(getApplicationContext(),"Customer Account Created", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
     }
 }

@@ -82,43 +82,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public String readOne(String selectQuery) {
+    public String readCustomerRecord(String selectQuery) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        String record = "";
-        if (cursor.moveToFirst())
-        {
-            do {
-                String path=cursor.getString(0);
-                record = path;
-            } while (cursor.moveToNext());
+        String username = "";
+
+        if (cursor.moveToFirst()){
+            do{
+                username = cursor.getString(cursor.getColumnIndex("username"));
+            }while(cursor.moveToNext());
         }
         cursor.close();
+
         db.close();
 
-        return record;
-    }
-
-    public int count(String countQuery) {
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor cursor = db.rawQuery(countQuery, null);
-
-        int count = 0;
-
-        if(cursor.moveToFirst()){
-            do {
-                count++;
-            } while(cursor.moveToNext());
-        }
-
-        cursor.close();
-        db.close();
-
-        return count;
+        return username;
     }
 }

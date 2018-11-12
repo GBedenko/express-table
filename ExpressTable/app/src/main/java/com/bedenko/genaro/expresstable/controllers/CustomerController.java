@@ -30,7 +30,12 @@ public class CustomerController {
         db.write("customers", customerValues);
     }
 
-    public void getCustomerFromDB(DatabaseHandler db, Customer customer) {
+    public String getCustomerFromDB(DatabaseHandler db, Customer customer) {
 
+        String query = "SELECT username FROM customers WHERE username=" + customer.getUsername();
+
+        String queryResult = db.readCustomerRecord(query);
+
+        return queryResult;
     }
 }

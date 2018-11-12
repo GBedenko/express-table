@@ -8,6 +8,6 @@ public class SearchRestaurantsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_restaurants);
+        setContentView(R.layout.activity_search_restaurants_gps);
     }
 }
