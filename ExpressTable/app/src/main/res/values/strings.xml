@@ -13,4 +13,10 @@
         <item>Japanese</item>
         <item>Australian</item>
     </string-array>
+    <string name="account_type_prompt">Account Type</string>
+
+    <string-array name="account_types">
+        <item>Customer</item>
+        <item>Restaurant</item>
+    </string-array>
 </resources>

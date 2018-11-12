@@ -19,6 +19,10 @@ public class CustomerRepo {
         db.write("customers", customerValues);
     }
 
+    public Customer getOneCustomer(DatabaseHandler db, Customer customer) {
+
+        return customer;
+    }
     public ArrayList<Customer> getAllCustomers() {
 
         ArrayList<Customer> retrievedCustomers = new ArrayList<>();
@@ -26,11 +30,9 @@ public class CustomerRepo {
         return retrievedCustomers;
     }
 
-    public Customer getCustomer(Customer customer) {
+    public int countMatchingCustomers(DatabaseHandler db, Customer customer) {
 
-        Customer retrievedCustomer = new Customer();
-
-        return retrievedCustomer;
+        return db.count("SELECT COUNT(id) FROM customers WHERE username=" + customer.getUsername());
     }
 
     public void updateCustomer(Customer customer) {

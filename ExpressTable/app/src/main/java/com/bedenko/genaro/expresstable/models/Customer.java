@@ -19,6 +19,11 @@ public class Customer {
         // Can create a blank instance if no parameters passed
     }
 
+    public Customer(String username, String passwordHash) {
+
+        // Can create an instance based on just login credentials
+    }
+
     public Customer(int customerID, String name, String username, String emailAddress, String passwordHash) {
 
         // Create a new instance when all parameters are passed
