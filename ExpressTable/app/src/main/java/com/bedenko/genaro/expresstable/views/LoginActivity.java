@@ -1,4 +1,4 @@
-package com.bedenko.genaro.expresstable;
+package com.bedenko.genaro.expresstable.views;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.bedenko.genaro.expresstable.R;
 import com.bedenko.genaro.expresstable.controllers.CustomerController;
 import com.bedenko.genaro.expresstable.controllers.RestaurantController;
 import com.bedenko.genaro.expresstable.models.Customer;

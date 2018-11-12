@@ -1,4 +1,4 @@
-package com.bedenko.genaro.expresstable;
+package com.bedenko.genaro.expresstable.views;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,15 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.bedenko.genaro.expresstable.controllers.CustomerController;
+import com.bedenko.genaro.expresstable.R;
 import com.bedenko.genaro.expresstable.controllers.RestaurantController;
-import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.models.Restaurant;
 import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 import com.bedenko.genaro.expresstable.utils.CommonUtils;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class NewRestaurantActivity extends AppCompatActivity {
 
