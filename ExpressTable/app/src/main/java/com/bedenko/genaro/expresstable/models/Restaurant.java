@@ -22,15 +22,13 @@ public class Restaurant {
         this.passwordHash = passwordHash;
     }
 
-    public Restaurant(String username, String restaurantName, String emailAddress, String passwordHash, String gpsLocation, String postcode) {
+    public Restaurant(String username, String restaurantName, String passwordHash, String gpsLocation) {
 
         // Create a new instance when all parameters are passed
         this.username = username;
         this.restaurantName = restaurantName;
-        this.emailAddress = emailAddress;
         this.passwordHash = passwordHash;
         this.gpsLocation = gpsLocation;
-        this.postcode = postcode;
     }
 
     public int getRestaurantID() {

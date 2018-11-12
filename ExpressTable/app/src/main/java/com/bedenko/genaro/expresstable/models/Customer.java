@@ -9,9 +9,7 @@ package com.bedenko.genaro.expresstable.models;
 public class Customer {
 
     private int customerID = -1;
-    private String name;
     private String username;
-    private String emailAddress;
     private String passwordHash;
 
     public Customer() {
@@ -24,13 +22,11 @@ public class Customer {
         // Can create an instance based on just login credentials
     }
 
-    public Customer(int customerID, String name, String username, String emailAddress, String passwordHash) {
+    public Customer(int customerID, String username, String passwordHash) {
 
         // Create a new instance when all parameters are passed
         this.customerID = customerID;
-        this.name = name;
         this.username = username;
-        this.emailAddress = emailAddress;
         this.passwordHash = passwordHash;
     }
 
@@ -42,28 +38,12 @@ public class Customer {
         this.customerID = customerID;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
     }
 
     public String getPasswordHash() {

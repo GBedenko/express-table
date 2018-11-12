@@ -7,13 +7,11 @@ import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 
 public class CustomerController {
 
-    public Customer createCustomer(String aName, String aUsername, String aEmailAddress, String aPasswordHash) {
+    public Customer createCustomer(String aUsername, String aPasswordHash) {
 
         Customer customer = new Customer();
 
-        customer.setName(aName);
         customer.setUsername(aUsername);
-        customer.setEmailAddress(aEmailAddress);
         customer.setPasswordHash(aPasswordHash);
 
         return(customer);
@@ -22,9 +20,7 @@ public class CustomerController {
     public void addCustomerToDB(DatabaseHandler db, Customer customer) {
 
         ContentValues customerValues = new ContentValues();
-        customerValues.put("name", customer.getName() );
         customerValues.put("username", customer.getUsername());
-        customerValues.put("email_address", customer.getEmailAddress());
         customerValues.put("password_hash", customer.getPasswordHash());
 
         db.write("customers", customerValues);

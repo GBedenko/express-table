@@ -46,20 +46,15 @@ public class NewRestaurantActivity extends AppCompatActivity {
         DatabaseHandler db = new DatabaseHandler(this);
 
         EditText restaurantUsernameField = findViewById(R.id.restaurantUsernameField);
-        EditText restaurantEmailField = findViewById(R.id.restaurantEmailField);
         EditText restaurantPasswordField = findViewById(R.id.restaurantPasswordField);
         EditText restaurantNameField = findViewById(R.id.restaurantNameField);
-        EditText restaurantPostcodeField = findViewById(R.id.restaurantPostcodeField);
 
         String restaurantUsername = restaurantUsernameField.getText().toString();
-        String restaurantEmail = restaurantEmailField.getText().toString();
-        String restaurantPasswordHash = commonUtils.md5Hash(restaurantPasswordField.getText().toString());
         String restaurantName = restaurantNameField.getText().toString();
-        String restaurantPostcode = restaurantPostcodeField.getText().toString();
+        String restaurantPasswordHash = commonUtils.md5Hash(restaurantPasswordField.getText().toString());
         String restaurantGpsLocation = "XXXYYYZZZ";
 
-        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantEmail, restaurantPasswordHash,
-                                                                         restaurantName, restaurantPostcode, restaurantGpsLocation);
+        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantGpsLocation);
 
         restaurantController.addRestaurantToDB(db, newRestaurant);
         Toast.makeText(getApplicationContext(),"Restaurant Account Created", Toast.LENGTH_SHORT).show();

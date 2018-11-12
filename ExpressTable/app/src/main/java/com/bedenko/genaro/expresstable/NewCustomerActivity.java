@@ -37,17 +37,13 @@ public class NewCustomerActivity extends AppCompatActivity {
         CustomerController customerController = new CustomerController();
         DatabaseHandler db = new DatabaseHandler(this);
 
-        EditText customerNameField = findViewById(R.id.customerNameField);
         EditText customerUsernameField = findViewById(R.id.customerUsernameField);
-        EditText customerEmailField = findViewById(R.id.customerEmailField);
         EditText customerPasswordField = findViewById(R.id.customerPasswordField);
 
-        String customerName = customerNameField.getText().toString();
         String customerUsername = customerUsernameField.getText().toString();
-        String customerEmail = customerEmailField.getText().toString();
         String customerPasswordHash = commonUtils.md5Hash(customerPasswordField.getText().toString());
 
-        Customer newCustomer = customerController.createCustomer(customerName, customerUsername, customerEmail, customerPasswordHash);
+        Customer newCustomer = customerController.createCustomer(customerUsername, customerPasswordHash);
 
         String usernameInDB = customerController.getCustomerFromDB(db, newCustomer);
 
