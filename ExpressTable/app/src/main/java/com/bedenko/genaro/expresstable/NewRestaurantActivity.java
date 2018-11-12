@@ -7,16 +7,21 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.bedenko.genaro.expresstable.controllers.CustomerController;
 import com.bedenko.genaro.expresstable.controllers.RestaurantController;
+import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.models.Restaurant;
 import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
-import com.bedenko.genaro.expresstable.persistence.RestaurantRepo;
+import com.bedenko.genaro.expresstable.utils.CommonUtils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class NewRestaurantActivity extends AppCompatActivity {
+
+    CommonUtils commonUtils = new CommonUtils();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,7 @@ public class NewRestaurantActivity extends AppCompatActivity {
 
         String restaurantUsername = restaurantUsernameField.getText().toString();
         String restaurantEmail = restaurantEmailField.getText().toString();
-        String restaurantPasswordHash = md5HashPassword(restaurantPasswordField.getText().toString());
+        String restaurantPasswordHash = commonUtils.md5Hash(restaurantPasswordField.getText().toString());
         String restaurantName = restaurantNameField.getText().toString();
         String restaurantPostcode = restaurantPostcodeField.getText().toString();
         String restaurantGpsLocation = "XXXYYYZZZ";
@@ -56,32 +61,9 @@ public class NewRestaurantActivity extends AppCompatActivity {
         Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantEmail, restaurantPasswordHash,
                                                                          restaurantName, restaurantPostcode, restaurantGpsLocation);
 
-        RestaurantRepo restaurantRepo = new RestaurantRepo();
-
-        restaurantRepo.addRestaurantToDB(db, newRestaurant);
+        restaurantController.addRestaurantToDB(db, newRestaurant);
+        Toast.makeText(getApplicationContext(),"Restaurant Account Created", Toast.LENGTH_SHORT).show();
 
         startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
-    }
-
-    private String md5HashPassword(String password) {
-
-        try {
-            // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
-            digest.update(password.getBytes());
-            byte messageDigest[] = digest.digest();
-
-            // Create Hex String
-            StringBuffer hexString = new StringBuffer();
-
-            for (int i=0; i<messageDigest.length; i++)
-                hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
-
-            return hexString.toString();
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }

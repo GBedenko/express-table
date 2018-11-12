@@ -13,16 +13,12 @@ import com.bedenko.genaro.expresstable.controllers.CustomerController;
 import com.bedenko.genaro.expresstable.controllers.RestaurantController;
 import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.models.Restaurant;
-import com.bedenko.genaro.expresstable.persistence.CustomerRepo;
 import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
-import com.bedenko.genaro.expresstable.persistence.RestaurantRepo;
 import com.bedenko.genaro.expresstable.utils.CommonUtils;
 
 public class LoginActivity extends AppCompatActivity {
 
     CommonUtils commonUtils = new CommonUtils();
-    CustomerRepo customerRepo = new CustomerRepo();
-    RestaurantRepo restaurantRepo = new RestaurantRepo();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,21 +56,21 @@ public class LoginActivity extends AppCompatActivity {
             case "Customer":
                 // Query if customer details correct
                 Customer potentialExistingCustomer = new Customer(username, passwordHash);
-                customerRepo.getOneCustomer(db, potentialExistingCustomer);
+                customerController.getCustomerFromDB(db, potentialExistingCustomer);
+
+                startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
                 break;
             case "Restaurant":
                 // Query if restaurant details correct
                 Restaurant potentialExistingRestaurant = new Restaurant(username, passwordHash);
 //                restaurantRepo.getOneCustomer(db, potentialExistingRestaurant);
+                startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
                 break;
             default:
                 Toast.makeText(getApplicationContext(), "Something went wrong. Please check field inputs.", Toast.LENGTH_SHORT).show();
                 break;
         }
 
-        Toast.makeText(getApplicationContext(),"Customer Account Created", Toast.LENGTH_SHORT).show();
-
-        startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
     }
 }
 

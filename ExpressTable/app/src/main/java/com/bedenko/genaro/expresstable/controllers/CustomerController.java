@@ -1,6 +1,10 @@
 package com.bedenko.genaro.expresstable.controllers;
 
+import android.content.ContentValues;
+
 import com.bedenko.genaro.expresstable.models.Customer;
+import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
+
 public class CustomerController {
 
     public Customer createCustomer(String aName, String aUsername, String aEmailAddress, String aPasswordHash) {
@@ -13,5 +17,20 @@ public class CustomerController {
         customer.setPasswordHash(aPasswordHash);
 
         return(customer);
+    }
+
+    public void addCustomerToDB(DatabaseHandler db, Customer customer) {
+
+        ContentValues customerValues = new ContentValues();
+        customerValues.put("name", customer.getName() );
+        customerValues.put("username", customer.getUsername());
+        customerValues.put("email_address", customer.getEmailAddress());
+        customerValues.put("password_hash", customer.getPasswordHash());
+
+        db.write("customers", customerValues);
+    }
+
+    public void getCustomerFromDB(DatabaseHandler db, Customer customer) {
+
     }
 }
