@@ -31,7 +31,8 @@ public class RestaurantController {
         db.write("restaurants", restaurantValues);
     }
 
-    public void getRestaurantFromDB(DatabaseHandler db, Customer customer) {
+    public String getRestaurantFromDB(DatabaseHandler db, Restaurant restaurant) {
 
+        return "";
     }
 }

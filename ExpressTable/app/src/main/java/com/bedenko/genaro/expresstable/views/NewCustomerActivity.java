@@ -16,7 +16,9 @@ import com.bedenko.genaro.expresstable.utils.CommonUtils;
 
 public class NewCustomerActivity extends AppCompatActivity {
 
+    CustomerController customerController = new CustomerController();
     CommonUtils commonUtils = new CommonUtils();
+    DatabaseHandler db = new DatabaseHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,6 @@ public class NewCustomerActivity extends AppCompatActivity {
 
     private void submitCustomerDetailsButtonClicked() {
 
-        CustomerController customerController = new CustomerController();
-        DatabaseHandler db = new DatabaseHandler(this);
-
         EditText customerUsernameField = findViewById(R.id.customerUsernameField);
         EditText customerPasswordField = findViewById(R.id.customerPasswordField);
 
@@ -46,10 +45,16 @@ public class NewCustomerActivity extends AppCompatActivity {
 
         Customer newCustomer = customerController.createCustomer(customerUsername, customerPasswordHash);
 
-        String usernameInDB = customerController.getCustomerFromDB(db, newCustomer);
-
-            customerController.addCustomerToDB(db, newCustomer);
-            Toast.makeText(getApplicationContext(),"Customer Account Created", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+        String existingCustomerUsername = customerController.getCustomerFromDB(db, newCustomer);
+//
+//        if(existingCustomerUsername.equals(customerUsername)) {
+//            Toast.makeText(getApplicationContext(), "Customer username already exists.", Toast.LENGTH_SHORT).show();
+//            startActivity(new Intent(getBaseContext(), NewCustomerActivity.class));
+//        } else {
+//            customerController.addCustomerToDB(db, newCustomer);
+//            Toast.makeText(getApplicationContext(),"Customer Account Created", Toast.LENGTH_SHORT).show();
+//            startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+//        }
+        startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
     }
 }

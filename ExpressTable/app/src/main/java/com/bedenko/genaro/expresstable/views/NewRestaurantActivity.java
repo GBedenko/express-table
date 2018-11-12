@@ -17,6 +17,8 @@ import com.bedenko.genaro.expresstable.utils.CommonUtils;
 
 public class NewRestaurantActivity extends AppCompatActivity {
 
+    RestaurantController restaurantController = new RestaurantController();
+    DatabaseHandler db = new DatabaseHandler(this);
     CommonUtils commonUtils = new CommonUtils();
 
     @Override
@@ -37,9 +39,6 @@ public class NewRestaurantActivity extends AppCompatActivity {
     }
 
     private void submitRestaurantButtonClicked() {
-
-        RestaurantController restaurantController = new RestaurantController();
-        DatabaseHandler db = new DatabaseHandler(this);
 
         EditText restaurantUsernameField = findViewById(R.id.restaurantUsernameField);
         EditText restaurantPasswordField = findViewById(R.id.restaurantPasswordField);

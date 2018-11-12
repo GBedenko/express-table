@@ -19,7 +19,10 @@ import com.bedenko.genaro.expresstable.utils.CommonUtils;
 
 public class LoginActivity extends AppCompatActivity {
 
+    CustomerController customerController = new CustomerController();
+    RestaurantController restaurantController = new RestaurantController();
     CommonUtils commonUtils = new CommonUtils();
+    DatabaseHandler db = new DatabaseHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +41,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void submitLoginButtonClicked() {
-        startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
-
-        CustomerController customerController = new CustomerController();
-        RestaurantController restaurantController = new RestaurantController();
-
-        DatabaseHandler db = new DatabaseHandler(this);
 
         Spinner accountTypeSpinner = findViewById(R.id.accountTypeSpinner);
         EditText usernameField = findViewById(R.id.usernameField);
@@ -54,22 +51,38 @@ public class LoginActivity extends AppCompatActivity {
         String passwordHash = commonUtils.md5Hash(passwordField.getText().toString());
 
         switch (accountType) {
+
             case "Customer":
-                // Query if customer details correct
-                Customer potentialExistingCustomer = new Customer(username, passwordHash);
-                String existingCustomerName = customerController.getCustomerFromDB(db, potentialExistingCustomer);
-                if(existingCustomerName.equals(username)) {
-                    Toast.makeText(getApplicationContext(), "Username already exists.", Toast.LENGTH_SHORT).show();
-                } else {
-                    startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
-                }
-                break;
+
+//                // Query if customer details correct
+//                Customer potentialExistingCustomer = new Customer(username, passwordHash);
+//
+//                String existingCustomerUsername = customerController.getCustomerFromDB(db, potentialExistingCustomer);
+//
+//                if(existingCustomerUsername.equals(username) && existingCustomerPasswordHash.equals(passwordHash)) {
+//                } else {
+//                }
+//                break;
+            startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+
             case "Restaurant":
-                // Query if restaurant details correct
-                Restaurant potentialExistingRestaurant = new Restaurant(username, passwordHash);
-//                restaurantRepo.getOneCustomer(db, potentialExistingRestaurant);
-                startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
-                break;
+//
+//                // Query if restaurant details correct
+//                Restaurant potentialExistingRestaurant = new Restaurant(username, passwordHash);
+//
+//                String existingRestaurantUsername = restaurantController.getRestaurantFromDB(db, potentialExistingRestaurant);
+//
+//                startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
+//
+//                if(existingRestaurantUsername.equals(username)) {
+//                    Toast.makeText(getApplicationContext(), "Restaurant username already exists.", Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(getBaseContext(), LoginActivity.class));
+//                } else {
+//                    startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
+//                }
+//                break;
+            startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
+
             default:
                 Toast.makeText(getApplicationContext(), "Something went wrong. Please check field inputs.", Toast.LENGTH_SHORT).show();
                 break;

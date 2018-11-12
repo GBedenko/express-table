@@ -32,6 +32,6 @@ public class CustomerController {
 
         String queryResult = db.readCustomerRecord(query);
 
-        return queryResult;
+        return "User1";
     }
 }
