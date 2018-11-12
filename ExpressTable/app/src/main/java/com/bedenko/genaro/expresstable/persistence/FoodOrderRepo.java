@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class FoodOrderRepo {
 
-    public void addFoodOrderToDB(DatabaseHelper db, FoodOrder foodOrder) {
+    public void addFoodOrderToDB(DatabaseHandler db, FoodOrder foodOrder) {
 
         ContentValues foodOrderValues = new ContentValues();
         foodOrderValues.put("booking_id", foodOrder.getBookingID());

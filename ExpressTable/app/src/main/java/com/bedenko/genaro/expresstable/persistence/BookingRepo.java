@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class BookingRepo {
 
-    public void addBookingToDB(DatabaseHelper db, Booking booking) {
+    public void addBookingToDB(DatabaseHandler db, Booking booking) {
 
         ContentValues bookingValues = new ContentValues();
         bookingValues.put("customer_id", booking.getCustomerID() );

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class FloorPlanRepo {
 
-    public void addFloorPlanToDB(DatabaseHelper db, FloorPlan floorPlan) {
+    public void addFloorPlanToDB(DatabaseHandler db, FloorPlan floorPlan) {
 
         ContentValues floorPlanValues = new ContentValues();
         floorPlanValues.put("restaurant_id", floorPlan.getRestaurantID());

@@ -2,14 +2,13 @@ package com.bedenko.genaro.expresstable.persistence;
 
 import android.content.ContentValues;
 
-import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.models.Restaurant;
 
 import java.util.ArrayList;
 
 public class RestaurantRepo {
 
-    public void addRestaurantToDB(DatabaseHelper db, Restaurant restaurant) {
+    public void addRestaurantToDB(DatabaseHandler db, Restaurant restaurant) {
 
         ContentValues restaurantValues = new ContentValues();
         restaurantValues.put("username", restaurant.getUsername() );

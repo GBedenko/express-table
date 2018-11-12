@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class MenuRepo {
 
-    public void addMenuToDB(DatabaseHelper db, Menu menu) {
+    public void addMenuToDB(DatabaseHandler db, Menu menu) {
 
         ContentValues menuValues = new ContentValues();
         menuValues.put("restaurant_id", menu.getRestaurantID());

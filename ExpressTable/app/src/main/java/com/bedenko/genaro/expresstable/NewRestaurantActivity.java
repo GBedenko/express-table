@@ -8,12 +8,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.bedenko.genaro.expresstable.controllers.CustomerController;
 import com.bedenko.genaro.expresstable.controllers.RestaurantController;
-import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.models.Restaurant;
-import com.bedenko.genaro.expresstable.persistence.CustomerRepo;
-import com.bedenko.genaro.expresstable.persistence.DatabaseHelper;
+import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 import com.bedenko.genaro.expresstable.persistence.RestaurantRepo;
 
 import java.security.MessageDigest;
@@ -41,7 +38,7 @@ public class NewRestaurantActivity extends AppCompatActivity {
     private void submitRestaurantButtonClicked() {
 
         RestaurantController restaurantController = new RestaurantController();
-        DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHandler db = new DatabaseHandler(this);
 
         EditText restaurantUsernameField = findViewById(R.id.restaurantUsernameField);
         EditText restaurantEmailField = findViewById(R.id.restaurantEmailField);

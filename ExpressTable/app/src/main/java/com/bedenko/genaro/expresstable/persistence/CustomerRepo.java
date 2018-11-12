@@ -1,8 +1,6 @@
 package com.bedenko.genaro.expresstable.persistence;
 
 import android.content.ContentValues;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
 import com.bedenko.genaro.expresstable.models.Customer;
 
@@ -10,7 +8,7 @@ import java.util.ArrayList;
 
 public class CustomerRepo {
 
-    public void addCustomerToDB(DatabaseHelper db, Customer customer) {
+    public void addCustomerToDB(DatabaseHandler db, Customer customer) {
 
         ContentValues customerValues = new ContentValues();
         customerValues.put("name", customer.getName() );

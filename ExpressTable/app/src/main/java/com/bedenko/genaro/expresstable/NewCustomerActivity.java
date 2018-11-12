@@ -6,11 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bedenko.genaro.expresstable.controllers.CustomerController;
 import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.persistence.CustomerRepo;
-import com.bedenko.genaro.expresstable.persistence.DatabaseHelper;
+import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -36,7 +37,7 @@ public class NewCustomerActivity extends AppCompatActivity {
     private void submitCustomerDetailsButtonClicked() {
 
         CustomerController customerController = new CustomerController();
-        DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHandler db = new DatabaseHandler(this);
 
         EditText customerNameField = findViewById(R.id.customerNameField);
         EditText customerUsernameField = findViewById(R.id.customerUsernameField);
