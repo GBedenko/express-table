@@ -20,14 +20,15 @@
         <activity android:name=".ChooseAccountTypeActivity" />
         <activity android:name=".ViewRestaurantActivity" />
         <activity android:name=".NewCustomerActivity" />
-        <activity android:name=".SearchRestaurantsActivity" />
+        <activity android:name=".SearchRestaurantsGpsActivity" />
         <activity android:name=".BookRestaurantActivity" />
         <activity android:name=".BookingConfirmationActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".CustomerDashboardActivity" />
         <activity android:name=".CustomerBookingsActivity" />
         <activity android:name=".RestaurantDashboardActivity" />
-        <activity android:name=".RestaurantReservationsActivity"></activity>
+        <activity android:name=".RestaurantReservationsActivity" />
+        <activity android:name=".SearchRestaurantsListActivity"></activity>
     </application>
 
 </manifest>

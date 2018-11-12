@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 public class CustomerDashboardActivity extends AppCompatActivity {
 
@@ -26,6 +25,6 @@ public class CustomerDashboardActivity extends AppCompatActivity {
 
 
     private void searchRestaurantsButtonClicked() {
-        startActivity(new Intent(getBaseContext(), SearchRestaurantsActivity.class));
+        startActivity(new Intent(getBaseContext(), SearchRestaurantsGpsActivity.class));
     }
 }
