@@ -2,10 +2,11 @@ package com.bedenko.genaro.expresstable.persistence;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "express-table.db";
     private static final int DATABASE_VERSION = 1;
@@ -17,9 +18,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String MENUS_TABLE = "menus";
     private static final String RESTAURANTS_TABLE = "restaurants";
 
-    public DatabaseHelper(Context context) {
+    public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-//        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
@@ -80,5 +80,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(tableName, null, values);
 
         db.close();
+    }
+
+    public String readCustomerRecord(String selectQuery) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        String username = "";
+
+        if (cursor.moveToFirst()){
+            do{
+                username = cursor.getString(cursor.getColumnIndex("username"));
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+
+        db.close();
+
+        return username;
     }
 }

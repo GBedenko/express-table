@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookingConfirmationActivity">
+    tools:context=".views.BookingConfirmationActivity">
 
     <TextView
         android:id="@+id/textView7"
@@ -179,13 +179,6 @@
             android:layout_marginBottom="10dp"
             android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/bookingQRCodePromptTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="QR Code for when you arrive:"
-                tools:layout_editor_absoluteX="63dp"
-                tools:layout_editor_absoluteY="367dp" />
         </TableRow>
 
         <TableRow
@@ -194,13 +187,6 @@
             android:layout_marginBottom="10dp"
             android:gravity="center_horizontal">
 
-            <ImageView
-                android:id="@+id/bookingQRCodeImageView"
-                android:layout_width="165dp"
-                android:layout_height="118dp"
-                app:srcCompat="@color/colorAccent"
-                tools:layout_editor_absoluteX="110dp"
-                tools:layout_editor_absoluteY="401dp" />
         </TableRow>
 
 
