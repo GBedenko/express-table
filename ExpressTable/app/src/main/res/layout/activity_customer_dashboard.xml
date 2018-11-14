@@ -40,7 +40,7 @@
             android:gravity="center_horizontal">
 
             <Button
-                android:id="@+id/searchRestaurantsButton"
+                android:id="@+id/viewRestaurantsListButton"
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:background="@color/colorPrimary"

@@ -15,18 +15,29 @@ public class CustomerDashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_dashboard);
 
-        Button searchRestaurantsButton = findViewById(R.id.searchRestaurantsButton);
+        Button viewRestaurantsListButton = findViewById(R.id.viewRestaurantsListButton);
+        Button viewRestaurantsByGpsButton = findViewById(R.id.viewRestaurantsByGpsButton);
 
-        searchRestaurantsButton.setOnClickListener(new View.OnClickListener() {
+        viewRestaurantsListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchRestaurantsButtonClicked();
+                viewRestaurantsListButtonClicked();
+            }
+        });
+
+        viewRestaurantsByGpsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewRestaurantsByGpsButtonClicked();
             }
         });
     }
 
+    private void viewRestaurantsListButtonClicked() {
+        startActivity(new Intent(getBaseContext(), SearchRestaurantsListActivity.class));
+    }
 
-    private void searchRestaurantsButtonClicked() {
+    private void viewRestaurantsByGpsButtonClicked() {
         startActivity(new Intent(getBaseContext(), SearchRestaurantsGpsActivity.class));
     }
 }
