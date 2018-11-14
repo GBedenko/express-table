@@ -45,7 +45,7 @@ public class NewCustomerActivity extends AppCompatActivity {
 
         Customer newCustomer = customerController.createCustomer(customerUsername, customerPasswordHash);
 
-        String existingCustomerUsername = customerController.getCustomerFromDB(db, newCustomer);
+        customerController.addCustomerToDB(db, newCustomer);
 //
 //        if(existingCustomerUsername.equals(customerUsername)) {
 //            Toast.makeText(getApplicationContext(), "Customer username already exists.", Toast.LENGTH_SHORT).show();

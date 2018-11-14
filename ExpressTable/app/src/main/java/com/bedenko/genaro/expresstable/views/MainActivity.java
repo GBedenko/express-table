@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private void createAccountButtonClicked() {
         startActivity(new Intent(getBaseContext(), ChooseAccountTypeActivity.class));
     }

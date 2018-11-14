@@ -9,6 +9,8 @@ public class Restaurant {
     private String passwordHash;
     private String gpsLocation;
     private String postcode;
+    private String restaurantType;
+    private int restaurantPhoto;
 
     public Restaurant() {
 
@@ -20,6 +22,13 @@ public class Restaurant {
         // Can create an instance based on just login credentials
         this.username = username;
         this.passwordHash = passwordHash;
+    }
+
+    public Restaurant(String restaurantName, String restaurantType, int restaurantPhoto) {
+
+        this.restaurantName = restaurantName;
+        this.restaurantType = restaurantType;
+        this.restaurantPhoto = restaurantPhoto;
     }
 
     public Restaurant(String username, String restaurantName, String passwordHash, String gpsLocation) {
@@ -85,6 +94,22 @@ public class Restaurant {
 
     public void setPostcode(String postcode) {
         this.postcode = postcode;
+    }
+
+    public String getRestaurantType() {
+        return restaurantType;
+    }
+
+    public void setRestaurantType(String restaurantType) {
+        this.restaurantType = restaurantType;
+    }
+
+    public int getRestaurantPhoto() {
+        return restaurantPhoto;
+    }
+
+    public void setRestaurantPhoto(int restaurantPhoto) {
+        this.restaurantPhoto = restaurantPhoto;
     }
 
 }

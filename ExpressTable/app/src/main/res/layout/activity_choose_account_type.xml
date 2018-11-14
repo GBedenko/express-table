@@ -24,8 +24,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="290dp"
-        android:text="I am a Customer"
-        android:onClick="onButtonClick"/>
+        android:text="I am a Customer"/>
 
     <Button
         android:id="@+id/chooseRestaurantAccountButton"
@@ -35,7 +34,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginBottom="209dp"
-        android:text="I am a Restaurant"
-        android:onClick="onButtonClick" />
+        android:text="I am a Restaurant" />
 
 </RelativeLayout>
