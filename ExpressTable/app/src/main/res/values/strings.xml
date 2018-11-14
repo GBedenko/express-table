@@ -14,6 +14,28 @@
         <item>Australian</item>
     </string-array>
 
+    <string-array name="restaurantNames">
+        <item>Nandos</item>
+        <item>Pizza Hut</item>
+        <item>Zizzis</item>
+        <item>Harvester</item>
+        <item>Wagamamas</item>
+        <item>Cosy Club</item>
+        <item>Cosmo</item>
+        <item>Yakii Sushi</item>
+    </string-array>
+
+    <string-array name="restaurantDetails">
+        <item>Portuguese</item>
+        <item>Italian</item>
+        <item>Italian</item>
+        <item>British</item>
+        <item>Japanese</item>
+        <item>British</item>
+        <item>International</item>
+        <item>Japenese</item>
+    </string-array>
+
     <string name="account_type_prompt">Account Type</string>
 
     <string-array name="account_types">

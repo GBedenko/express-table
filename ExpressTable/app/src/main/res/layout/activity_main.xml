@@ -11,33 +11,44 @@
     android:paddingTop="16dp"
     android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/mainLogoView"
-        android:layout_width="345dp"
-        android:layout_height="327dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:contentDescription="ExpressTable Logo"
-        android:src="@drawable/expresstable_logo" />
-
     <Button
-        android:id="@+id/logInButton"
-        android:layout_width="234dp"
+        android:id="@+id/complexList"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="173dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="onButtonClick"
-        android:text="Log In" />
+        android:text="Complex List"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <Button
-        android:id="@+id/createAccountButton"
-        android:layout_width="234dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="99dp"
-        android:onClick="onButtonClick"
-        android:text="Create Account" />
+    <!--<ImageView-->
+        <!--android:id="@+id/mainLogoView"-->
+        <!--android:layout_width="345dp"-->
+        <!--android:layout_height="327dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="22dp"-->
+        <!--android:contentDescription="ExpressTable Logo"-->
+        <!--android:src="@drawable/expresstable_logo" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/logInButton"-->
+        <!--android:layout_width="234dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="173dp"-->
+        <!--android:onClick="onButtonClick"-->
+        <!--android:text="Log In" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/createAccountButton"-->
+        <!--android:layout_width="234dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="99dp"-->
+        <!--android:onClick="onButtonClick"-->
+        <!--android:text="Create Account" />-->
 </RelativeLayout>
