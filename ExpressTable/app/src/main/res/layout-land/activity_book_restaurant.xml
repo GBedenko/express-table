@@ -12,7 +12,7 @@
         android:layout_width="202dp"
         android:layout_height="29dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Restaurant Name"
         android:textSize="24sp"
@@ -25,24 +25,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
         android:text="Pick a Date:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookingRestaurantTextView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="172dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pickDateTextView" />
 
@@ -51,31 +52,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:text="Choose a Time:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <EditText
+        android:id="@+id/chooseTimeField"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:inputType="time"
+        android:text="Enter Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseTimeTextView" />
 
     <TextView
         android:id="@+id/chooseTableTextView"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Choose a Table:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/chooseTimeField" />
 
     <Spinner
         android:id="@+id/chooseTableSpinner"
-        android:layout_width="175dp"
-        android:layout_height="37dp"
+        android:layout_width="312dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -88,26 +101,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:text="Book Restaurant"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chooseTableSpinner" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="172dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chooseTimeTextView" />
 
 </android.support.constraint.ConstraintLayout>

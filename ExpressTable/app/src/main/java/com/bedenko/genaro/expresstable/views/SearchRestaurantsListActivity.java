@@ -35,7 +35,7 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_search_restaurants_list);
 
         restaurantNames = getResources().getStringArray(R.array.restaurantNames);
         restaurantDetails = getResources().getStringArray(R.array.restaurantDetails);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChooseAccountTypeActivity">
+    tools:context=".views.ChooseAccountTypeActivity">
 
     <TextView
         android:id="@+id/chooseAccountHeaderView"
@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="8dp"
         android:text="What type of user are you?"
         android:textColor="@color/colorPrimaryDark"
@@ -24,26 +24,30 @@
 
     <Button
         android:id="@+id/chooseCustomerAccountButton"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="196dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
         android:text="I am a Customer"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chooseAccountHeaderView" />
 
     <Button
         android:id="@+id/chooseRestaurantAccountButton"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
         android:layout_alignStart="@+id/chooseCustomerAccountButton"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="196dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
         android:text="I am a Restaurant"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseCustomerAccountButton" />
 
 </android.support.constraint.ConstraintLayout>
