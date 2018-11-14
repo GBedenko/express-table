@@ -37,9 +37,9 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
                 v = layoutInflater.inflate(resource, parent, false);
             }
 
-            ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
-            TextView textViewName = (TextView) v.findViewById(R.id.textViewName);
-            TextView textViewDetail = (TextView) v.findViewById(R.id.textViewDetail);
+            ImageView imageView = v.findViewById(R.id.listItemImageView);
+            TextView textViewName = v.findViewById(R.id.listItemNameTextView);
+            TextView textViewDetail = v.findViewById(R.id.listItemDetailsTextView);
 
             imageView.setImageResource(restaurants.get(position).getRestaurantPhoto());
             textViewName.setText(restaurants.get(position).getRestaurantName());

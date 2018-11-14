@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.bedenko.genaro.expresstable.ListActivity;
 import com.bedenko.genaro.expresstable.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,26 +15,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Button createAccountButton = findViewById(R.id.createAccountButton);
-//        Button loginButton = findViewById(R.id.logInButton);
-//
-//        createAccountButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                createAccountButtonClicked();
-//            }
-//        });
-//
-//        loginButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                loginButtonClicked();
-//            }
-//        });
-    }
+        Button createAccountButton = findViewById(R.id.createAccountButton);
+        Button loginButton = findViewById(R.id.logInButton);
 
-    public void onButtonClick(View v){
-        startActivity(new Intent(this, ListActivity.class));
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createAccountButtonClicked();
+            }
+        });
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginButtonClicked();
+            }
+        });
     }
 
     private void createAccountButtonClicked() {

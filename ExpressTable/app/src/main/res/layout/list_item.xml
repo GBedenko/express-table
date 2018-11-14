@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/listItemImageView"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:layout_marginLeft="5dp"
@@ -21,18 +21,18 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewName"
+            android:id="@+id/listItemNameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="first + last name"
+            android:text="List Item Name"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textViewDetail"
+            android:id="@+id/listItemDetailsTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="details of the candidate"
+            android:text="List Item Details"
             android:textSize="12sp" />
 
     </LinearLayout>
