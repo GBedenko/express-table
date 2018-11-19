@@ -11,9 +11,10 @@ public class FoodOrder {
         // Can create a blank instance if no parameters passed
     }
 
-    public FoodOrder(int bookingID, String foodOrder) {
+    public FoodOrder(int foodOrderID, int bookingID, String foodOrder) {
 
         // Create a new instance when all parameters are passed
+        this.foodOrderID = foodOrderID;
         this.bookingID = bookingID;
         this.foodOrder = foodOrder;
     }
