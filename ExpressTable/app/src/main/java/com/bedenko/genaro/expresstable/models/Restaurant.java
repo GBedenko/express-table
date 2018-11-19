@@ -5,10 +5,8 @@ public class Restaurant {
     private int restaurantID = -1;
     private String username;
     private String restaurantName;
-    private String emailAddress;
     private String passwordHash;
     private String gpsLocation;
-    private String postcode;
     private String restaurantType;
     private int restaurantPhoto;
 
@@ -26,18 +24,22 @@ public class Restaurant {
 
     public Restaurant(String restaurantName, String restaurantType, int restaurantPhoto) {
 
+        // Constructor used for ListView of Restaurants
         this.restaurantName = restaurantName;
         this.restaurantType = restaurantType;
         this.restaurantPhoto = restaurantPhoto;
     }
 
-    public Restaurant(String username, String restaurantName, String passwordHash, String gpsLocation) {
+    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, int restaurantPhoto) {
 
         // Create a new instance when all parameters are passed
+        this.restaurantID = restaurantID;
         this.username = username;
         this.restaurantName = restaurantName;
         this.passwordHash = passwordHash;
         this.gpsLocation = gpsLocation;
+        this.restaurantType = restaurantType;
+        this.restaurantPhoto = restaurantPhoto;
     }
 
     public int getRestaurantID() {
@@ -64,14 +66,6 @@ public class Restaurant {
         this.restaurantName = restaurantName;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
     public String getPasswordHash() {
         return passwordHash;
     }
@@ -86,14 +80,6 @@ public class Restaurant {
 
     public void setGpsLocation(String gpsLocation) {
         this.gpsLocation = gpsLocation;
-    }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
     }
 
     public String getRestaurantType() {
