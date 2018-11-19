@@ -39,9 +39,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE " + CUSTOMERS_TABLE + " (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
-                    "name TEXT," +
                     "username TEXT UNIQUE," +
-                    "email_address TEXT UNIQUE," +
                     "password_hash TEXT)");
 
         db.execSQL("CREATE TABLE " + FLOOR_PLANS_TABLE + " (" +
@@ -112,7 +110,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ArrayList<Customer> customers = new ArrayList<>();
 
-        Cursor cursor = db.query("Items",
+        Cursor cursor = db.query("customers",
                                 null, // columns - null will give all
                                 null, // selection
                                 null, // selection arguments

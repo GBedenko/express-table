@@ -82,12 +82,7 @@ public class LoginActivity extends AppCompatActivity {
 //                }
 //                break;
             startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
-
-            default:
-                Toast.makeText(getApplicationContext(), "Something went wrong. Please check field inputs.", Toast.LENGTH_SHORT).show();
-                break;
         }
-
     }
 }
 

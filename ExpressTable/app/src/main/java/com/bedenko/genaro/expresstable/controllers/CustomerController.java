@@ -35,7 +35,7 @@ public class CustomerController {
 
         // Loop through the list of customers, if username and password_has match, return true
         // Else, return false
-        for(int i=0; i <= allCustomersInDB.size(); i++) {
+        for(int i=0; i <= allCustomersInDB.size()-1; i++) {
             if(allCustomersInDB.get(i).getUsername().equals(customer.getUsername())) {
                 if(allCustomersInDB.get(i).getPasswordHash().equals(customer.getPasswordHash())) {
                     return true;
