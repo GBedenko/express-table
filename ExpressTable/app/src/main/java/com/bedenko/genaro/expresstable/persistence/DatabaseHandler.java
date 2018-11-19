@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.bedenko.genaro.expresstable.models.Customer;
+
+import java.util.ArrayList;
+
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "express-table.db";
@@ -100,5 +104,46 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
 
         return username;
+    }
+
+    public ArrayList<Customer> readAllCustomers() {
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        ArrayList<Customer> customers = new ArrayList<>();
+
+        Cursor cursor = db.query("Items",
+                                null, // columns - null will give all
+                                null, // selection
+                                null, // selection arguments
+                                null, // groupBy
+                                null, // having
+                                null); // no need or order by for now;
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                // move the cursor to next row if there is any to read it's data
+                Customer customer = readCustomer(cursor);
+                customers.add(customer);
+            }
+        }
+
+        return customers;
+    }
+
+    private Customer readCustomer(Cursor cursor) {
+
+        Customer customer = new Customer();
+
+        int customerID = cursor.getInt(cursor.getColumnIndex("id"));
+        customer.setCustomerID(customerID);
+
+        String customerUsername = cursor.getString(cursor.getColumnIndex("username"));
+        customer.setUsername(customerUsername);
+
+        String customerPasswordHash = cursor.getString(cursor.getColumnIndex("password_hash"));
+        customer.setPasswordHash(customerPasswordHash);
+
+        return customer;
     }
 }

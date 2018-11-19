@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 
+import java.util.ArrayList;
+
 public class CustomerController {
 
     public Customer createCustomer(String aUsername, String aPasswordHash) {
@@ -26,12 +28,21 @@ public class CustomerController {
         db.write("customers", customerValues);
     }
 
-    public String getCustomerFromDB(DatabaseHandler db, Customer customer) {
+    public boolean isCustomerInDB(DatabaseHandler db, Customer customer) {
 
-        String query = "SELECT username FROM customers WHERE username=" + customer.getUsername();
+        // From the database, retrieves an arraylist of all customers
+        ArrayList<Customer> allCustomersInDB = db.readAllCustomers();
 
-        String queryResult = db.readCustomerRecord(query);
+        // Loop through the list of customers, if username and password_has match, return true
+        // Else, return false
+        for(int i=0; i <= allCustomersInDB.size(); i++) {
+            if(allCustomersInDB.get(i).getUsername().equals(customer.getUsername())) {
+                if(allCustomersInDB.get(i).getPasswordHash().equals(customer.getPasswordHash())) {
+                    return true;
+                }
+            }
+        }
 
-        return "User1";
+        return false;
     }
 }

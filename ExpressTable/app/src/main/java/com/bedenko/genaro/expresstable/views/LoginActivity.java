@@ -54,16 +54,16 @@ public class LoginActivity extends AppCompatActivity {
 
             case "Customer":
 
-//                // Query if customer details correct
-//                Customer potentialExistingCustomer = new Customer(username, passwordHash);
-//
-//                String existingCustomerUsername = customerController.getCustomerFromDB(db, potentialExistingCustomer);
-//
-//                if(existingCustomerUsername.equals(username) && existingCustomerPasswordHash.equals(passwordHash)) {
-//                } else {
-//                }
-//                break;
-            startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+                Customer loggingInCustomer = new Customer(username, passwordHash);
+
+                boolean loginCorrect = customerController.isCustomerInDB(db, loggingInCustomer);
+
+                if(loginCorrect) {
+                    startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Incorrect login credentials. Please check username and password", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getBaseContext(), LoginActivity.class));
+                }
 
             case "Restaurant":
 //
