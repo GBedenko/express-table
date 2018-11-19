@@ -8,5 +8,8 @@ public class BookingConfirmationActivityTest {
 
     @Test
     public void onCreate() {
+
+        // Needs a check that didn't crash
+        // AssertNotNull or something similar
     }
 }
