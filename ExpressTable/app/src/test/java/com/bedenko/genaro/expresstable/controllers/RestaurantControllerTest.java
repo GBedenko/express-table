@@ -23,6 +23,10 @@ public class RestaurantControllerTest {
 
     @Test
     public void addRestaurantToDB() {
+
+        // Test void functions by asserting that an instance of the class is not null
+        RestaurantController restaurantController = new RestaurantController();
+        assertNotNull(restaurantController);
     }
 
     @Test

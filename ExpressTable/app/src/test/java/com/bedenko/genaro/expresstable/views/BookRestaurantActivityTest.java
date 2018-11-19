@@ -8,5 +8,9 @@ public class BookRestaurantActivityTest {
 
     @Test
     public void onCreate() {
+
+        // Test void functions by asserting that an instance of the Activity is not null
+        BookRestaurantActivity bookRestaurantActivity = new BookRestaurantActivity();
+        assertNotNull(bookRestaurantActivity);
     }
 }

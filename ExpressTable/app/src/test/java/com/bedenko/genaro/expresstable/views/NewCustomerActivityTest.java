@@ -8,5 +8,9 @@ public class NewCustomerActivityTest {
 
     @Test
     public void onCreate() {
+
+        // Test void functions by asserting that an instance of the Activity is not null
+        NewCustomerActivity newCustomerActivity = new NewCustomerActivity();
+        assertNotNull(newCustomerActivity);
     }
 }

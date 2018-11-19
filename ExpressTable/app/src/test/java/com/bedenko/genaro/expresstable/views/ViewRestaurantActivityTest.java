@@ -8,6 +8,10 @@ public class ViewRestaurantActivityTest {
 
     @Test
     public void onCreate() {
+
+        // Test void functions by asserting that an instance of the Activity is not null
+        ViewRestaurantActivity viewRestaurantActivity = new ViewRestaurantActivity();
+        assertNotNull(viewRestaurantActivity);
     }
 
     @Test

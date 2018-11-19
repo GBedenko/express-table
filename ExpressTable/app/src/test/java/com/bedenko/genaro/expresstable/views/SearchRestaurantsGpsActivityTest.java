@@ -8,5 +8,9 @@ public class SearchRestaurantsGpsActivityTest {
 
     @Test
     public void onCreate() {
+
+        // Test void functions by asserting that an instance of the Activity is not null
+        SearchRestaurantsGpsActivity searchRestaurantsGpsActivity = new SearchRestaurantsGpsActivity();
+        assertNotNull(searchRestaurantsGpsActivity);
     }
 }

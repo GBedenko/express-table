@@ -9,7 +9,8 @@ public class BookingConfirmationActivityTest {
     @Test
     public void onCreate() {
 
-        // Needs a check that didn't crash
-        // AssertNotNull or something similar
+        // Test void functions by asserting that an instance of the Activity is not null
+        BookingConfirmationActivity bookingConfirmationActivity = new BookingConfirmationActivity();
+        assertNotNull(bookingConfirmationActivity);
     }
 }

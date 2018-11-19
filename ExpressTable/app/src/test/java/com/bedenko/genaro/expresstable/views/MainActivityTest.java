@@ -8,5 +8,9 @@ public class MainActivityTest {
 
     @Test
     public void onCreate() {
+
+        // Test void functions by asserting that an instance of the Activity is not null
+        MainActivity mainActivity = new MainActivity();
+        assertNotNull(mainActivity);
     }
 }

@@ -20,6 +20,10 @@ public class CustomerControllerTest {
 
     @Test
     public void addCustomerToDB() {
+
+        // Test void functions by asserting that an instance of the class is not null
+        CustomerController customerController = new CustomerController();
+        assertNotNull(customerController);
     }
 
     @Test
