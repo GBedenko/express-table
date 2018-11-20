@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "430024129281",
+    "firebase_url": "https://expresstable-be15c.firebaseio.com",
+    "project_id": "expresstable-be15c",
+    "storage_bucket": "expresstable-be15c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430024129281:android:4f6143cdfceabc05",
+        "android_client_info": {
+          "package_name": "com.bedenko.genaro.expresstable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430024129281-i6io5ahtauqvpr05f033vfajukknk278.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bedenko.genaro.expresstable",
+            "certificate_hash": "dc4001c039d9c9f36b92ad10069e7003b4b05457"
+          }
+        },
+        {
+          "client_id": "430024129281-iett6054dgn0186h431tl48caoeb8gnn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-UtnoAgi9-S3-yXYWrYZEoCKCgqzFcw4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430024129281-iett6054dgn0186h431tl48caoeb8gnn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
