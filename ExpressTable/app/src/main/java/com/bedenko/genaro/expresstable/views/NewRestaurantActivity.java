@@ -36,6 +36,20 @@ public class NewRestaurantActivity extends AppCompatActivity {
             }
         });
 
+        Button setRestaurantLocationButton = findViewById(R.id.enterGpsLocation);
+
+        setRestaurantLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRestaurantLocationButtonClicked();
+            }
+        });
+
+    }
+
+    private void setRestaurantLocationButtonClicked() {
+
+        startActivity(new Intent(getBaseContext(), SetRestaurantLocationActivity.class));
     }
 
     private void submitRestaurantButtonClicked() {
