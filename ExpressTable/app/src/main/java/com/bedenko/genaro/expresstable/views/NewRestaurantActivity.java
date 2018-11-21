@@ -26,14 +26,17 @@ import java.io.InputStream;
 
 public class NewRestaurantActivity extends AppCompatActivity {
 
+    // Instances of controller, persistence and utils classes
     RestaurantController restaurantController = new RestaurantController();
     DatabaseHandler db = new DatabaseHandler(this);
     CommonUtils commonUtils = new CommonUtils();
 
+    // Variables to store the images being entered by the user
     private Bitmap restaurantLogo;
     private Bitmap restaurantMenuImage;
     private Bitmap restaurantFloorPlanImage;
 
+    // Different request types for different intents for onActivityResult
     private static final int LOGO_IMAGE_GALLERY_REQUEST = 1;
     private static final int MENU_IMAGE_CAMERA_REQUEST = 2;
     private static final int FLOORPLAN_IMAGE_CAMERA_REQUEST = 3;
@@ -44,9 +47,8 @@ public class NewRestaurantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_restaurant);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-
+        // Enter Logo Button and Listener
         Button enterLogoImageButton = findViewById(R.id.enterLogoImageButton);
-
         enterLogoImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,8 +56,8 @@ public class NewRestaurantActivity extends AppCompatActivity {
             }
         });
 
+        // Enter Menu Image Button and Listener
         Button enterMenuImageButton = findViewById(R.id.enterMenuImageButton);
-
         enterMenuImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,8 +65,8 @@ public class NewRestaurantActivity extends AppCompatActivity {
             }
         });
 
+        // Enter Floor Plan Image Button and Listener
         Button enterFloorPlanButton = findViewById(R.id.enterFloorPlanButton);
-
         enterFloorPlanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,8 +74,8 @@ public class NewRestaurantActivity extends AppCompatActivity {
             }
         });
 
+        // Submit all restaurant details button and listener
         Button submitRestaurantButton = findViewById(R.id.submitRestaurantButton);
-
         submitRestaurantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,73 +85,75 @@ public class NewRestaurantActivity extends AppCompatActivity {
     }
 
     private void enterLogoImageButtonClicked() {
+        // Calls onActivityResult with the intent to select an image from gallery
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, LOGO_IMAGE_GALLERY_REQUEST);
     }
 
     private void enterMenuImageButtonClicked() {
+        // Calls onActivityResult with the intent to capture an image from camera
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, MENU_IMAGE_CAMERA_REQUEST);
     }
 
     private void enterFloorPlanButtonClicked() {
+        // Calls onActivityResult with the intent to capture an image from camera
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, FLOORPLAN_IMAGE_CAMERA_REQUEST);
     }
 
     private void submitRestaurantButtonClicked() {
 
+        // Take user's input from the following Text Fields
         EditText restaurantUsernameField = findViewById(R.id.restaurantUsernameField);
         EditText restaurantPasswordField = findViewById(R.id.restaurantPasswordField);
         EditText restaurantNameField = findViewById(R.id.restaurantNameField);
-
         String restaurantUsername = restaurantUsernameField.getText().toString();
         String restaurantName = restaurantNameField.getText().toString();
         String restaurantPasswordHash = commonUtils.md5Hash(restaurantPasswordField.getText().toString());
+
+        // Retrieve the images the user entered from the previous intents (run on previous button clicks)
         Bitmap restaurantLogo = getRestaurantLogo();
         Bitmap restaurantMenuImage = getRestaurantMenuImage();
         Bitmap restaurantFloorPlanImage = getRestaurantFloorPlanImage();
-        String restaurantGpsLocation = "XXXYYYZZZ";
 
-
+        // For each of the images, convert them to a byte array so they can be stored in sqlite db
+        // Convert logo image
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         restaurantLogo.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] restaurantLogoByteArray = stream.toByteArray();
         restaurantLogo.recycle();
-
+        // Convert menu image
         stream = new ByteArrayOutputStream();
         restaurantMenuImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] restaurantMenuImageByteArray = stream.toByteArray();
         restaurantMenuImage.recycle();
-
+        // Convert floor plan image
         stream = new ByteArrayOutputStream();
         restaurantFloorPlanImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] restaurantFloorPlanImageByteArray = stream.toByteArray();
         restaurantFloorPlanImage.recycle();
 
+        // Retrieve the GPS co-ordinates the user is located at (yet to be implemented)
+        String restaurantGpsLocation = "XXXYYYZZZ";
 
-        String TAG = "NewRestaurantActivity";
-
-        Log.d(TAG, restaurantLogoByteArray.toString());
-        Log.d(TAG, restaurantMenuImageByteArray.toString());
-        Log.d(TAG, restaurantFloorPlanImageByteArray.toString());
-
-
+        // Create a new restaurant entity from the fields/images/gps that the user entered
         Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLogoByteArray, restaurantMenuImageByteArray, restaurantFloorPlanImageByteArray, restaurantGpsLocation);
 
+        // Add restaurant details to the local database and send confirmation to user
         restaurantController.addRestaurantToDB(db, newRestaurant);
         Toast.makeText(getApplicationContext(),"Restaurant Account Created", Toast.LENGTH_LONG).show();
 
+        // Obtain the restaurant details now it is stored locally in the db
         Restaurant currentRestaurant = restaurantController.getRestaurantFromDB(db, newRestaurant);
 
+        // Intent to move to the restaurant dashboard and send the restaurant id and username to use in following activities
         Intent intent = new Intent(NewRestaurantActivity.this, RestaurantDashboardActivity.class);
         intent.putExtra("restaurant_id", currentRestaurant.getRestaurantID());
         intent.putExtra("restaurant_username", currentRestaurant.getUsername());
 
         startActivityForResult(intent, 1);
-
-        startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
     }
 
     @Override

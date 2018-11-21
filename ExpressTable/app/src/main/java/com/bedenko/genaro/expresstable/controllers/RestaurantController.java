@@ -80,4 +80,14 @@ public class RestaurantController {
         }
         return restaurant;
     }
+
+    public ArrayList<Restaurant> getAllRestaurantsFromDB(DatabaseHandler db) {
+
+        // From the database, retrieves an arraylist of all restaurants
+        ArrayList<Restaurant> allRestaurantsInDB = db.readAllRestaurants();
+
+        Log.d(TAG, "here " + allRestaurantsInDB.get(0).getRestaurantName());
+
+        return allRestaurantsInDB;
+    }
 }

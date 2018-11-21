@@ -50,8 +50,8 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_restaurants_list);
 
-        restaurantNames = getResources().getStringArray(R.array.restaurantNames);
-        restaurantDetails = getResources().getStringArray(R.array.restaurantDetails);
+        restaurantNames = getResources().getStringArray(R.array.default_restaurant_names);
+        restaurantDetails = getResources().getStringArray(R.array.default_restaurant_details);
         generateRestaurants();
 
         listView = findViewById(R.id.listViewComplex);
