@@ -46,15 +46,14 @@ public class NewCustomerActivity extends AppCompatActivity {
         Customer newCustomer = customerController.createCustomer(customerUsername, customerPasswordHash);
 
         customerController.addCustomerToDB(db, newCustomer);
-//
-//        if(existingCustomerUsername.equals(customerUsername)) {
-//            Toast.makeText(getApplicationContext(), "Customer username already exists.", Toast.LENGTH_SHORT).show();
-//            startActivity(new Intent(getBaseContext(), NewCustomerActivity.class));
-//        } else {
-//            customerController.addCustomerToDB(db, newCustomer);
-//            Toast.makeText(getApplicationContext(),"Customer Account Created", Toast.LENGTH_SHORT).show();
-//            startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
-//        }
-        startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+        Toast.makeText(getApplicationContext(),"Customer Account Created", Toast.LENGTH_LONG).show();
+
+        Customer currentCustomer = customerController.getCustomerFromDB(db, newCustomer);
+
+        Intent intent = new Intent(NewCustomerActivity.this, CustomerDashboardActivity.class);
+        intent.putExtra("customer_id", currentCustomer.getCustomerID());
+        intent.putExtra("customer_username", currentCustomer.getUsername());
+
+        startActivityForResult(intent, 1);
     }
 }

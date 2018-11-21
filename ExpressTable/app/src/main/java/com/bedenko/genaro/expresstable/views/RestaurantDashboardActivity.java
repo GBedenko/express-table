@@ -11,7 +11,7 @@ import com.bedenko.genaro.expresstable.R;
 
 public class RestaurantDashboardActivity extends AppCompatActivity {
 
-    String currentRestaurantLoggedIn;
+    private String currentRestaurantLoggedInID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class RestaurantDashboardActivity extends AppCompatActivity {
         loggedInRestaurantUsernameText.setText(intent.getStringExtra("restaurant_username") + " logged in");
 
         // Store the user id for use later to be passed to future activities
-        setCurrentRestaurantLoggedIn(intent.getStringExtra("restaurant_id"));
+        setCurrentRestaurantLoggedInID(intent.getStringExtra("restaurant_id"));
 
         Button viewReservationsButton = findViewById(R.id.viewReservationsButton);
 
@@ -40,14 +40,18 @@ public class RestaurantDashboardActivity extends AppCompatActivity {
     }
 
     private void viewReservationsButtonClicked() {
-        startActivity(new Intent(getBaseContext(), RestaurantReservationsActivity.class));
+
+        Intent intent = new Intent(RestaurantDashboardActivity.this, RestaurantReservationsActivity.class);
+        intent.putExtra("restaurant_id", getCurrentRestaurantLoggedInID());
+
+        startActivityForResult(intent, 1);
     }
 
-    public String getCurrentRestaurantLoggedIn() {
-        return currentRestaurantLoggedIn;
+    public String getCurrentRestaurantLoggedInID() {
+        return currentRestaurantLoggedInID;
     }
 
-    public void setCurrentRestaurantLoggedIn(String currentRestaurantLoggedIn) {
-        this.currentRestaurantLoggedIn = currentRestaurantLoggedIn;
+    public void setCurrentRestaurantLoggedInID(String currentRestaurantLoggedInID) {
+        this.currentRestaurantLoggedInID = currentRestaurantLoggedInID;
     }
 }

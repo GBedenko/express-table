@@ -11,7 +11,7 @@ import com.bedenko.genaro.expresstable.R;
 
 public class CustomerDashboardActivity extends AppCompatActivity {
 
-    String currentCustomerLoggedIn;
+    String currentCustomerLoggedInID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class CustomerDashboardActivity extends AppCompatActivity {
         loggedInCustomerNameText.setText(intent.getStringExtra("customer_username") + " logged in");
 
         // Store the user id for use later to be passed to future activities
-        setCurrentCustomerLoggedIn(intent.getStringExtra("customer_id"));
+        setCurrentCustomerLoggedInID(intent.getStringExtra("customer_id"));
 
         Button viewRestaurantsListButton = findViewById(R.id.viewRestaurantsListButton);
         Button viewRestaurantsByGpsButton = findViewById(R.id.viewRestaurantsByGpsButton);
@@ -47,18 +47,26 @@ public class CustomerDashboardActivity extends AppCompatActivity {
     }
 
     private void viewRestaurantsListButtonClicked() {
-        startActivity(new Intent(getBaseContext(), SearchRestaurantsListActivity.class));
+
+        Intent intent = new Intent(CustomerDashboardActivity.this, SearchRestaurantsListActivity.class);
+        intent.putExtra("customer_id", getCurrentCustomerLoggedInID());
+
+        startActivityForResult(intent, 1);
     }
 
     private void viewRestaurantsByGpsButtonClicked() {
-        startActivity(new Intent(getBaseContext(), SearchRestaurantsGpsActivity.class));
+
+        Intent intent = new Intent(CustomerDashboardActivity.this, SearchRestaurantsGpsActivity.class);
+        intent.putExtra("customer_id", getCurrentCustomerLoggedInID());
+
+        startActivityForResult(intent, 1);
     }
 
-    public String getCurrentCustomerLoggedIn() {
-        return currentCustomerLoggedIn;
+    public String getCurrentCustomerLoggedInID() {
+        return currentCustomerLoggedInID;
     }
 
-    public void setCurrentCustomerLoggedIn(String currentCustomerLoggedIn) {
-        this.currentCustomerLoggedIn = currentCustomerLoggedIn;
+    public void setCurrentCustomerLoggedInID(String currentCustomerLoggedInID) {
+        this.currentCustomerLoggedInID = currentCustomerLoggedInID;
     }
 }
