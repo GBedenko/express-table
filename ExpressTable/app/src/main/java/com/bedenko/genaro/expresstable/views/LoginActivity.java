@@ -3,6 +3,7 @@ package com.bedenko.genaro.expresstable.views;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
     RestaurantController restaurantController = new RestaurantController();
     CommonUtils commonUtils = new CommonUtils();
     DatabaseHandler db = new DatabaseHandler(this);
+
+    private static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,41 +50,39 @@ public class LoginActivity extends AppCompatActivity {
         EditText passwordField = findViewById(R.id.passwordField);
 
         String accountType = accountTypeSpinner.getSelectedItem().toString();
+        Log.d(TAG, "Account type: " + accountType);
+
         String username = usernameField.getText().toString();
         String passwordHash = commonUtils.md5Hash(passwordField.getText().toString());
 
-        switch (accountType) {
+        if(accountType.equals("Customer")) {
 
-            case "Customer":
+            Log.d(TAG, "Customer type account selected");
 
-                Customer loggingInCustomer = new Customer(username, passwordHash);
+            Customer loggingInCustomer = new Customer(username, passwordHash);
 
-                boolean loginCorrect = customerController.isCustomerInDB(db, loggingInCustomer);
+            boolean loginCorrect = customerController.isCustomerInDB(db, loggingInCustomer);
 
-                if(loginCorrect) {
-                    startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Incorrect login credentials. Please check username and password", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getBaseContext(), LoginActivity.class));
-                }
+            if (loginCorrect) {
+                startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+            } else {
+                Toast.makeText(getApplicationContext(), "Incorrect login credentials. Please check username and password", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getBaseContext(), LoginActivity.class));
+            }
+        } else if(accountType.equals("Restaurant")) {
 
-            case "Restaurant":
-//
-//                // Query if restaurant details correct
-//                Restaurant potentialExistingRestaurant = new Restaurant(username, passwordHash);
-//
-//                String existingRestaurantUsername = restaurantController.getRestaurantFromDB(db, potentialExistingRestaurant);
-//
-//                startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
-//
-//                if(existingRestaurantUsername.equals(username)) {
-//                    Toast.makeText(getApplicationContext(), "Restaurant username already exists.", Toast.LENGTH_SHORT).show();
-//                    startActivity(new Intent(getBaseContext(), LoginActivity.class));
-//                } else {
-//                    startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
-//                }
-//                break;
-            startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
+            Log.d(TAG, "Restaurant type account selected");
+
+            Restaurant loggingInRestaurant = new Restaurant(username, passwordHash);
+
+            boolean loginCorrect = restaurantController.isRestaurantInDB(db, loggingInRestaurant);
+
+            if (loginCorrect) {
+                startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
+            } else {
+                Toast.makeText(getApplicationContext(), "Incorrect login credentials. Please check username and password", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getBaseContext(), LoginActivity.class));
+            }
         }
     }
 }

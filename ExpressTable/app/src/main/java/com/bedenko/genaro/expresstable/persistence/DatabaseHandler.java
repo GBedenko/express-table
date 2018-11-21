@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.bedenko.genaro.expresstable.models.Customer;
+import com.bedenko.genaro.expresstable.models.Restaurant;
 
 import java.util.ArrayList;
 
@@ -70,7 +71,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXISTS customers");
+        db.execSQL("DROP TABLE IF EXISTS " + BOOKINGS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + CUSTOMERS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + FLOOR_PLANS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + FOOD_ORDERS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + MENUS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + RESTAURANTS_TABLE);
 
         onCreate(db);
     }
@@ -82,26 +88,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(tableName, null, values);
 
         db.close();
-    }
-
-    public String readCustomerRecord(String selectQuery) {
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        String username = "";
-
-        if (cursor.moveToFirst()){
-            do{
-                username = cursor.getString(cursor.getColumnIndex("username"));
-            }while(cursor.moveToNext());
-        }
-        cursor.close();
-
-        db.close();
-
-        return username;
     }
 
     public ArrayList<Customer> readAllCustomers() {
@@ -143,5 +129,46 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         customer.setPasswordHash(customerPasswordHash);
 
         return customer;
+    }
+
+    public ArrayList<Restaurant> readAllRestaurants() {
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
+
+        Cursor cursor = db.query("restaurants",
+                null, // columns - null will give all
+                null, // selection
+                null, // selection arguments
+                null, // groupBy
+                null, // having
+                null); // no need or order by for now;
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                // move the cursor to next row if there is any to read it's data
+                Restaurant restaurant = readRestaurant(cursor);
+                restaurants.add(restaurant);
+            }
+        }
+
+        return restaurants;
+    }
+
+    private Restaurant readRestaurant(Cursor cursor) {
+
+        Restaurant restaurant = new Restaurant();
+
+        int restaurantID = cursor.getInt(cursor.getColumnIndex("id"));
+        restaurant.setRestaurantID(restaurantID);
+
+        String restaurantUsername = cursor.getString(cursor.getColumnIndex("username"));
+        restaurant.setUsername(restaurantUsername);
+
+        String restaurantPasswordHash = cursor.getString(cursor.getColumnIndex("password_hash"));
+        restaurant.setPasswordHash(restaurantPasswordHash);
+
+        return restaurant;
     }
 }

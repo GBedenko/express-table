@@ -20,6 +20,8 @@ public class Customer {
     public Customer(String username, String passwordHash) {
 
         // Can create an instance based on just login credentials
+        this.username = username;
+        this.passwordHash = passwordHash;
     }
 
     public Customer(int customerID, String username, String passwordHash) {
