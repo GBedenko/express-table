@@ -41,7 +41,7 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
             TextView textViewName = v.findViewById(R.id.listItemNameTextView);
             TextView textViewDetail = v.findViewById(R.id.listItemDetailsTextView);
 
-            imageView.setImageResource(restaurants.get(position).getRestaurantPhoto());
+            imageView.setImageBitmap(restaurants.get(position).getLogoImage());
             textViewName.setText(restaurants.get(position).getRestaurantName());
             textViewDetail.setText(restaurants.get(position).getRestaurantType());
 

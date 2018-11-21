@@ -1,6 +1,8 @@
 package com.bedenko.genaro.expresstable.views;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,15 +21,15 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
     private String[] restaurantNames;
     private String[] restaurantDetails;
 
-    public static int[] restaurantPhotos = {
-            R.drawable.nandos,
-            R.drawable.pizza_hut,
-            R.drawable.zizzi,
-            R.drawable.harvester,
-            R.drawable.wagamamas,
-            R.drawable.cosy_club,
-            R.drawable.cosmo,
-            R.drawable.yakki_sushi
+    public Bitmap[] restaurantPhotos = {
+            BitmapFactory.decodeResource(getResources(), R.drawable.nandos),
+            BitmapFactory.decodeResource(getResources(), R.drawable.pizza_hut),
+            BitmapFactory.decodeResource(getResources(), R.drawable.zizzi),
+            BitmapFactory.decodeResource(getResources(), R.drawable.harvester),
+            BitmapFactory.decodeResource(getResources(), R.drawable.wagamamas),
+            BitmapFactory.decodeResource(getResources(), R.drawable.cosy_club),
+            BitmapFactory.decodeResource(getResources(), R.drawable.cosmo),
+            BitmapFactory.decodeResource(getResources(), R.drawable.yakki_sushi)
     };
 
     private ArrayList<Restaurant> restaurants = new ArrayList<>();

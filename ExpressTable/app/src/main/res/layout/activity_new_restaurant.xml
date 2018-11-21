@@ -11,33 +11,21 @@
     android:focusable="true"
     android:focusableInTouchMode="true">
 
-    <TableLayout
+
+    <TextView
+        android:id="@+id/restaurantDetailsHeaderView"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="center_vertical"
+        android:text="Restaurant Details:"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:id="@+id/restaurantDetailsHeaderView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="Restaurant Details:"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="24sp" />
-        </TableRow>
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -45,11 +33,13 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantDetailsHeaderView">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -90,6 +80,7 @@
                     android:textColor="@android:color/darker_gray"
                     android:textSize="20sp" />
             </TableRow>
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -104,6 +95,32 @@
                     android:hint="Enter Password"
                     android:inputType="textPassword"
                     android:textAlignment="center" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="40dp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/enterLogoImageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Logo Image >" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="40dp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/enterMenuImageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Menu Image >" />
             </TableRow>
 
             <TableRow

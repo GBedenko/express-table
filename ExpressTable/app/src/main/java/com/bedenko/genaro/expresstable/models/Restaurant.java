@@ -1,14 +1,18 @@
 package com.bedenko.genaro.expresstable.models;
 
+import android.graphics.Bitmap;
+
 public class Restaurant {
 
     private int restaurantID = -1;
     private String username;
     private String restaurantName;
     private String passwordHash;
+    private Bitmap logoImage;
+    private Bitmap menuImage;
+    private Bitmap floorPlanImage;
     private String gpsLocation;
     private String restaurantType;
-    private int restaurantPhoto;
 
     public Restaurant() {
 
@@ -22,15 +26,15 @@ public class Restaurant {
         this.passwordHash = passwordHash;
     }
 
-    public Restaurant(String restaurantName, String restaurantType, int restaurantPhoto) {
+    public Restaurant(String restaurantName, String restaurantType, Bitmap restaurantLogo) {
 
         // Constructor used for ListView of Restaurants
         this.restaurantName = restaurantName;
         this.restaurantType = restaurantType;
-        this.restaurantPhoto = restaurantPhoto;
+        this.logoImage = restaurantLogo;
     }
 
-    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, int restaurantPhoto) {
+    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, Bitmap restaurantLogo) {
 
         // Create a new instance when all parameters are passed
         this.restaurantID = restaurantID;
@@ -39,7 +43,7 @@ public class Restaurant {
         this.passwordHash = passwordHash;
         this.gpsLocation = gpsLocation;
         this.restaurantType = restaurantType;
-        this.restaurantPhoto = restaurantPhoto;
+        this.logoImage = restaurantLogo;
     }
 
     public int getRestaurantID() {
@@ -90,12 +94,28 @@ public class Restaurant {
         this.restaurantType = restaurantType;
     }
 
-    public int getRestaurantPhoto() {
-        return restaurantPhoto;
+    public Bitmap getLogoImage() {
+        return logoImage;
     }
 
-    public void setRestaurantPhoto(int restaurantPhoto) {
-        this.restaurantPhoto = restaurantPhoto;
+    public void setLogoImage(Bitmap logoImage) {
+        this.logoImage = logoImage;
+    }
+
+    public Bitmap getMenuImage() {
+        return menuImage;
+    }
+
+    public void setMenuImage(Bitmap menuImage) {
+        this.menuImage = menuImage;
+    }
+
+    public Bitmap getFloorPlanImage() {
+        return floorPlanImage;
+    }
+
+    public void setFloorPlanImage(Bitmap floorPlanImage) {
+        this.floorPlanImage = floorPlanImage;
     }
 
 }

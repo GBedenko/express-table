@@ -1,6 +1,7 @@
 package com.bedenko.genaro.expresstable.controllers;
 
 import android.content.ContentValues;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.bedenko.genaro.expresstable.models.Customer;
@@ -13,13 +14,16 @@ public class RestaurantController {
 
     private static final String TAG = "RestaurantController";
 
-    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, String aGpsLocation) {
+    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, Bitmap aRestaurantLogo, Bitmap aRestaurantMenu, Bitmap aRestaurantFloorPlan, String aGpsLocation) {
 
         Restaurant restaurant = new Restaurant();
 
         restaurant.setUsername(aUsername);
         restaurant.setRestaurantName(aRestaurantName);
         restaurant.setPasswordHash(aPasswordHash);
+        restaurant.setLogoImage(aRestaurantLogo);
+        restaurant.setMenuImage(aRestaurantMenu);
+        restaurant.setFloorPlanImage(aRestaurantFloorPlan);
         restaurant.setGpsLocation(aGpsLocation);
 
         return(restaurant);
