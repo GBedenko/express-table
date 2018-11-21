@@ -1,14 +1,18 @@
 package com.bedenko.genaro.expresstable.models;
 
+import android.graphics.Bitmap;
+
 public class Restaurant {
 
-    private int restaurantID = -1;
+    private String restaurantID;
     private String username;
     private String restaurantName;
     private String passwordHash;
+    private byte[] logoImage;
+    private byte[] menuImage;
+    private byte[] floorPlanImage;
     private String gpsLocation;
     private String restaurantType;
-    private int restaurantPhoto;
 
     public Restaurant() {
 
@@ -22,15 +26,15 @@ public class Restaurant {
         this.passwordHash = passwordHash;
     }
 
-    public Restaurant(String restaurantName, String restaurantType, int restaurantPhoto) {
+    public Restaurant(String restaurantName, String restaurantType, byte[] restaurantLogo) {
 
         // Constructor used for ListView of Restaurants
         this.restaurantName = restaurantName;
         this.restaurantType = restaurantType;
-        this.restaurantPhoto = restaurantPhoto;
+        this.logoImage = restaurantLogo;
     }
 
-    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, int restaurantPhoto) {
+    public Restaurant(String restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, byte[] restaurantLogo) {
 
         // Create a new instance when all parameters are passed
         this.restaurantID = restaurantID;
@@ -39,14 +43,14 @@ public class Restaurant {
         this.passwordHash = passwordHash;
         this.gpsLocation = gpsLocation;
         this.restaurantType = restaurantType;
-        this.restaurantPhoto = restaurantPhoto;
+        this.logoImage = restaurantLogo;
     }
 
-    public int getRestaurantID() {
+    public String getRestaurantID() {
         return restaurantID;
     }
 
-    public void setRestaurantID(int restaurantID) {
+    public void setRestaurantID(String restaurantID) {
         this.restaurantID = restaurantID;
     }
 
@@ -90,12 +94,28 @@ public class Restaurant {
         this.restaurantType = restaurantType;
     }
 
-    public int getRestaurantPhoto() {
-        return restaurantPhoto;
+    public byte[] getLogoImage() {
+        return logoImage;
     }
 
-    public void setRestaurantPhoto(int restaurantPhoto) {
-        this.restaurantPhoto = restaurantPhoto;
+    public void setLogoImage(byte[] logoImage) {
+        this.logoImage = logoImage;
+    }
+
+    public byte[] getMenuImage() {
+        return menuImage;
+    }
+
+    public void setMenuImage(byte[] menuImage) {
+        this.menuImage = menuImage;
+    }
+
+    public byte[] getFloorPlanImage() {
+        return floorPlanImage;
+    }
+
+    public void setFloorPlanImage(byte[] floorPlanImage) {
+        this.floorPlanImage = floorPlanImage;
     }
 
 }

@@ -2,10 +2,14 @@ package com.bedenko.genaro.expresstable.persistence;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 
+import com.bedenko.genaro.expresstable.R;
 import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.models.Restaurant;
 
@@ -13,8 +17,10 @@ import java.util.ArrayList;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
+    private static final String TAG = "DatabaseHandler";
+
     private static final String DATABASE_NAME = "express-table.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String BOOKINGS_TABLE = "bookings";
     private static final String CUSTOMERS_TABLE = "customers";
@@ -40,7 +46,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE " + CUSTOMERS_TABLE + " (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
-                    "username TEXT UNIQUE," +
+                    "username TEXT," +
                     "password_hash TEXT)");
 
         db.execSQL("CREATE TABLE " + FLOOR_PLANS_TABLE + " (" +
@@ -60,12 +66,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE " + RESTAURANTS_TABLE + " (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
-                    "username TEXT UNIQUE," +
+                    "username TEXT," +
                     "restaurant_name TEXT," +
-                    "email_address TEXT UNIQUE," +
                     "password_hash TEXT," +
-                    "gps_location TEXT," +
-                    "postcode TEXT)");
+                    "logo TEXT," +
+                    "menu_image TEXT," +
+                    "floorplan_image TEXT," +
+                    "gps_location TEXT)");
     }
 
     @Override
@@ -92,7 +99,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<Customer> readAllCustomers() {
 
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
 
         ArrayList<Customer> customers = new ArrayList<>();
 
@@ -133,7 +140,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<Restaurant> readAllRestaurants() {
 
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
 
         ArrayList<Restaurant> restaurants = new ArrayList<>();
 
@@ -160,14 +167,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Restaurant restaurant = new Restaurant();
 
-        int restaurantID = cursor.getInt(cursor.getColumnIndex("id"));
+        String restaurantID = cursor.getString(cursor.getColumnIndex("id"));
         restaurant.setRestaurantID(restaurantID);
 
         String restaurantUsername = cursor.getString(cursor.getColumnIndex("username"));
         restaurant.setUsername(restaurantUsername);
 
+        String restaurantName = cursor.getString(cursor.getColumnIndex("restaurant_name"));
+        restaurant.setRestaurantName(restaurantName);
+
         String restaurantPasswordHash = cursor.getString(cursor.getColumnIndex("password_hash"));
         restaurant.setPasswordHash(restaurantPasswordHash);
+
+        byte[] logoImage = cursor.getBlob(cursor.getColumnIndex("logo"));
+        restaurant.setLogoImage(logoImage);
+
+        byte[] menuImage = cursor.getBlob(cursor.getColumnIndex("menu_image"));
+        restaurant.setMenuImage(menuImage);
+
+        byte[] floorPlanImage = cursor.getBlob(cursor.getColumnIndex("floorplan_image"));
+        restaurant.setFloorPlanImage(floorPlanImage);
+
+        String gpsLocation = cursor.getString(cursor.getColumnIndex("gps_location"));
+        restaurant.setGpsLocation(gpsLocation);
 
         return restaurant;
     }

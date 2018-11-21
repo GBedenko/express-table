@@ -1,9 +1,9 @@
 package com.bedenko.genaro.expresstable.controllers;
 
 import android.content.ContentValues;
+import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.models.Restaurant;
 import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 
@@ -13,13 +13,16 @@ public class RestaurantController {
 
     private static final String TAG = "RestaurantController";
 
-    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, String aGpsLocation) {
+    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, byte[] aRestaurantLogo, byte[] aRestaurantMenu, byte[] aRestaurantFloorPlan, String aGpsLocation) {
 
         Restaurant restaurant = new Restaurant();
 
         restaurant.setUsername(aUsername);
         restaurant.setRestaurantName(aRestaurantName);
         restaurant.setPasswordHash(aPasswordHash);
+        restaurant.setLogoImage(aRestaurantLogo);
+        restaurant.setMenuImage(aRestaurantMenu);
+        restaurant.setFloorPlanImage(aRestaurantFloorPlan);
         restaurant.setGpsLocation(aGpsLocation);
 
         return(restaurant);
@@ -31,6 +34,9 @@ public class RestaurantController {
         restaurantValues.put("username", restaurant.getUsername());
         restaurantValues.put("restaurant_name", restaurant.getRestaurantName());
         restaurantValues.put("password_hash", restaurant.getPasswordHash());
+        restaurantValues.put("logo", restaurant.getLogoImage());
+        restaurantValues.put("menu_image", restaurant.getMenuImage());
+        restaurantValues.put("floorplan_image", restaurant.getFloorPlanImage());
         restaurantValues.put("gps_location", restaurant.getGpsLocation());
 
         db.write("restaurants", restaurantValues);
@@ -61,17 +67,38 @@ public class RestaurantController {
     public Restaurant getRestaurantFromDB(DatabaseHandler db, Restaurant restaurant) {
 
         // From the database, retrieves an arraylist of all restaurants
-        ArrayList<Restaurant> allRestaurantsIDB = db.readAllRestaurants();
+        ArrayList<Restaurant> allRestaurantsInDB = db.readAllRestaurants();
 
         // Loop through the list of restaurants, if username and password_hash match, return true
         // Else, return false
-        for(int i=0; i <= allRestaurantsIDB.size()-1; i++) {
-            if(allRestaurantsIDB.get(i).getUsername().equals(restaurant.getUsername())) {
-                if(allRestaurantsIDB.get(i).getPasswordHash().equals(restaurant.getPasswordHash())) {
-                    return allRestaurantsIDB.get(i);
+        for(int i=0; i <= allRestaurantsInDB.size()-1; i++) {
+            if(allRestaurantsInDB.get(i).getUsername().equals(restaurant.getUsername())) {
+                if(allRestaurantsInDB.get(i).getPasswordHash().equals(restaurant.getPasswordHash())) {
+                    return allRestaurantsInDB.get(i);
                 }
             }
         }
         return restaurant;
+    }
+
+    public Restaurant getRestaurantByIdFromDB(DatabaseHandler db, String restaurant_id) {
+
+        // From the database, retrieves an arraylist of all restaurants
+        ArrayList<Restaurant> allRestaurantsInDB = db.readAllRestaurants();
+
+        for(int i=0; i <= allRestaurantsInDB.size()-1; i++) {
+            if(allRestaurantsInDB.get(i).getRestaurantID().equals(restaurant_id)) {
+                return allRestaurantsInDB.get(i);
+            }
+        }
+        return new Restaurant();
+    }
+
+    public ArrayList<Restaurant> getAllRestaurantsFromDB(DatabaseHandler db) {
+
+        // From the database, retrieves an arraylist of all restaurants
+        ArrayList<Restaurant> allRestaurantsInDB = db.readAllRestaurants();
+
+        return allRestaurantsInDB;
     }
 }
