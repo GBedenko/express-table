@@ -167,7 +167,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Restaurant restaurant = new Restaurant();
 
-        int restaurantID = cursor.getInt(cursor.getColumnIndex("id"));
+        String restaurantID = cursor.getString(cursor.getColumnIndex("id"));
         restaurant.setRestaurantID(restaurantID);
 
         String restaurantUsername = cursor.getString(cursor.getColumnIndex("username"));
@@ -183,10 +183,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         restaurant.setLogoImage(logoImage);
 
         byte[] menuImage = cursor.getBlob(cursor.getColumnIndex("menu_image"));
-        restaurant.setLogoImage(menuImage);
+        restaurant.setMenuImage(menuImage);
 
         byte[] floorPlanImage = cursor.getBlob(cursor.getColumnIndex("floorplan_image"));
-        restaurant.setLogoImage(floorPlanImage);
+        restaurant.setFloorPlanImage(floorPlanImage);
 
         String gpsLocation = cursor.getString(cursor.getColumnIndex("gps_location"));
         restaurant.setGpsLocation(gpsLocation);

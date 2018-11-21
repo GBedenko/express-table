@@ -1,18 +1,27 @@
 package com.bedenko.genaro.expresstable.views;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bedenko.genaro.expresstable.R;
+import com.bedenko.genaro.expresstable.controllers.RestaurantController;
+import com.bedenko.genaro.expresstable.models.Restaurant;
+import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 
 public class ViewRestaurantActivity extends AppCompatActivity {
 
     String restaurantIDBeingViewed;
     String restaurantNameBeingViewed;
+
+    DatabaseHandler db = new DatabaseHandler(this);
+
+    RestaurantController restaurantController = new RestaurantController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +34,15 @@ public class ViewRestaurantActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.viewingRestaurantName);
         textView.setText(getRestaurantNameBeingViewed());
 
-        Button bookThisRestaurantButton = findViewById(R.id.bookThisRestaurantButton);
+        ImageView floorPlanImageView = findViewById(R.id.floorPlanImageView);
+        ImageView menuImageView = findViewById(R.id.menuImageView);
 
+        Restaurant currentRestaurant = restaurantController.getRestaurantByIdFromDB(db, getRestaurantIDBeingViewed());
+
+        floorPlanImageView.setImageBitmap(BitmapFactory.decodeByteArray(currentRestaurant.getFloorPlanImage(),0, currentRestaurant.getFloorPlanImage().length));
+        menuImageView.setImageBitmap(BitmapFactory.decodeByteArray(currentRestaurant.getMenuImage(),0, currentRestaurant.getMenuImage().length));
+
+        Button bookThisRestaurantButton = findViewById(R.id.bookThisRestaurantButton);
         bookThisRestaurantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

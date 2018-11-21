@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 public class Restaurant {
 
-    private int restaurantID = -1;
+    private String restaurantID;
     private String username;
     private String restaurantName;
     private String passwordHash;
@@ -34,7 +34,7 @@ public class Restaurant {
         this.logoImage = restaurantLogo;
     }
 
-    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, byte[] restaurantLogo) {
+    public Restaurant(String restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, byte[] restaurantLogo) {
 
         // Create a new instance when all parameters are passed
         this.restaurantID = restaurantID;
@@ -46,11 +46,11 @@ public class Restaurant {
         this.logoImage = restaurantLogo;
     }
 
-    public int getRestaurantID() {
+    public String getRestaurantID() {
         return restaurantID;
     }
 
-    public void setRestaurantID(int restaurantID) {
+    public void setRestaurantID(String restaurantID) {
         this.restaurantID = restaurantID;
     }
 

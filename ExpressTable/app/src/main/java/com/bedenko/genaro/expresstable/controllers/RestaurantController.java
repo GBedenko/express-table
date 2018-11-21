@@ -81,6 +81,19 @@ public class RestaurantController {
         return restaurant;
     }
 
+    public Restaurant getRestaurantByIdFromDB(DatabaseHandler db, String restaurant_id) {
+
+        // From the database, retrieves an arraylist of all restaurants
+        ArrayList<Restaurant> allRestaurantsInDB = db.readAllRestaurants();
+
+        for(int i=0; i <= allRestaurantsInDB.size()-1; i++) {
+            if(allRestaurantsInDB.get(i).getRestaurantID().equals(restaurant_id)) {
+                return allRestaurantsInDB.get(i);
+            }
+        }
+        return new Restaurant();
+    }
+
     public ArrayList<Restaurant> getAllRestaurantsFromDB(DatabaseHandler db) {
 
         // From the database, retrieves an arraylist of all restaurants
