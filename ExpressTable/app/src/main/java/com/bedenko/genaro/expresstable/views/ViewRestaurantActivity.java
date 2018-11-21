@@ -19,6 +19,7 @@ public class ViewRestaurantActivity extends AppCompatActivity {
 
     String restaurantIDBeingViewed;
     String restaurantNameBeingViewed;
+    String currentCustomerLoggedInID;
 
     DatabaseHandler db = new DatabaseHandler(this);
 
@@ -32,6 +33,7 @@ public class ViewRestaurantActivity extends AppCompatActivity {
         Intent intent = getIntent();
         setRestaurantNameBeingViewed(intent.getStringExtra("restaurant_name"));
         setRestaurantIDBeingViewed(intent.getStringExtra("restaurant_id"));
+        setCurrentCustomerLoggedInID(intent.getStringExtra("customer_id"));
         TextView textView = findViewById(R.id.viewingRestaurantName);
         textView.setText(getRestaurantNameBeingViewed());
 
@@ -58,6 +60,7 @@ public class ViewRestaurantActivity extends AppCompatActivity {
         Intent intent = new Intent(ViewRestaurantActivity.this, BookRestaurantActivity.class);
         intent.putExtra("restaurant_name", getRestaurantNameBeingViewed());
         intent.putExtra("restaurant_id", getRestaurantIDBeingViewed());
+        intent.putExtra("customer_id", getCurrentCustomerLoggedInID());
 
         startActivityForResult(intent, 1);
     }
@@ -76,5 +79,13 @@ public class ViewRestaurantActivity extends AppCompatActivity {
 
     public void setRestaurantNameBeingViewed(String restaurantNameBeingViewed) {
         this.restaurantNameBeingViewed = restaurantNameBeingViewed;
+    }
+
+    public String getCurrentCustomerLoggedInID() {
+        return currentCustomerLoggedInID;
+    }
+
+    public void setCurrentCustomerLoggedInID(String currentCustomerLoggedInID) {
+        this.currentCustomerLoggedInID = currentCustomerLoggedInID;
     }
 }

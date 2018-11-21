@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/bookingRestaurantTextView" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/enterDateTextField"
         android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -57,7 +57,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/enterDateTextField" />
+
+    <EditText
+        android:id="@+id/enterTimeTextField"
+        android:layout_width="172dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseTimeTextView" />
 
     <TextView
         android:id="@+id/chooseTableTextView"
@@ -70,7 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/enterTimeTextField" />
 
     <Spinner
         android:id="@+id/chooseTableSpinner"
@@ -96,18 +110,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chooseTableSpinner" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="172dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chooseTimeTextView" />
 
 </android.support.constraint.ConstraintLayout>
