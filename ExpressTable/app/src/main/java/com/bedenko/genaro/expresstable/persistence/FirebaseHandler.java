@@ -18,7 +18,6 @@ public class FirebaseHandler {
     private static final String TAG = "FirebaseHandler";
     private boolean addedToFirebase = false;
     private boolean documentExists = false;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public boolean addDocumentToFirebase(Object object, CollectionReference collectionReference) {
 
