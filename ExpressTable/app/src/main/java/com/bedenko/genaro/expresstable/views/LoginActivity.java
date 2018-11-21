@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bedenko.genaro.expresstable.R;
@@ -64,7 +65,15 @@ public class LoginActivity extends AppCompatActivity {
             boolean loginCorrect = customerController.isCustomerInDB(db, loggingInCustomer);
 
             if (loginCorrect) {
-                startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+
+                Customer currentCustomer = customerController.getCustomerFromDB(db, loggingInCustomer);
+
+                Intent intent = new Intent(LoginActivity.this, CustomerDashboardActivity.class);
+                intent.putExtra("customer_id", currentCustomer.getCustomerID());
+                intent.putExtra("customer_username", currentCustomer.getUsername());
+
+                startActivityForResult(intent, 1);
+
             } else {
                 Toast.makeText(getApplicationContext(), "Incorrect login credentials. Please check username and password", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getBaseContext(), LoginActivity.class));
@@ -78,7 +87,15 @@ public class LoginActivity extends AppCompatActivity {
             boolean loginCorrect = restaurantController.isRestaurantInDB(db, loggingInRestaurant);
 
             if (loginCorrect) {
-                startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
+
+                Restaurant currentRestaurant = restaurantController.getRestaurantFromDB(db, loggingInRestaurant);
+
+                Intent intent = new Intent(LoginActivity.this, RestaurantDashboardActivity.class);
+                intent.putExtra("restaurant_id", currentRestaurant.getRestaurantID());
+                intent.putExtra("restaurant_username", currentRestaurant.getUsername());
+
+                startActivityForResult(intent, 1);
+
             } else {
                 Toast.makeText(getApplicationContext(), "Incorrect login credentials. Please check username and password", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getBaseContext(), LoginActivity.class));

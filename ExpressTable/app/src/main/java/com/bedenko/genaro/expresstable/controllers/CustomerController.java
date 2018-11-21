@@ -52,4 +52,21 @@ public class CustomerController {
         Log.d(TAG, "Customer details not in DB");
         return false;
     }
+
+    public Customer getCustomerFromDB(DatabaseHandler db, Customer customer) {
+
+        // From the database, retrieves an arraylist of all customers
+        ArrayList<Customer> allCustomersInDB = db.readAllCustomers();
+
+        // Loop through the list of customers, if username and password_hash match, return true
+        // Else, return false
+        for(int i=0; i <= allCustomersInDB.size()-1; i++) {
+            if(allCustomersInDB.get(i).getUsername().equals(customer.getUsername())) {
+                if(allCustomersInDB.get(i).getPasswordHash().equals(customer.getPasswordHash())) {
+                    return allCustomersInDB.get(i);
+                }
+            }
+        }
+        return customer;
+    }
 }

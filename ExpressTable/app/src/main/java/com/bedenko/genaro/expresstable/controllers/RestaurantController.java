@@ -3,6 +3,7 @@ package com.bedenko.genaro.expresstable.controllers;
 import android.content.ContentValues;
 import android.util.Log;
 
+import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.models.Restaurant;
 import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 
@@ -55,5 +56,22 @@ public class RestaurantController {
 
         Log.d(TAG, "Restaurant details not in DB");
         return false;
+    }
+
+    public Restaurant getRestaurantFromDB(DatabaseHandler db, Restaurant restaurant) {
+
+        // From the database, retrieves an arraylist of all restaurants
+        ArrayList<Restaurant> allRestaurantsIDB = db.readAllRestaurants();
+
+        // Loop through the list of restaurants, if username and password_hash match, return true
+        // Else, return false
+        for(int i=0; i <= allRestaurantsIDB.size()-1; i++) {
+            if(allRestaurantsIDB.get(i).getUsername().equals(restaurant.getUsername())) {
+                if(allRestaurantsIDB.get(i).getPasswordHash().equals(restaurant.getPasswordHash())) {
+                    return allRestaurantsIDB.get(i);
+                }
+            }
+        }
+        return restaurant;
     }
 }
