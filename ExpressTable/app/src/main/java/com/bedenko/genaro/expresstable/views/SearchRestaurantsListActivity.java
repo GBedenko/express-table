@@ -21,16 +21,27 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
     private String[] restaurantNames;
     private String[] restaurantDetails;
 
-    public Bitmap[] restaurantPhotos = {
-            BitmapFactory.decodeResource(getResources(), R.drawable.nandos),
-            BitmapFactory.decodeResource(getResources(), R.drawable.pizza_hut),
-            BitmapFactory.decodeResource(getResources(), R.drawable.zizzi),
-            BitmapFactory.decodeResource(getResources(), R.drawable.harvester),
-            BitmapFactory.decodeResource(getResources(), R.drawable.wagamamas),
-            BitmapFactory.decodeResource(getResources(), R.drawable.cosy_club),
-            BitmapFactory.decodeResource(getResources(), R.drawable.cosmo),
-            BitmapFactory.decodeResource(getResources(), R.drawable.yakki_sushi)
+    public byte[][] restaurantPhotos = {
+            new byte[0],
+            new byte[0],
+            new byte[0],
+            new byte[0],
+            new byte[0],
+            new byte[0],
+            new byte[0],
+            new byte[0]
     };
+
+//    public Bitmap[] restaurantPhotos = {
+//            BitmapFactory.decodeResource(getResources(), R.drawable.nandos),
+//            BitmapFactory.decodeResource(getResources(), R.drawable.pizza_hut),
+//            BitmapFactory.decodeResource(getResources(), R.drawable.zizzi),
+//            BitmapFactory.decodeResource(getResources(), R.drawable.harvester),
+//            BitmapFactory.decodeResource(getResources(), R.drawable.wagamamas),
+//            BitmapFactory.decodeResource(getResources(), R.drawable.cosy_club),
+//            BitmapFactory.decodeResource(getResources(), R.drawable.cosmo),
+//            BitmapFactory.decodeResource(getResources(), R.drawable.yakki_sushi)
+//    };
 
     private ArrayList<Restaurant> restaurants = new ArrayList<>();
 

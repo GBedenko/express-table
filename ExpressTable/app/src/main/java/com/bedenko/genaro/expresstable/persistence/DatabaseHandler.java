@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "express-table.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String BOOKINGS_TABLE = "bookings";
     private static final String CUSTOMERS_TABLE = "customers";
@@ -64,8 +64,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     "restaurant_name TEXT," +
                     "email_address TEXT UNIQUE," +
                     "password_hash TEXT," +
-                    "gps_location TEXT," +
-                    "postcode TEXT)");
+                    "logo TEXT," +
+                    "menu_image TEXT," +
+                    "floorplan_image TEXT," +
+                    "gps_location TEXT)");
     }
 
     @Override

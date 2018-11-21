@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import com.bedenko.genaro.expresstable.models.Restaurant;
 import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 import com.bedenko.genaro.expresstable.utils.CommonUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
@@ -110,7 +112,31 @@ public class NewRestaurantActivity extends AppCompatActivity {
         Bitmap restaurantFloorPlanImage = getRestaurantFloorPlanImage();
         String restaurantGpsLocation = "XXXYYYZZZ";
 
-        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLogo, restaurantMenuImage, restaurantFloorPlanImage, restaurantGpsLocation);
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        restaurantLogo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] restaurantLogoByteArray = stream.toByteArray();
+        restaurantLogo.recycle();
+
+        stream = new ByteArrayOutputStream();
+        restaurantMenuImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] restaurantMenuImageByteArray = stream.toByteArray();
+        restaurantMenuImage.recycle();
+
+        stream = new ByteArrayOutputStream();
+        restaurantFloorPlanImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] restaurantFloorPlanImageByteArray = stream.toByteArray();
+        restaurantFloorPlanImage.recycle();
+
+
+        String TAG = "NewRestaurantActivity";
+
+        Log.d(TAG, restaurantLogoByteArray.toString());
+        Log.d(TAG, restaurantMenuImageByteArray.toString());
+        Log.d(TAG, restaurantFloorPlanImageByteArray.toString());
+
+
+        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLogoByteArray, restaurantMenuImageByteArray, restaurantFloorPlanImageByteArray, restaurantGpsLocation);
 
         restaurantController.addRestaurantToDB(db, newRestaurant);
         Toast.makeText(getApplicationContext(),"Restaurant Account Created", Toast.LENGTH_LONG).show();

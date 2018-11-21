@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.bedenko.genaro.expresstable.models.Customer;
 import com.bedenko.genaro.expresstable.models.Restaurant;
 import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 
@@ -14,7 +13,7 @@ public class RestaurantController {
 
     private static final String TAG = "RestaurantController";
 
-    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, Bitmap aRestaurantLogo, Bitmap aRestaurantMenu, Bitmap aRestaurantFloorPlan, String aGpsLocation) {
+    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, byte[] aRestaurantLogo, byte[] aRestaurantMenu, byte[] aRestaurantFloorPlan, String aGpsLocation) {
 
         Restaurant restaurant = new Restaurant();
 
@@ -35,6 +34,9 @@ public class RestaurantController {
         restaurantValues.put("username", restaurant.getUsername());
         restaurantValues.put("restaurant_name", restaurant.getRestaurantName());
         restaurantValues.put("password_hash", restaurant.getPasswordHash());
+        restaurantValues.put("logo", restaurant.getLogoImage());
+        restaurantValues.put("menu_image", restaurant.getMenuImage());
+        restaurantValues.put("floorplan_image", restaurant.getFloorPlanImage());
         restaurantValues.put("gps_location", restaurant.getGpsLocation());
 
         db.write("restaurants", restaurantValues);

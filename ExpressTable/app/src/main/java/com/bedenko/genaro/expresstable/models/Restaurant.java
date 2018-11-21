@@ -8,9 +8,9 @@ public class Restaurant {
     private String username;
     private String restaurantName;
     private String passwordHash;
-    private Bitmap logoImage;
-    private Bitmap menuImage;
-    private Bitmap floorPlanImage;
+    private byte[] logoImage;
+    private byte[] menuImage;
+    private byte[] floorPlanImage;
     private String gpsLocation;
     private String restaurantType;
 
@@ -26,7 +26,7 @@ public class Restaurant {
         this.passwordHash = passwordHash;
     }
 
-    public Restaurant(String restaurantName, String restaurantType, Bitmap restaurantLogo) {
+    public Restaurant(String restaurantName, String restaurantType, byte[] restaurantLogo) {
 
         // Constructor used for ListView of Restaurants
         this.restaurantName = restaurantName;
@@ -34,7 +34,7 @@ public class Restaurant {
         this.logoImage = restaurantLogo;
     }
 
-    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, Bitmap restaurantLogo) {
+    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, byte[] restaurantLogo) {
 
         // Create a new instance when all parameters are passed
         this.restaurantID = restaurantID;
@@ -94,27 +94,27 @@ public class Restaurant {
         this.restaurantType = restaurantType;
     }
 
-    public Bitmap getLogoImage() {
+    public byte[] getLogoImage() {
         return logoImage;
     }
 
-    public void setLogoImage(Bitmap logoImage) {
+    public void setLogoImage(byte[] logoImage) {
         this.logoImage = logoImage;
     }
 
-    public Bitmap getMenuImage() {
+    public byte[] getMenuImage() {
         return menuImage;
     }
 
-    public void setMenuImage(Bitmap menuImage) {
+    public void setMenuImage(byte[] menuImage) {
         this.menuImage = menuImage;
     }
 
-    public Bitmap getFloorPlanImage() {
+    public byte[] getFloorPlanImage() {
         return floorPlanImage;
     }
 
-    public void setFloorPlanImage(Bitmap floorPlanImage) {
+    public void setFloorPlanImage(byte[] floorPlanImage) {
         this.floorPlanImage = floorPlanImage;
     }
 
