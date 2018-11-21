@@ -52,7 +52,15 @@ public class NewRestaurantActivity extends AppCompatActivity {
         Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantGpsLocation);
 
         restaurantController.addRestaurantToDB(db, newRestaurant);
-        Toast.makeText(getApplicationContext(),"Restaurant Account Created", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Restaurant Account Created", Toast.LENGTH_LONG).show();
+
+        Restaurant currentRestaurant = restaurantController.getRestaurantFromDB(db, newRestaurant);
+
+        Intent intent = new Intent(NewRestaurantActivity.this, RestaurantDashboardActivity.class);
+        intent.putExtra("restaurant_id", currentRestaurant.getRestaurantID());
+        intent.putExtra("restaurant_username", currentRestaurant.getUsername());
+
+        startActivityForResult(intent, 1);
 
         startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
     }

@@ -3,10 +3,12 @@ package com.bedenko.genaro.expresstable.views;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bedenko.genaro.expresstable.R;
@@ -23,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     RestaurantController restaurantController = new RestaurantController();
     CommonUtils commonUtils = new CommonUtils();
     DatabaseHandler db = new DatabaseHandler(this);
+
+    private static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,47 +51,56 @@ public class LoginActivity extends AppCompatActivity {
         EditText passwordField = findViewById(R.id.passwordField);
 
         String accountType = accountTypeSpinner.getSelectedItem().toString();
+        Log.d(TAG, "Account type: " + accountType);
+
         String username = usernameField.getText().toString();
         String passwordHash = commonUtils.md5Hash(passwordField.getText().toString());
 
-        switch (accountType) {
+        if(accountType.equals("Customer")) {
 
-            case "Customer":
+            Log.d(TAG, "Customer type account selected");
 
-//                // Query if customer details correct
-//                Customer potentialExistingCustomer = new Customer(username, passwordHash);
-//
-//                String existingCustomerUsername = customerController.getCustomerFromDB(db, potentialExistingCustomer);
-//
-//                if(existingCustomerUsername.equals(username) && existingCustomerPasswordHash.equals(passwordHash)) {
-//                } else {
-//                }
-//                break;
-            startActivity(new Intent(getBaseContext(), CustomerDashboardActivity.class));
+            Customer loggingInCustomer = new Customer(username, passwordHash);
 
-            case "Restaurant":
-//
-//                // Query if restaurant details correct
-//                Restaurant potentialExistingRestaurant = new Restaurant(username, passwordHash);
-//
-//                String existingRestaurantUsername = restaurantController.getRestaurantFromDB(db, potentialExistingRestaurant);
-//
-//                startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
-//
-//                if(existingRestaurantUsername.equals(username)) {
-//                    Toast.makeText(getApplicationContext(), "Restaurant username already exists.", Toast.LENGTH_SHORT).show();
-//                    startActivity(new Intent(getBaseContext(), LoginActivity.class));
-//                } else {
-//                    startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
-//                }
-//                break;
-            startActivity(new Intent(getBaseContext(), RestaurantDashboardActivity.class));
+            boolean loginCorrect = customerController.isCustomerInDB(db, loggingInCustomer);
 
-            default:
-                Toast.makeText(getApplicationContext(), "Something went wrong. Please check field inputs.", Toast.LENGTH_SHORT).show();
-                break;
+            if (loginCorrect) {
+
+                Customer currentCustomer = customerController.getCustomerFromDB(db, loggingInCustomer);
+
+                Intent intent = new Intent(LoginActivity.this, CustomerDashboardActivity.class);
+                intent.putExtra("customer_id", currentCustomer.getCustomerID());
+                intent.putExtra("customer_username", currentCustomer.getUsername());
+
+                startActivityForResult(intent, 1);
+
+            } else {
+                Toast.makeText(getApplicationContext(), "Incorrect login credentials. Please check username and password", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getBaseContext(), LoginActivity.class));
+            }
+        } else if(accountType.equals("Restaurant")) {
+
+            Log.d(TAG, "Restaurant type account selected");
+
+            Restaurant loggingInRestaurant = new Restaurant(username, passwordHash);
+
+            boolean loginCorrect = restaurantController.isRestaurantInDB(db, loggingInRestaurant);
+
+            if (loginCorrect) {
+
+                Restaurant currentRestaurant = restaurantController.getRestaurantFromDB(db, loggingInRestaurant);
+
+                Intent intent = new Intent(LoginActivity.this, RestaurantDashboardActivity.class);
+                intent.putExtra("restaurant_id", currentRestaurant.getRestaurantID());
+                intent.putExtra("restaurant_username", currentRestaurant.getUsername());
+
+                startActivityForResult(intent, 1);
+
+            } else {
+                Toast.makeText(getApplicationContext(), "Incorrect login credentials. Please check username and password", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getBaseContext(), LoginActivity.class));
+            }
         }
-
     }
 }
 
