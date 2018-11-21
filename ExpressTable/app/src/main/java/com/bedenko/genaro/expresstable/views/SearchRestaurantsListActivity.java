@@ -11,7 +11,9 @@ import android.widget.ListView;
 
 import com.bedenko.genaro.expresstable.R;
 import com.bedenko.genaro.expresstable.controllers.RestaurantAdapter;
+import com.bedenko.genaro.expresstable.controllers.RestaurantController;
 import com.bedenko.genaro.expresstable.models.Restaurant;
+import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 
 import java.util.ArrayList;
 
@@ -20,6 +22,9 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
     private ListView listView;
     private String[] restaurantNames;
     private String[] restaurantDetails;
+
+    RestaurantController restaurantController = new RestaurantController();
+    DatabaseHandler db = new DatabaseHandler(this);
 
     public byte[][] restaurantPhotos = {
             new byte[0],
@@ -52,7 +57,8 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
 
         restaurantNames = getResources().getStringArray(R.array.default_restaurant_names);
         restaurantDetails = getResources().getStringArray(R.array.default_restaurant_details);
-        generateRestaurants();
+
+        restaurants = restaurantController.getAllRestaurantsFromDB(db);
 
         listView = findViewById(R.id.listViewComplex);
         listView.setAdapter(new RestaurantAdapter(this, R.layout.list_item, restaurants));
@@ -66,17 +72,9 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
                         intent.putExtra("restaurant_id", restaurants.get(position).getRestaurantID());
                         startActivityForResult(intent, 1);
 
-//                        Toast.makeText(getBaseContext(), "You clicked " + restaurants.get(position).getRestaurantName(), Toast.LENGTH_SHORT).show();
                     }
                 }
         );
-    }
-
-    private void generateRestaurants() {
-
-        for (int i = 0; i < restaurantPhotos.length; i++) {
-            restaurants.add(new Restaurant(restaurantNames[i], restaurantDetails[i], restaurantPhotos[i]));
-        }
     }
 
 }

@@ -67,14 +67,14 @@ public class RestaurantController {
     public Restaurant getRestaurantFromDB(DatabaseHandler db, Restaurant restaurant) {
 
         // From the database, retrieves an arraylist of all restaurants
-        ArrayList<Restaurant> allRestaurantsIDB = db.readAllRestaurants();
+        ArrayList<Restaurant> allRestaurantsInDB = db.readAllRestaurants();
 
         // Loop through the list of restaurants, if username and password_hash match, return true
         // Else, return false
-        for(int i=0; i <= allRestaurantsIDB.size()-1; i++) {
-            if(allRestaurantsIDB.get(i).getUsername().equals(restaurant.getUsername())) {
-                if(allRestaurantsIDB.get(i).getPasswordHash().equals(restaurant.getPasswordHash())) {
-                    return allRestaurantsIDB.get(i);
+        for(int i=0; i <= allRestaurantsInDB.size()-1; i++) {
+            if(allRestaurantsInDB.get(i).getUsername().equals(restaurant.getUsername())) {
+                if(allRestaurantsInDB.get(i).getPasswordHash().equals(restaurant.getPasswordHash())) {
+                    return allRestaurantsInDB.get(i);
                 }
             }
         }
@@ -85,8 +85,6 @@ public class RestaurantController {
 
         // From the database, retrieves an arraylist of all restaurants
         ArrayList<Restaurant> allRestaurantsInDB = db.readAllRestaurants();
-
-        Log.d(TAG, "here " + allRestaurantsInDB.get(0).getRestaurantName());
 
         return allRestaurantsInDB;
     }

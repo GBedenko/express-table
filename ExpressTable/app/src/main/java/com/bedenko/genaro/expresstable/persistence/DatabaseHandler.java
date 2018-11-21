@@ -68,7 +68,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     "id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE," +
                     "username TEXT," +
                     "restaurant_name TEXT," +
-                    "email_address TEXT," +
                     "password_hash TEXT," +
                     "logo TEXT," +
                     "menu_image TEXT," +
@@ -100,7 +99,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<Customer> readAllCustomers() {
 
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
 
         ArrayList<Customer> customers = new ArrayList<>();
 
@@ -141,7 +140,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<Restaurant> readAllRestaurants() {
 
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
 
         ArrayList<Restaurant> restaurants = new ArrayList<>();
 
@@ -157,7 +156,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 // move the cursor to next row if there is any to read it's data
                 Restaurant restaurant = readRestaurant(cursor);
-                Log.d(TAG, "here " + restaurants.get(0).getRestaurantName());
                 restaurants.add(restaurant);
             }
         }

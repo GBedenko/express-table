@@ -1,6 +1,7 @@
 package com.bedenko.genaro.expresstable.controllers;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,9 +42,9 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
             TextView textViewName = v.findViewById(R.id.listItemNameTextView);
             TextView textViewDetail = v.findViewById(R.id.listItemDetailsTextView);
 
-//            imageView.setImageBitmap(restaurants.get(position).getLogoImage());
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(restaurants.get(position).getLogoImage(), 0, restaurants.get(position).getLogoImage().length));
             textViewName.setText(restaurants.get(position).getRestaurantName());
-            textViewDetail.setText(restaurants.get(position).getRestaurantType());
+            textViewDetail.setText(restaurants.get(position).getGpsLocation());
 
         } catch (Exception e) {
             e.printStackTrace();
