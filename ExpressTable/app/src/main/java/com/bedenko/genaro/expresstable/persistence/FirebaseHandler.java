@@ -19,7 +19,7 @@ public class FirebaseHandler {
     private boolean addedToFirebase = false;
     private boolean documentExists = false;
 
-    public boolean addDocumentToFirebase(Object object, CollectionReference collectionReference) {
+    public void addDocumentToFirebase(Object object, CollectionReference collectionReference) {
 
         collectionReference.document()
                 .set(object)
@@ -37,8 +37,6 @@ public class FirebaseHandler {
                         setAddedToFirebase(false);
                     }
                 });
-
-        return isAddedToFirebase();
     }
 
     public boolean queryIfDocumentExists(Query query) {
