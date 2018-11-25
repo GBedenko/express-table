@@ -5,6 +5,7 @@ import com.bedenko.genaro.expresstable.persistence.FirebaseHandler;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class BookingController {
 
@@ -24,6 +25,13 @@ public class BookingController {
         booking.setTableNumber(aTableNumber);
 
         return(booking);
+    }
+
+    public Booking findBooking(String customerID, String restaurantID) {
+
+        Booking foundBooking = firebaseHandler.findBooking(db.collection("bookings"), customerID, restaurantID);
+
+        return foundBooking;
     }
 
     public void addBookingToFirebase(Booking booking) {

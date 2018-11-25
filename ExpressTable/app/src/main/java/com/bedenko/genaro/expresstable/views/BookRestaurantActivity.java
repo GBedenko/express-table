@@ -36,9 +36,6 @@ public class BookRestaurantActivity extends AppCompatActivity {
         setRestaurantIDBeingViewed(intent.getStringExtra("restaurant_id"));
         setCurrentCustomerLoggedInID(intent.getStringExtra("customer_id"));
 
-        Log.d(TAG, "intent " + intent.getStringExtra("restaurant_id"));
-        Log.d(TAG, "intent " + intent.getStringExtra("customer_id"));
-
         // Set the current restaurant name to the one they just viewed
         TextView textView = findViewById(R.id.bookingRestaurantTextView);
         textView.setText(getRestaurantNameBeingViewed());
@@ -72,7 +69,18 @@ public class BookRestaurantActivity extends AppCompatActivity {
 
         bookingController.addBookingToFirebase(newBooking);
 
-        startActivity(new Intent(getBaseContext(), BookingConfirmationActivity.class));
+        Intent intent = new Intent(BookRestaurantActivity.this, BookingConfirmationActivity.class);
+        intent.putExtra("restaurant_name", getRestaurantNameBeingViewed());
+        intent.putExtra("booking_date", bookingDate);
+        intent.putExtra("booking_time", bookingTime);
+        intent.putExtra("booking_table", bookingTable);
+
+        Log.d(TAG, "intent " + getRestaurantNameBeingViewed());
+        Log.d(TAG, "intent " + bookingDate);
+        Log.d(TAG, "intent " + bookingTime);
+        Log.d(TAG, "intent " + bookingTable);
+
+        startActivityForResult(intent, 1);
     }
 
     public String getRestaurantIDBeingViewed() {
