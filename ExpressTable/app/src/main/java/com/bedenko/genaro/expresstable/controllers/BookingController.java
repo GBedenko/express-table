@@ -2,12 +2,16 @@ package com.bedenko.genaro.expresstable.controllers;
 
 import com.bedenko.genaro.expresstable.models.Booking;
 import com.bedenko.genaro.expresstable.persistence.FirebaseHandler;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
+
+import java.util.ArrayList;
 
 public class BookingController {
+
+    private static final String TAG = "BookingController";
+
+    private ArrayList<Booking> currentReservationsView;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseHandler firebaseHandler = new FirebaseHandler();
@@ -27,17 +31,25 @@ public class BookingController {
         return(booking);
     }
 
-    public Booking findBooking(String customerID, String restaurantID) {
+    public ArrayList<Booking> findBookings(String restaurantID) throws InterruptedException {
 
-        Booking foundBooking = firebaseHandler.findBooking(db.collection("bookings"), customerID, restaurantID);
+        ArrayList<Booking> bookingsMapsList = firebaseHandler.findBookings(db.collection("bookings"), restaurantID);
 
-        return foundBooking;
+        return bookingsMapsList;
     }
 
     public void addBookingToFirebase(Booking booking) {
 
         firebaseHandler.addDocumentToFirebase(booking, bookingsCollection);
 
+    }
+
+    public ArrayList<Booking> getCurrentReservationsView() {
+        return currentReservationsView;
+    }
+
+    public void setCurrentReservationsView(ArrayList<Booking> currentReservationsView) {
+        this.currentReservationsView = currentReservationsView;
     }
 
 }

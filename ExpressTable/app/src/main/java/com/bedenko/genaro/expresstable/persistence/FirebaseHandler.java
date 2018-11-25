@@ -4,22 +4,29 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.bedenko.genaro.expresstable.models.Booking;
-import com.bedenko.genaro.expresstable.models.Restaurant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+import javax.security.auth.callback.Callback;
 
 public class FirebaseHandler {
 
     private static final String TAG = "FirebaseHandler";
     private boolean addedToFirebase = false;
     private boolean documentExists = false;
+
+    private Map<String, Object> foundBookings;
+
+    private ArrayList<Booking> bookingsList = new ArrayList<>();
 
     public void addDocumentToFirebase(Object object, CollectionReference collectionReference) {
 
@@ -62,28 +69,29 @@ public class FirebaseHandler {
         return isDocumentExists();
     }
 
-    public Booking findBooking(CollectionReference collectionReference, String customerID, String restaurantID) {
-
-        Booking foundBooking = new Booking();
+    public ArrayList<Booking> findBookings(CollectionReference collectionReference, String restaurantID) {
 
         collectionReference
-                .whereEqualTo("customerID", customerID)
-                .whereEqualTo("restaurantID", restaurantID)
+                .whereEqualTo("restaurantID", Integer.parseInt(restaurantID))
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Log.d(TAG, "Data: " + document.getData());
+                                bookingsList.add(document.toObject(Booking.class));
                             }
+                            Log.d(TAG, "bookings: " + getBookingsList());
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
 
-        return foundBooking;
+
+        return getBookingsList();
     }
 
     public boolean isAddedToFirebase() {
@@ -100,5 +108,22 @@ public class FirebaseHandler {
 
     public void setDocumentExists(boolean documentExists) {
         this.documentExists = documentExists;
+    }
+
+
+    public Map<String, Object> getFoundBookings() {
+        return foundBookings;
+    }
+
+    public void setFoundBookings(Map<String, Object> foundBookings) {
+        this.foundBookings = foundBookings;
+    }
+
+    public ArrayList<Booking> getBookingsList() {
+        return bookingsList;
+    }
+
+    public void setBookingsList(ArrayList<Booking> bookingsList) {
+        this.bookingsList = bookingsList;
     }
 }
