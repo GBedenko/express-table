@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -24,6 +25,8 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
     private String[] restaurantNames;
     private String[] restaurantDetails;
 
+    private static final String TAG = "SearchRestaurantsList";
+
     String currentCustomerLoggedInID;
 
     RestaurantController restaurantController = new RestaurantController();
@@ -39,6 +42,7 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         setCurrentCustomerLoggedInID(intent.getStringExtra("customer_id"));
 
+        Log.d(TAG, "intent " + intent.getStringExtra("customer_id"));
         restaurantNames = getResources().getStringArray(R.array.default_restaurant_names);
         restaurantDetails = getResources().getStringArray(R.array.default_restaurant_details);
 

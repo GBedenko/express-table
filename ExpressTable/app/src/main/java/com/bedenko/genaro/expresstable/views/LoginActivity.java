@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 Customer currentCustomer = customerController.getCustomerFromDB(db, loggingInCustomer);
 
                 Intent intent = new Intent(LoginActivity.this, CustomerDashboardActivity.class);
+                Log.d(TAG, "intent at login " + currentCustomer.getCustomerID());
                 intent.putExtra("customer_id", currentCustomer.getCustomerID());
                 intent.putExtra("customer_username", currentCustomer.getUsername());
 

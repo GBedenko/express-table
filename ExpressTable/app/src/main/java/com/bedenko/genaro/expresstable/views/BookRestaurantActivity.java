@@ -3,6 +3,7 @@ package com.bedenko.genaro.expresstable.views;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,8 @@ public class BookRestaurantActivity extends AppCompatActivity {
     String restaurantNameBeingViewed;
     String currentCustomerLoggedInID;
 
+    private static final String TAG = "BookRestaurantActivity";
+
     BookingController bookingController = new BookingController();
 
     @Override
@@ -32,6 +35,9 @@ public class BookRestaurantActivity extends AppCompatActivity {
         setRestaurantNameBeingViewed(intent.getStringExtra("restaurant_name"));
         setRestaurantIDBeingViewed(intent.getStringExtra("restaurant_id"));
         setCurrentCustomerLoggedInID(intent.getStringExtra("customer_id"));
+
+        Log.d(TAG, "intent " + intent.getStringExtra("restaurant_id"));
+        Log.d(TAG, "intent " + intent.getStringExtra("customer_id"));
 
         // Set the current restaurant name to the one they just viewed
         TextView textView = findViewById(R.id.bookingRestaurantTextView);
@@ -56,7 +62,7 @@ public class BookRestaurantActivity extends AppCompatActivity {
         // Convert values entered by the user
         String bookingDate = enterDateTextField.getText().toString();
         String bookingTime = enterTimeTextField.getText().toString();
-        int bookingTable = Integer.parseInt(chooseTableSpinner.getSelectedItem().toString());
+        String bookingTable = chooseTableSpinner.getSelectedItem().toString();
 
         // Convert the values for customer and restaurant id (passed from previous activity)
         int customerID = Integer.parseInt(getCurrentCustomerLoggedInID());

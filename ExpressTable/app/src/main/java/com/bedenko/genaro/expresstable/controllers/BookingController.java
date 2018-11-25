@@ -13,7 +13,7 @@ public class BookingController {
 
     private CollectionReference bookingsCollection = db.collection("bookings");
 
-    public Booking createBooking(int aCustomerID, int aRestaurantID, String aDate, String aTime, int aTableNumber) {
+    public Booking createBooking(int aCustomerID, int aRestaurantID, String aDate, String aTime, String aTableNumber) {
 
         Booking booking = new Booking();
 
