@@ -2,35 +2,25 @@ package com.bedenko.genaro.expresstable.models;
 
 public class Booking {
 
-    private int bookingID = -1;
     private int customerID;
     private int restaurantID;
     private String date;
     private String time;
-    private int tableNumber;
+    private String tableNumber;
 
     public Booking() {
 
         // Can create a blank instance if no parameters passed
     }
 
-    public Booking(int bookingID, int customerID, int restaurantID, String date, String time, int tableNumber) {
+    public Booking(int customerID, int restaurantID, String date, String time, String tableNumber) {
 
         // Create a new instance when all parameters are passed
-        this.bookingID = bookingID;
         this.customerID = customerID;
         this.restaurantID = restaurantID;
         this.date = date;
         this.time = time;
         this.tableNumber = tableNumber;
-    }
-
-    public int getBookingID() {
-        return bookingID;
-    }
-
-    public void setBookingID(int bookingID) {
-        this.bookingID = bookingID;
     }
 
     public int getCustomerID() {
@@ -65,11 +55,11 @@ public class Booking {
         this.time = time;
     }
 
-    public int getTableNumber() {
+    public String getTableNumber() {
         return tableNumber;
     }
 
-    public void setTableNumber(int tableNumber) {
+    public void setTableNumber(String tableNumber) {
         this.tableNumber = tableNumber;
     }
 }

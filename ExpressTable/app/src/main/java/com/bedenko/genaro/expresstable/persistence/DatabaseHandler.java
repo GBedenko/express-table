@@ -126,7 +126,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Customer customer = new Customer();
 
-        int customerID = cursor.getInt(cursor.getColumnIndex("id"));
+        String customerID = cursor.getString(cursor.getColumnIndex("id"));
         customer.setCustomerID(customerID);
 
         String customerUsername = cursor.getString(cursor.getColumnIndex("username"));

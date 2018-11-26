@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.bedenko.genaro.expresstable.R;
 import com.bedenko.genaro.expresstable.controllers.RestaurantAdapter;
@@ -23,30 +25,12 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
     private String[] restaurantNames;
     private String[] restaurantDetails;
 
+    private static final String TAG = "SearchRestaurantsList";
+
+    String currentCustomerLoggedInID;
+
     RestaurantController restaurantController = new RestaurantController();
     DatabaseHandler db = new DatabaseHandler(this);
-
-    public byte[][] restaurantPhotos = {
-            new byte[0],
-            new byte[0],
-            new byte[0],
-            new byte[0],
-            new byte[0],
-            new byte[0],
-            new byte[0],
-            new byte[0]
-    };
-
-//    public Bitmap[] restaurantPhotos = {
-//            BitmapFactory.decodeResource(getResources(), R.drawable.nandos),
-//            BitmapFactory.decodeResource(getResources(), R.drawable.pizza_hut),
-//            BitmapFactory.decodeResource(getResources(), R.drawable.zizzi),
-//            BitmapFactory.decodeResource(getResources(), R.drawable.harvester),
-//            BitmapFactory.decodeResource(getResources(), R.drawable.wagamamas),
-//            BitmapFactory.decodeResource(getResources(), R.drawable.cosy_club),
-//            BitmapFactory.decodeResource(getResources(), R.drawable.cosmo),
-//            BitmapFactory.decodeResource(getResources(), R.drawable.yakki_sushi)
-//    };
 
     private ArrayList<Restaurant> restaurants = new ArrayList<>();
 
@@ -55,6 +39,10 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_restaurants_list);
 
+        Intent intent = getIntent();
+        setCurrentCustomerLoggedInID(intent.getStringExtra("customer_id"));
+
+        Log.d(TAG, "intent " + intent.getStringExtra("customer_id"));
         restaurantNames = getResources().getStringArray(R.array.default_restaurant_names);
         restaurantDetails = getResources().getStringArray(R.array.default_restaurant_details);
 
@@ -70,11 +58,20 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
                         Intent intent = new Intent(SearchRestaurantsListActivity.this, ViewRestaurantActivity.class);
                         intent.putExtra("restaurant_name", restaurants.get(position).getRestaurantName());
                         intent.putExtra("restaurant_id", restaurants.get(position).getRestaurantID());
+                        intent.putExtra("customer_id", getCurrentCustomerLoggedInID());
                         startActivityForResult(intent, 1);
 
                     }
                 }
         );
+    }
+
+    public String getCurrentCustomerLoggedInID() {
+        return currentCustomerLoggedInID;
+    }
+
+    public void setCurrentCustomerLoggedInID(String currentCustomerLoggedInID) {
+        this.currentCustomerLoggedInID = currentCustomerLoggedInID;
     }
 
 }

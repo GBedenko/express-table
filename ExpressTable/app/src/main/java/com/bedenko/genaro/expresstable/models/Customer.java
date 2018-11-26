@@ -8,7 +8,7 @@ package com.bedenko.genaro.expresstable.models;
 
 public class Customer {
 
-    private int customerID = -1;
+    private String customerID;
     private String username;
     private String passwordHash;
 
@@ -24,7 +24,7 @@ public class Customer {
         this.passwordHash = passwordHash;
     }
 
-    public Customer(int customerID, String username, String passwordHash) {
+    public Customer(String customerID, String username, String passwordHash) {
 
         // Create a new instance when all parameters are passed
         this.customerID = customerID;
@@ -32,11 +32,11 @@ public class Customer {
         this.passwordHash = passwordHash;
     }
 
-    public int getCustomerID() {
+    public String getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(int customerID) {
+    public void setCustomerID(String customerID) {
         this.customerID = customerID;
     }
 
