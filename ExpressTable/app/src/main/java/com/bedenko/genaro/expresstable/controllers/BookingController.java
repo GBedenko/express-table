@@ -1,5 +1,7 @@
 package com.bedenko.genaro.expresstable.controllers;
 
+import android.util.Log;
+
 import com.bedenko.genaro.expresstable.models.Booking;
 import com.bedenko.genaro.expresstable.persistence.FirebaseHandler;
 import com.google.firebase.firestore.CollectionReference;
@@ -31,11 +33,16 @@ public class BookingController {
         return(booking);
     }
 
-    public ArrayList<Booking> findBookings(String restaurantID) throws InterruptedException {
+    public ArrayList<String> findBookings(String restaurantID) throws InterruptedException {
+
+        ArrayList<String> bookingsDetails = new ArrayList<>();
 
         ArrayList<Booking> bookingsMapsList = firebaseHandler.findBookings(db.collection("bookings"), restaurantID);
 
-        return bookingsMapsList;
+        for(int i=0; i <=bookingsMapsList.size()-1; i++) {
+            bookingsDetails.add("Date: " + bookingsMapsList.get(i).getDate() + "  Time:  " +  bookingsMapsList.get(i).getTime() + "  Table:  " +  bookingsMapsList.get(i).getTableNumber());
+        }
+        return bookingsDetails;
     }
 
     public void addBookingToFirebase(Booking booking) {

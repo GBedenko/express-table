@@ -69,26 +69,35 @@ public class FirebaseHandler {
         return isDocumentExists();
     }
 
-    public ArrayList<Booking> findBookings(CollectionReference collectionReference, String restaurantID) {
+    public ArrayList<Booking> findBookings(CollectionReference collectionReference, String restaurantID) throws InterruptedException {
 
-        collectionReference
-                .whereEqualTo("restaurantID", Integer.parseInt(restaurantID))
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
+        Task<QuerySnapshot> snapshots = collectionReference.whereEqualTo("restaurantID", Integer.parseInt(restaurantID)).get();
 
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, "Data: " + document.getData());
-                                bookingsList.add(document.toObject(Booking.class));
-                            }
-                            Log.d(TAG, "bookings: " + getBookingsList());
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
+        Thread.sleep(1000);
+
+        for (QueryDocumentSnapshot document : snapshots.getResult()) {
+            Log.d(TAG, "Data: " + document.getData());
+            bookingsList.add(document.toObject(Booking.class));
+        }
+
+//        Log.d(TAG, "bookings: " + getBookingsList());
+//
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                Log.d(TAG, "Data: " + document.getData());
+//                                bookingsList.add(document.toObject(Booking.class));
+//                            }
+//                            Log.d(TAG, "bookings: " + getBookingsList());
+//                        } else {
+//                            Log.d(TAG, "Error getting documents: ", task.getException());
+//                        }
+//                    }
+//
+//                });
 
 
         return getBookingsList();
