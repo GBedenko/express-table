@@ -42,5 +42,6 @@
         <item>Customer</item>
         <item>Restaurant</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

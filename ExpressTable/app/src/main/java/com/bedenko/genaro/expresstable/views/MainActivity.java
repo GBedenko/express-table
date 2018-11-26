@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createAccountButtonClicked() {
-        startActivity(new Intent(getBaseContext(), ChooseAccountTypeActivity.class));
+        startActivity(new Intent(getBaseContext(), MapsActivity.class));
     }
 
     private void loginButtonClicked() {
