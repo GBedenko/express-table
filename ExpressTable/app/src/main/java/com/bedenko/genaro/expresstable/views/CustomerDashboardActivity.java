@@ -61,7 +61,7 @@ public class CustomerDashboardActivity extends AppCompatActivity {
 
     private void viewRestaurantsByGpsButtonClicked() {
 
-        Intent intent = new Intent(CustomerDashboardActivity.this, SearchRestaurantsGpsActivity.class);
+        Intent intent = new Intent(CustomerDashboardActivity.this, MapsActivity.class);
         intent.putExtra("customer_id", getCurrentCustomerLoggedInID());
 
         startActivityForResult(intent, 1);
