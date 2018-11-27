@@ -8,18 +8,12 @@ public class Restaurant {
     private String username;
     private String restaurantName;
     private String passwordHash;
-<<<<<<< HEAD
     private byte[] logoImage;
     private byte[] menuImage;
     private byte[] floorPlanImage;
-    private String gpsLocation;
     private String restaurantType;
-=======
-    private String restaurantType;
-    private int restaurantPhoto;
     private double restaurantLatitude;
     private double restaurantLongitude;
->>>>>>> google_maps_and_gps
 
     public Restaurant() {
 
@@ -41,11 +35,7 @@ public class Restaurant {
         this.logoImage = restaurantLogo;
     }
 
-<<<<<<< HEAD
-    public Restaurant(String restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, byte[] restaurantLogo) {
-=======
-    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String restaurantType, int restaurantPhoto, double restaurantLatitude, double restaurantLongitude) {
->>>>>>> google_maps_and_gps
+    public Restaurant(String restaurantID, String username, String restaurantName, String passwordHash, String restaurantType, byte[] restaurantLogo, double restaurantLatitude, double restaurantLongitude) {
 
         // Create a new instance when all parameters are passed
         this.restaurantID = restaurantID;
@@ -53,13 +43,9 @@ public class Restaurant {
         this.restaurantName = restaurantName;
         this.passwordHash = passwordHash;
         this.restaurantType = restaurantType;
-<<<<<<< HEAD
         this.logoImage = restaurantLogo;
-=======
-        this.restaurantPhoto = restaurantPhoto;
         this.restaurantLatitude = restaurantLatitude;
         this.restaurantLongitude = restaurantLongitude;
->>>>>>> google_maps_and_gps
     }
 
     public String getRestaurantID() {
@@ -94,14 +80,6 @@ public class Restaurant {
         this.passwordHash = passwordHash;
     }
 
-    public String getRestaurantType() {
-        return restaurantType;
-    }
-
-    public void setRestaurantType(String restaurantType) {
-        this.restaurantType = restaurantType;
-    }
-
     public byte[] getLogoImage() {
         return logoImage;
     }
@@ -124,6 +102,14 @@ public class Restaurant {
 
     public void setFloorPlanImage(byte[] floorPlanImage) {
         this.floorPlanImage = floorPlanImage;
+    }
+
+    public String getRestaurantType() {
+        return restaurantType;
+    }
+
+    public void setRestaurantType(String restaurantType) {
+        this.restaurantType = restaurantType;
     }
 
     public double getRestaurantLatitude() {

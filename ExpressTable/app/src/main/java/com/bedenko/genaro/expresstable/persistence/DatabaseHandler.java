@@ -69,16 +69,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     "username TEXT," +
                     "restaurant_name TEXT," +
                     "password_hash TEXT," +
-<<<<<<< HEAD
                     "logo TEXT," +
                     "menu_image TEXT," +
                     "floorplan_image TEXT," +
-                    "gps_location TEXT)");
-=======
                     "latitude REAL," +
                     "longitude REAL," +
                     "postcode TEXT)");
->>>>>>> google_maps_and_gps
     }
 
     @Override
@@ -194,8 +190,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         byte[] floorPlanImage = cursor.getBlob(cursor.getColumnIndex("floorplan_image"));
         restaurant.setFloorPlanImage(floorPlanImage);
 
-        String gpsLocation = cursor.getString(cursor.getColumnIndex("gps_location"));
-        restaurant.setGpsLocation(gpsLocation);
+        double latitude = cursor.getDouble(cursor.getColumnIndex("latitude"));
+        restaurant.setRestaurantLatitude(latitude);
+
+        double longitude = cursor.getDouble(cursor.getColumnIndex("longitude"));
+        restaurant.setRestaurantLongitude(longitude);
 
         return restaurant;
     }
