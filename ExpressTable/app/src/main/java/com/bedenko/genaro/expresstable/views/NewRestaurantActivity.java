@@ -61,9 +61,10 @@ public class NewRestaurantActivity extends AppCompatActivity {
         String restaurantUsername = restaurantUsernameField.getText().toString();
         String restaurantName = restaurantNameField.getText().toString();
         String restaurantPasswordHash = commonUtils.md5Hash(restaurantPasswordField.getText().toString());
-        String restaurantGpsLocation = "XXXYYYZZZ";
+        double restaurantLatitude = 52.4082385;
+        double restaurantLongitude = -1.5155974;
 
-        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantGpsLocation);
+        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLatitude, restaurantLongitude);
 
         restaurantController.addRestaurantToDB(db, newRestaurant);
         Toast.makeText(getApplicationContext(),"Restaurant Account Created", Toast.LENGTH_SHORT).show();

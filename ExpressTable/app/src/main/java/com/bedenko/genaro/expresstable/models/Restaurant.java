@@ -6,9 +6,10 @@ public class Restaurant {
     private String username;
     private String restaurantName;
     private String passwordHash;
-    private String gpsLocation;
     private String restaurantType;
     private int restaurantPhoto;
+    private double restaurantLatitude;
+    private double restaurantLongitude;
 
     public Restaurant() {
 
@@ -30,16 +31,17 @@ public class Restaurant {
         this.restaurantPhoto = restaurantPhoto;
     }
 
-    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, int restaurantPhoto) {
+    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String restaurantType, int restaurantPhoto, double restaurantLatitude, double restaurantLongitude) {
 
         // Create a new instance when all parameters are passed
         this.restaurantID = restaurantID;
         this.username = username;
         this.restaurantName = restaurantName;
         this.passwordHash = passwordHash;
-        this.gpsLocation = gpsLocation;
         this.restaurantType = restaurantType;
         this.restaurantPhoto = restaurantPhoto;
+        this.restaurantLatitude = restaurantLatitude;
+        this.restaurantLongitude = restaurantLongitude;
     }
 
     public int getRestaurantID() {
@@ -74,14 +76,6 @@ public class Restaurant {
         this.passwordHash = passwordHash;
     }
 
-    public String getGpsLocation() {
-        return gpsLocation;
-    }
-
-    public void setGpsLocation(String gpsLocation) {
-        this.gpsLocation = gpsLocation;
-    }
-
     public String getRestaurantType() {
         return restaurantType;
     }
@@ -98,4 +92,19 @@ public class Restaurant {
         this.restaurantPhoto = restaurantPhoto;
     }
 
+    public double getRestaurantLatitude() {
+        return restaurantLatitude;
+    }
+
+    public void setRestaurantLatitude(double restaurantLatitude) {
+        this.restaurantLatitude = restaurantLatitude;
+    }
+
+    public double getRestaurantLongitude() {
+        return restaurantLongitude;
+    }
+
+    public void setRestaurantLongitude(double restaurantLongitude) {
+        this.restaurantLongitude = restaurantLongitude;
+    }
 }

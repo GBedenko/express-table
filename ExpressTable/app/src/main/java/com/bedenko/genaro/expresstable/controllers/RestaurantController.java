@@ -8,14 +8,15 @@ import com.bedenko.genaro.expresstable.persistence.DatabaseHandler;
 
 public class RestaurantController {
 
-    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, String aGpsLocation) {
+    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, double aRestaurantLatitude, double aRestaurantLongitude) {
 
         Restaurant restaurant = new Restaurant();
 
         restaurant.setUsername(aUsername);
         restaurant.setRestaurantName(aRestaurantName);
         restaurant.setPasswordHash(aPasswordHash);
-        restaurant.setGpsLocation(aGpsLocation);
+        restaurant.setRestaurantLatitude(aRestaurantLatitude);
+        restaurant.setRestaurantLongitude(aRestaurantLongitude);
 
         return(restaurant);
     }
@@ -26,7 +27,8 @@ public class RestaurantController {
         restaurantValues.put("username", restaurant.getUsername());
         restaurantValues.put("restaurant_name", restaurant.getRestaurantName());
         restaurantValues.put("password_hash", restaurant.getPasswordHash());
-        restaurantValues.put("gps_location", restaurant.getGpsLocation());
+        restaurantValues.put("latitude", restaurant.getRestaurantLatitude());
+        restaurantValues.put("longitude", restaurant.getRestaurantLongitude());
 
         db.write("restaurants", restaurantValues);
     }

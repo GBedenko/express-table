@@ -61,7 +61,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     "restaurant_name TEXT," +
                     "email_address TEXT UNIQUE," +
                     "password_hash TEXT," +
-                    "gps_location TEXT," +
+                    "latitude REAL," +
+                    "longitude REAL," +
                     "postcode TEXT)");
     }
 
