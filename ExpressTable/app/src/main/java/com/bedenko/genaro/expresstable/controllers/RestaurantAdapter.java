@@ -44,7 +44,7 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
 
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(restaurants.get(position).getLogoImage(), 0, restaurants.get(position).getLogoImage().length));
             textViewName.setText(restaurants.get(position).getRestaurantName());
-            textViewDetail.setText(Double.toString(restaurants.get(position).getRestaurantLatitude()));
+            textViewDetail.setText(restaurants.get(position).getRestaurantAddress());
 
         } catch (Exception e) {
             e.printStackTrace();

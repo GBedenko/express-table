@@ -1,7 +1,5 @@
 package com.bedenko.genaro.expresstable.models;
 
-import android.graphics.Bitmap;
-
 public class Restaurant {
 
     private String restaurantID;
@@ -11,9 +9,9 @@ public class Restaurant {
     private byte[] logoImage;
     private byte[] menuImage;
     private byte[] floorPlanImage;
-    private String restaurantType;
     private double restaurantLatitude;
     private double restaurantLongitude;
+    private String restaurantAddress;
 
     public Restaurant() {
 
@@ -27,25 +25,25 @@ public class Restaurant {
         this.passwordHash = passwordHash;
     }
 
-    public Restaurant(String restaurantName, String restaurantType, byte[] restaurantLogo) {
+    public Restaurant(String restaurantName, String restaurantAddress, byte[] restaurantLogo) {
 
         // Constructor used for ListView of Restaurants
         this.restaurantName = restaurantName;
-        this.restaurantType = restaurantType;
+        this.restaurantAddress = restaurantAddress;
         this.logoImage = restaurantLogo;
     }
 
-    public Restaurant(String restaurantID, String username, String restaurantName, String passwordHash, String restaurantType, byte[] restaurantLogo, double restaurantLatitude, double restaurantLongitude) {
+    public Restaurant(String restaurantID, String username, String restaurantName, String passwordHash, byte[] restaurantLogo, double restaurantLatitude, double restaurantLongitude, String restaurantAddress) {
 
         // Create a new instance when all parameters are passed
         this.restaurantID = restaurantID;
         this.username = username;
         this.restaurantName = restaurantName;
         this.passwordHash = passwordHash;
-        this.restaurantType = restaurantType;
         this.logoImage = restaurantLogo;
         this.restaurantLatitude = restaurantLatitude;
         this.restaurantLongitude = restaurantLongitude;
+        this.restaurantAddress = restaurantAddress;
     }
 
     public String getRestaurantID() {
@@ -104,14 +102,6 @@ public class Restaurant {
         this.floorPlanImage = floorPlanImage;
     }
 
-    public String getRestaurantType() {
-        return restaurantType;
-    }
-
-    public void setRestaurantType(String restaurantType) {
-        this.restaurantType = restaurantType;
-    }
-
     public double getRestaurantLatitude() {
         return restaurantLatitude;
     }
@@ -126,5 +116,13 @@ public class Restaurant {
 
     public void setRestaurantLongitude(double restaurantLongitude) {
         this.restaurantLongitude = restaurantLongitude;
+    }
+
+    public String getRestaurantAddress() {
+        return restaurantAddress;
+    }
+
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
     }
 }

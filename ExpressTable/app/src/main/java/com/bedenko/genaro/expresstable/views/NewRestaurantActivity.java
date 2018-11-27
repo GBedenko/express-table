@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bedenko.genaro.expresstable.R;
@@ -35,6 +36,10 @@ public class NewRestaurantActivity extends AppCompatActivity {
     private Bitmap restaurantLogo;
     private Bitmap restaurantMenuImage;
     private Bitmap restaurantFloorPlanImage;
+
+    private double restaurantLatitude;
+    private double restaurantLongitude;
+    private String restaurantAddress;
 
     // Different request types for different intents for onActivityResult
     private static final int LOGO_IMAGE_GALLERY_REQUEST = 1;
@@ -92,6 +97,25 @@ public class NewRestaurantActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        try {
+
+            Intent intent = getIntent();
+
+            setRestaurantLatitude(Double.parseDouble(intent.getStringExtra("latitude")));
+            setRestaurantLongitude(Double.parseDouble(intent.getStringExtra("longitude")));
+            setRestaurantAddress(intent.getStringExtra("address"));
+        } catch (NullPointerException e) {
+
+            setRestaurantLatitude(50.0);
+            setRestaurantLongitude(50.0);
+            setRestaurantAddress("Address not yet known");
+        }
+    }
+
     private void enterLogoImageButtonClicked() {
         // Calls onActivityResult with the intent to select an image from gallery
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
@@ -131,6 +155,10 @@ public class NewRestaurantActivity extends AppCompatActivity {
         Bitmap restaurantMenuImage = getRestaurantMenuImage();
         Bitmap restaurantFloorPlanImage = getRestaurantFloorPlanImage();
 
+        double restaurantLatitude = getRestaurantLatitude();
+        double restaurantLongitude = getRestaurantLongitude();
+        String restaurantAddress = getRestaurantAddress();
+
         // For each of the images, convert them to a byte array so they can be stored in sqlite db
         // Convert logo image
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -148,12 +176,8 @@ public class NewRestaurantActivity extends AppCompatActivity {
         byte[] restaurantFloorPlanImageByteArray = stream.toByteArray();
         restaurantFloorPlanImage.recycle();
 
-        // Retrieve the GPS co-ordinates the user is located at (yet to be implemented)
-        double restaurantLatitude = 52.4082385;
-        double restaurantLongitude = -1.5155974;
-
         // Create a new restaurant entity from the fields/images/gps that the user entered
-        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLogoByteArray, restaurantMenuImageByteArray, restaurantFloorPlanImageByteArray, restaurantLatitude, restaurantLongitude);
+        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLogoByteArray, restaurantMenuImageByteArray, restaurantFloorPlanImageByteArray, restaurantLatitude, restaurantLongitude, restaurantAddress);
 
         // Add restaurant details to the local database and send confirmation to user
         restaurantController.addRestaurantToDB(db, newRestaurant);
@@ -230,4 +254,29 @@ public class NewRestaurantActivity extends AppCompatActivity {
     public void setRestaurantFloorPlanImage(Bitmap restaurantFloorPlanImage) {
         this.restaurantFloorPlanImage = restaurantFloorPlanImage;
     }
+
+    public double getRestaurantLatitude() {
+        return restaurantLatitude;
+    }
+
+    public void setRestaurantLatitude(double restaurantLatitude) {
+        this.restaurantLatitude = restaurantLatitude;
+    }
+
+    public double getRestaurantLongitude() {
+        return restaurantLongitude;
+    }
+
+    public void setRestaurantLongitude(double restaurantLongitude) {
+        this.restaurantLongitude = restaurantLongitude;
+    }
+
+    public String getRestaurantAddress() {
+        return restaurantAddress;
+    }
+
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
+    }
+
 }

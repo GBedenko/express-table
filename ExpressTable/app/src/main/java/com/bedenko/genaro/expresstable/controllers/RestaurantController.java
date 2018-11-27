@@ -13,7 +13,7 @@ public class RestaurantController {
 
     private static final String TAG = "RestaurantController";
 
-    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, byte[] aRestaurantLogo, byte[] aRestaurantMenu, byte[] aRestaurantFloorPlan, double aRestaurantLatitude, double aRestaurantLongitude) {
+    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, byte[] aRestaurantLogo, byte[] aRestaurantMenu, byte[] aRestaurantFloorPlan, double aRestaurantLatitude, double aRestaurantLongitude, String aRestaurantAddress) {
 
         Restaurant restaurant = new Restaurant();
 
@@ -25,6 +25,7 @@ public class RestaurantController {
         restaurant.setFloorPlanImage(aRestaurantFloorPlan);
         restaurant.setRestaurantLatitude(aRestaurantLatitude);
         restaurant.setRestaurantLongitude(aRestaurantLongitude);
+        restaurant.setRestaurantAddress(aRestaurantAddress);
 
         return(restaurant);
     }

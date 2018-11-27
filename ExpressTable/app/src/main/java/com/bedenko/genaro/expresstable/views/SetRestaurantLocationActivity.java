@@ -1,6 +1,7 @@
 package com.bedenko.genaro.expresstable.views;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -11,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -73,6 +75,16 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
         mLocationRequest.setInterval(10000);
         mLocationRequest.setFastestInterval(5000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+
+        Button confirmLocationButton = findViewById(R.id.confirmLocationButton);
+
+        confirmLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmLocationButtonClicked();
+            }
+        });
     }
 
     @Override
@@ -174,5 +186,40 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
         } catch (Exception e) {
             mOutput.setText("WARNING! Geocoder.getFromLocation() didn't work!");
         }
+    }
+
+    public TextView getmLatitudeText() {
+        return mLatitudeText;
+    }
+
+    public void setmLatitudeText(TextView mLatitudeText) {
+        this.mLatitudeText = mLatitudeText;
+    }
+
+    public TextView getmLongitudeText() {
+        return mLongitudeText;
+    }
+
+    public void setmLongitudeText(TextView mLongitudeText) {
+        this.mLongitudeText = mLongitudeText;
+    }
+
+    public TextView getmOutput() {
+        return mOutput;
+    }
+
+    public void setmOutput(TextView mOutput) {
+        this.mOutput = mOutput;
+    }
+
+    private void confirmLocationButtonClicked() {
+
+        Intent intent = new Intent(SetRestaurantLocationActivity.this, NewRestaurantActivity.class);
+
+        intent.putExtra("latitude", getmLatitudeText().getText().toString());
+        intent.putExtra("longitude", getmLongitudeText().getText().toString());
+        intent.putExtra("address", getmOutput().getText().toString());
+
+        startActivityForResult(intent, 1);
     }
 }
