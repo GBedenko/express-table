@@ -22,16 +22,19 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class SetRestaurantLocationActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     public static int REQUEST_LOCATION = 1;
 
-    protected TextView latitudeTextView;
-    protected TextView longitudeTextView;
-    protected TextView locationDescription;
-    protected Button refreshLocationButton;
+    // member views
+    protected TextView mLatitudeText;
+    protected TextView mLongitudeText;
+    protected TextView mOutput;
+    protected Button mLocateButton;
 
     // member variables that hold location info
     protected GoogleApiClient mGoogleApiClient;
@@ -44,14 +47,16 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_restaurant_location);
 
-        latitudeTextView = findViewById((R.id.latitudeText));
-        longitudeTextView = findViewById((R.id.longitudeText));
-        locationDescription = findViewById(R.id.locationDescription);
-        refreshLocationButton = findViewById(R.id.refreshLocationButton);
+        // initialize views
+        mLatitudeText = findViewById((R.id.latitude_text));
+        mLongitudeText = findViewById((R.id.longitude_text));
+        mLocateButton = findViewById(R.id.locate);
+        mOutput = findViewById((R.id.output));
 
-        latitudeTextView.setText("Latitude not available yet");
-        longitudeTextView.setText("Longitude not available yet");
-        locationDescription.setText("");
+        // below are placeholder values used when the app doesn't have the permission
+        mLatitudeText.setText("Latitude not available yet");
+        mLongitudeText.setText("Longitude not available yet");
+        mOutput.setText("");
 
         // GoogleApiClient allows to connect to remote services, the two listeners are the first
         // two interfaces the current class implements
@@ -61,7 +66,7 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
                 .addApi(LocationServices.API)
                 .build();
 
-        refreshLocationButton.setEnabled(mGoogleApiClient.isConnected());
+        mLocateButton.setEnabled(mGoogleApiClient.isConnected());
 
         // LocationReques sets how often etc the app receives location updates
         mLocationRequest = new LocationRequest();
@@ -86,8 +91,8 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
         } else {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
             if (mLastLocation != null) {
-                latitudeTextView.setText(String.valueOf(mLastLocation.getLatitude()));
-                longitudeTextView.setText(String.valueOf(mLastLocation.getLongitude()));
+                mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+                mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
             }
 
             // the last parameter specify the onLocationChanged listener
@@ -118,8 +123,8 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
     @Override
     public void onLocationChanged(Location location) {
         mLastLocation = location;
-        latitudeTextView.setText(String.valueOf(mLastLocation.getLatitude()));
-        longitudeTextView.setText(String.valueOf(mLastLocation.getLongitude()));
+        mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+        mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
     }
 
     /*
@@ -130,12 +135,12 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
     public void onStartClicked(View v) {
         if (!mGoogleApiClient.isConnected()) {
             mGoogleApiClient.connect();
-            refreshLocationButton.setEnabled(true);
-            locationDescription.setText("GoogleApiClient has started. You can see the location icon in status bar");
+            mLocateButton.setEnabled(true);
+            mOutput.setText("GoogleApiClient has started. You can see the location icon in status bar");
         } else {
             mGoogleApiClient.disconnect();
-            refreshLocationButton.setEnabled(false);
-            locationDescription.setText("GoogleApiClient has stopped. Location icon in status has gone.");
+            mLocateButton.setEnabled(false);
+            mOutput.setText("GoogleApiClient has stopped. Location icon in status has gone.");
         }
     }
 
@@ -162,12 +167,12 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
                 } else {
                     addressLines.append(address.getAddressLine(0));
                 }
-                locationDescription.setText(addressLines);
+                mOutput.setText(addressLines);
             } else {
-                locationDescription.setText("WARNING! Geocoder returned more than 1 addresses!");
+                mOutput.setText("WARNING! Geocoder returned more than 1 addresses!");
             }
         } catch (Exception e) {
-            locationDescription.setText("WARNING! Geocoder.getFromLocation() didn't work!");
+            mOutput.setText("WARNING! Geocoder.getFromLocation() didn't work!");
         }
     }
 }
