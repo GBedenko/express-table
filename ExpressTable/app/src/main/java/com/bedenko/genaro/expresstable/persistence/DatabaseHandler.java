@@ -69,10 +69,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     "username TEXT," +
                     "restaurant_name TEXT," +
                     "password_hash TEXT," +
+<<<<<<< HEAD
                     "logo TEXT," +
                     "menu_image TEXT," +
                     "floorplan_image TEXT," +
                     "gps_location TEXT)");
+=======
+                    "latitude REAL," +
+                    "longitude REAL," +
+                    "postcode TEXT)");
+>>>>>>> google_maps_and_gps
     }
 
     @Override

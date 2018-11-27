@@ -8,11 +8,18 @@ public class Restaurant {
     private String username;
     private String restaurantName;
     private String passwordHash;
+<<<<<<< HEAD
     private byte[] logoImage;
     private byte[] menuImage;
     private byte[] floorPlanImage;
     private String gpsLocation;
     private String restaurantType;
+=======
+    private String restaurantType;
+    private int restaurantPhoto;
+    private double restaurantLatitude;
+    private double restaurantLongitude;
+>>>>>>> google_maps_and_gps
 
     public Restaurant() {
 
@@ -34,16 +41,25 @@ public class Restaurant {
         this.logoImage = restaurantLogo;
     }
 
+<<<<<<< HEAD
     public Restaurant(String restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, byte[] restaurantLogo) {
+=======
+    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String restaurantType, int restaurantPhoto, double restaurantLatitude, double restaurantLongitude) {
+>>>>>>> google_maps_and_gps
 
         // Create a new instance when all parameters are passed
         this.restaurantID = restaurantID;
         this.username = username;
         this.restaurantName = restaurantName;
         this.passwordHash = passwordHash;
-        this.gpsLocation = gpsLocation;
         this.restaurantType = restaurantType;
+<<<<<<< HEAD
         this.logoImage = restaurantLogo;
+=======
+        this.restaurantPhoto = restaurantPhoto;
+        this.restaurantLatitude = restaurantLatitude;
+        this.restaurantLongitude = restaurantLongitude;
+>>>>>>> google_maps_and_gps
     }
 
     public String getRestaurantID() {
@@ -78,14 +94,6 @@ public class Restaurant {
         this.passwordHash = passwordHash;
     }
 
-    public String getGpsLocation() {
-        return gpsLocation;
-    }
-
-    public void setGpsLocation(String gpsLocation) {
-        this.gpsLocation = gpsLocation;
-    }
-
     public String getRestaurantType() {
         return restaurantType;
     }
@@ -118,4 +126,19 @@ public class Restaurant {
         this.floorPlanImage = floorPlanImage;
     }
 
+    public double getRestaurantLatitude() {
+        return restaurantLatitude;
+    }
+
+    public void setRestaurantLatitude(double restaurantLatitude) {
+        this.restaurantLatitude = restaurantLatitude;
+    }
+
+    public double getRestaurantLongitude() {
+        return restaurantLongitude;
+    }
+
+    public void setRestaurantLongitude(double restaurantLongitude) {
+        this.restaurantLongitude = restaurantLongitude;
+    }
 }

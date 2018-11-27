@@ -11,19 +11,28 @@ import java.util.ArrayList;
 
 public class RestaurantController {
 
+<<<<<<< HEAD
     private static final String TAG = "RestaurantController";
 
     public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, byte[] aRestaurantLogo, byte[] aRestaurantMenu, byte[] aRestaurantFloorPlan, String aGpsLocation) {
+=======
+    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, double aRestaurantLatitude, double aRestaurantLongitude) {
+>>>>>>> google_maps_and_gps
 
         Restaurant restaurant = new Restaurant();
 
         restaurant.setUsername(aUsername);
         restaurant.setRestaurantName(aRestaurantName);
         restaurant.setPasswordHash(aPasswordHash);
+<<<<<<< HEAD
         restaurant.setLogoImage(aRestaurantLogo);
         restaurant.setMenuImage(aRestaurantMenu);
         restaurant.setFloorPlanImage(aRestaurantFloorPlan);
         restaurant.setGpsLocation(aGpsLocation);
+=======
+        restaurant.setRestaurantLatitude(aRestaurantLatitude);
+        restaurant.setRestaurantLongitude(aRestaurantLongitude);
+>>>>>>> google_maps_and_gps
 
         return(restaurant);
     }
@@ -34,10 +43,15 @@ public class RestaurantController {
         restaurantValues.put("username", restaurant.getUsername());
         restaurantValues.put("restaurant_name", restaurant.getRestaurantName());
         restaurantValues.put("password_hash", restaurant.getPasswordHash());
+<<<<<<< HEAD
         restaurantValues.put("logo", restaurant.getLogoImage());
         restaurantValues.put("menu_image", restaurant.getMenuImage());
         restaurantValues.put("floorplan_image", restaurant.getFloorPlanImage());
         restaurantValues.put("gps_location", restaurant.getGpsLocation());
+=======
+        restaurantValues.put("latitude", restaurant.getRestaurantLatitude());
+        restaurantValues.put("longitude", restaurant.getRestaurantLongitude());
+>>>>>>> google_maps_and_gps
 
         db.write("restaurants", restaurantValues);
     }

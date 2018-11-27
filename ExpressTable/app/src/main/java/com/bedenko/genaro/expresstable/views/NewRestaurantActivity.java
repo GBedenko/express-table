@@ -84,6 +84,7 @@ public class NewRestaurantActivity extends AppCompatActivity {
         });
     }
 
+<<<<<<< HEAD
     private void enterLogoImageButtonClicked() {
         // Calls onActivityResult with the intent to select an image from gallery
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
@@ -101,6 +102,22 @@ public class NewRestaurantActivity extends AppCompatActivity {
         // Calls onActivityResult with the intent to capture an image from camera
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, FLOORPLAN_IMAGE_CAMERA_REQUEST);
+=======
+        Button setRestaurantLocationButton = findViewById(R.id.enterGpsLocation);
+
+        setRestaurantLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRestaurantLocationButtonClicked();
+            }
+        });
+
+    }
+
+    private void setRestaurantLocationButtonClicked() {
+
+        startActivity(new Intent(getBaseContext(), SetRestaurantLocationActivity.class));
+>>>>>>> google_maps_and_gps
     }
 
     private void submitRestaurantButtonClicked() {
@@ -112,6 +129,7 @@ public class NewRestaurantActivity extends AppCompatActivity {
         String restaurantUsername = restaurantUsernameField.getText().toString();
         String restaurantName = restaurantNameField.getText().toString();
         String restaurantPasswordHash = commonUtils.md5Hash(restaurantPasswordField.getText().toString());
+<<<<<<< HEAD
 
         // Retrieve the images the user entered from the previous intents (run on previous button clicks)
         Bitmap restaurantLogo = getRestaurantLogo();
@@ -140,6 +158,12 @@ public class NewRestaurantActivity extends AppCompatActivity {
 
         // Create a new restaurant entity from the fields/images/gps that the user entered
         Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLogoByteArray, restaurantMenuImageByteArray, restaurantFloorPlanImageByteArray, restaurantGpsLocation);
+=======
+        double restaurantLatitude = 52.4082385;
+        double restaurantLongitude = -1.5155974;
+
+        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLatitude, restaurantLongitude);
+>>>>>>> google_maps_and_gps
 
         // Add restaurant details to the local database and send confirmation to user
         restaurantController.addRestaurantToDB(db, newRestaurant);
