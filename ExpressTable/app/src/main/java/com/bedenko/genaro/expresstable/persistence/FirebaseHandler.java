@@ -1,5 +1,11 @@
 package com.bedenko.genaro.expresstable.persistence;
 
+/*
+  Created by Genaro Bedenko for 300CEM Android Application Development Assignment
+  Student ID 7060234
+  @author bedenkog
+ */
+
 import android.support.annotation.NonNull;
 import android.util.Log;
 
