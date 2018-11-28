@@ -41,6 +41,7 @@ public class RestaurantController {
         restaurantValues.put("floorplan_image", restaurant.getFloorPlanImage());
         restaurantValues.put("latitude", restaurant.getRestaurantLatitude());
         restaurantValues.put("longitude", restaurant.getRestaurantLongitude());
+        restaurantValues.put("address", restaurant.getRestaurantAddress());
 
         db.write("restaurants", restaurantValues);
     }

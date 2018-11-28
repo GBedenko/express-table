@@ -3,6 +3,7 @@ package com.bedenko.genaro.expresstable.controllers;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.bedenko.genaro.expresstable.models.Restaurant;
 import java.util.ArrayList;
 
 public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
+
+    private static final String TAG = "RestaurantAdapter";
 
     private int resource;
     private ArrayList<Restaurant> restaurants;
@@ -41,6 +44,8 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurant> {
             ImageView imageView = v.findViewById(R.id.listItemImageView);
             TextView textViewName = v.findViewById(R.id.listItemNameTextView);
             TextView textViewDetail = v.findViewById(R.id.listItemDetailsTextView);
+
+            Log.d(TAG, "address " + restaurants.get(position).getRestaurantAddress());
 
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(restaurants.get(position).getLogoImage(), 0, restaurants.get(position).getLogoImage().length));
             textViewName.setText(restaurants.get(position).getRestaurantName());

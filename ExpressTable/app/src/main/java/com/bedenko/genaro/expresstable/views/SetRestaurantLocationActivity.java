@@ -30,6 +30,8 @@ import java.util.List;
 
 public class SetRestaurantLocationActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
+    private static final String TAG = "SetRestaurantLocation";
+
     public static int REQUEST_LOCATION = 1;
 
     // member views
@@ -56,9 +58,9 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
         mOutput = findViewById((R.id.output));
 
         // below are placeholder values used when the app doesn't have the permission
-        mLatitudeText.setText("Latitude not available yet");
-        mLongitudeText.setText("Longitude not available yet");
-        mOutput.setText("");
+        mLatitudeText.setText("Waiting for GPS...");
+        mLongitudeText.setText("Waiting for GPS...");
+        mOutput.setText("Turn On Location Finder Above");
 
         // GoogleApiClient allows to connect to remote services, the two listeners are the first
         // two interfaces the current class implements
@@ -148,11 +150,11 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
         if (!mGoogleApiClient.isConnected()) {
             mGoogleApiClient.connect();
             mLocateButton.setEnabled(true);
-            mOutput.setText("GoogleApiClient has started. You can see the location icon in status bar");
+            mOutput.setText("GPS Location running above, press Locate to view Address");
         } else {
             mGoogleApiClient.disconnect();
             mLocateButton.setEnabled(false);
-            mOutput.setText("GoogleApiClient has stopped. Location icon in status has gone.");
+            mOutput.setText("GPS Location stopped, turn on to update GPS Location");
         }
     }
 
@@ -219,6 +221,8 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
         intent.putExtra("latitude", getmLatitudeText().getText().toString());
         intent.putExtra("longitude", getmLongitudeText().getText().toString());
         intent.putExtra("address", getmOutput().getText().toString());
+
+        Log.d(TAG, "address " + getmOutput().getText().toString());
 
         startActivityForResult(intent, 1);
     }

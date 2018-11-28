@@ -74,7 +74,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     "floorplan_image TEXT," +
                     "latitude REAL," +
                     "longitude REAL," +
-                    "postcode TEXT)");
+                    "address TEXT)");
     }
 
     @Override
@@ -195,6 +195,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         double longitude = cursor.getDouble(cursor.getColumnIndex("longitude"));
         restaurant.setRestaurantLongitude(longitude);
+
+        String address = cursor.getString(cursor.getColumnIndex("address"));
+        restaurant.setRestaurantAddress(address);
 
         return restaurant;
     }

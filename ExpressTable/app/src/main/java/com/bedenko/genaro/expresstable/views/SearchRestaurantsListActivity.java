@@ -48,6 +48,11 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
 
         restaurants = restaurantController.getAllRestaurantsFromDB(db);
 
+        for(int i=0; i <= restaurants.size()-1; i++) {
+
+            Log.d(TAG, "address " + restaurants.get(i).getRestaurantAddress());
+        }
+
         listView = findViewById(R.id.listViewComplex);
         listView.setAdapter(new RestaurantAdapter(this, R.layout.list_item, restaurants));
         listView.setOnItemClickListener(

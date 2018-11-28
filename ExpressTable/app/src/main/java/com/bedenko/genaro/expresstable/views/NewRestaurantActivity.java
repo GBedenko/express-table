@@ -32,6 +32,8 @@ public class NewRestaurantActivity extends AppCompatActivity {
     DatabaseHandler db = new DatabaseHandler(this);
     CommonUtils commonUtils = new CommonUtils();
 
+    private static final String TAG = "NewRestaurantActivity";
+
     // Variables to store the images being entered by the user
     private Bitmap restaurantLogo;
     private Bitmap restaurantMenuImage;
@@ -108,6 +110,8 @@ public class NewRestaurantActivity extends AppCompatActivity {
             setRestaurantLatitude(Double.parseDouble(intent.getStringExtra("latitude")));
             setRestaurantLongitude(Double.parseDouble(intent.getStringExtra("longitude")));
             setRestaurantAddress(intent.getStringExtra("address"));
+
+            Log.d(TAG, "address " + getRestaurantAddress());
         } catch (NullPointerException e) {
 
             setRestaurantLatitude(50.0);

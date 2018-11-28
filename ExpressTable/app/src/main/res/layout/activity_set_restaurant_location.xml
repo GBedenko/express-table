@@ -13,6 +13,8 @@
 
     <TextView
         android:id="@+id/textView5"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -25,12 +27,13 @@
 
     <TextView
         android:id="@+id/latitude_text"
-        android:layout_width="103dp"
-        android:layout_height="19dp"
+        android:layout_width="193dp"
+        android:layout_height="28dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="latitude"
+        android:textAlignment="center"
         android:textIsSelectable="true"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +42,8 @@
 
     <TextView
         android:id="@+id/textView"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -51,12 +56,13 @@
 
     <TextView
         android:id="@+id/longitude_text"
-        android:layout_width="96dp"
-        android:layout_height="20dp"
+        android:layout_width="196dp"
+        android:layout_height="27dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:text="longitude"
+        android:textAlignment="center"
         android:textIsSelectable="true"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,6 +102,7 @@
         android:layout_marginEnd="8dp"
         android:gravity="top"
         android:text="output area"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
