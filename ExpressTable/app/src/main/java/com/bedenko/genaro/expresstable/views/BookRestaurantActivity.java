@@ -19,7 +19,6 @@ import android.widget.TextView;
 import com.bedenko.genaro.expresstable.R;
 import com.bedenko.genaro.expresstable.controllers.BookingController;
 import com.bedenko.genaro.expresstable.models.Booking;
-import com.google.firebase.FirebaseApp;
 
 public class BookRestaurantActivity extends AppCompatActivity {
 

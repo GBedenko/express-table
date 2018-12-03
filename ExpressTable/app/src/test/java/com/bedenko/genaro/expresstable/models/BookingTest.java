@@ -1,5 +1,11 @@
 package com.bedenko.genaro.expresstable.models;
 
+/*
+  Created by Genaro Bedenko for 300CEM Android Application Development Assignment
+  Student ID 7060234
+  @author bedenkog
+ */
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -61,13 +67,13 @@ public class BookingTest {
     @Test
     public void getTableNumber() {
         Booking booking = new Booking(1111, 2222, "01/01/2018", "19:00", "10");
-        assertEquals(booking.getTableNumber(), 10);
+        assertEquals(booking.getTableNumber(), "10");
     }
 
     @Test
     public void setTableNumber() {
         Booking booking = new Booking(1111, 2222, "01/01/2018", "19:00", "10");
         booking.setTableNumber("20");
-        assertEquals(booking.getTableNumber(), 20);
+        assertEquals(booking.getTableNumber(), "20");
     }
 }

@@ -1,19 +1,25 @@
 package com.bedenko.genaro.expresstable.models;
 
+/*
+  Created by Genaro Bedenko for 300CEM Android Application Development Assignment
+  Student ID 7060234
+  @author bedenkog
+ */
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class RestaurantTest {
 
-    byte[] testByteArray = new byte[0];
+    private byte[] testByteArray = new byte[0];
 
     @Test
     public void getRestaurantID() {
         Restaurant restaurant = new Restaurant("1234", "test_username",
                 "test_restaurant_name", "test_password_hash", testByteArray, 50.0, 50.0,
                 "test_restaurant_addres");
-        assertEquals(restaurant.getRestaurantID(), 1234);
+        assertEquals(restaurant.getRestaurantID(), "1234");
     }
 
     @Test
