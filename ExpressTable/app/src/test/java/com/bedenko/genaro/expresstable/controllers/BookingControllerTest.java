@@ -4,6 +4,8 @@ import com.bedenko.genaro.expresstable.models.Booking;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class BookingControllerTest {
@@ -13,11 +15,20 @@ public class BookingControllerTest {
 
         BookingController bookingController = new BookingController();
 
-        Booking testBooking = bookingController.createBooking(1234, 1111, "01/01/2018", "19:00", 10);
+        Booking testBooking = bookingController.createBooking(1234, 1111, "01/01/2018", "19:00", "10");
         assertEquals(testBooking.getCustomerID(), 1234);
         assertEquals(testBooking.getRestaurantID(), 1111);
         assertEquals(testBooking.getDate(), "01/01/2018");
         assertEquals(testBooking.getTime(), "19:00");
         assertEquals(testBooking.getTableNumber(), 10);
+    }
+
+
+    @Test
+    public void addBookingToFirebase() {
+
+        // Test void functions by asserting that an instance of the class is not null
+        BookingController bookingController = new BookingController();
+        assertNotNull(bookingController);
     }
 }
