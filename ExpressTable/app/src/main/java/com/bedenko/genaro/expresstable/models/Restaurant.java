@@ -1,6 +1,10 @@
 package com.bedenko.genaro.expresstable.models;
 
-import android.graphics.Bitmap;
+/*
+  Created by Genaro Bedenko for 300CEM Android Application Development Assignment
+  Student ID 7060234
+  @author bedenkog
+ */
 
 public class Restaurant {
 
@@ -8,18 +12,12 @@ public class Restaurant {
     private String username;
     private String restaurantName;
     private String passwordHash;
-<<<<<<< HEAD
     private byte[] logoImage;
     private byte[] menuImage;
     private byte[] floorPlanImage;
-    private String gpsLocation;
-    private String restaurantType;
-=======
-    private String restaurantType;
-    private int restaurantPhoto;
     private double restaurantLatitude;
     private double restaurantLongitude;
->>>>>>> google_maps_and_gps
+    private String restaurantAddress;
 
     public Restaurant() {
 
@@ -33,33 +31,25 @@ public class Restaurant {
         this.passwordHash = passwordHash;
     }
 
-    public Restaurant(String restaurantName, String restaurantType, byte[] restaurantLogo) {
+    public Restaurant(String restaurantName, String restaurantAddress, byte[] restaurantLogo) {
 
         // Constructor used for ListView of Restaurants
         this.restaurantName = restaurantName;
-        this.restaurantType = restaurantType;
+        this.restaurantAddress = restaurantAddress;
         this.logoImage = restaurantLogo;
     }
 
-<<<<<<< HEAD
-    public Restaurant(String restaurantID, String username, String restaurantName, String passwordHash, String gpsLocation, String restaurantType, byte[] restaurantLogo) {
-=======
-    public Restaurant(int restaurantID, String username, String restaurantName, String passwordHash, String restaurantType, int restaurantPhoto, double restaurantLatitude, double restaurantLongitude) {
->>>>>>> google_maps_and_gps
+    public Restaurant(String restaurantID, String username, String restaurantName, String passwordHash, byte[] restaurantLogo, double restaurantLatitude, double restaurantLongitude, String restaurantAddress) {
 
         // Create a new instance when all parameters are passed
         this.restaurantID = restaurantID;
         this.username = username;
         this.restaurantName = restaurantName;
         this.passwordHash = passwordHash;
-        this.restaurantType = restaurantType;
-<<<<<<< HEAD
         this.logoImage = restaurantLogo;
-=======
-        this.restaurantPhoto = restaurantPhoto;
         this.restaurantLatitude = restaurantLatitude;
         this.restaurantLongitude = restaurantLongitude;
->>>>>>> google_maps_and_gps
+        this.restaurantAddress = restaurantAddress;
     }
 
     public String getRestaurantID() {
@@ -92,14 +82,6 @@ public class Restaurant {
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
-    }
-
-    public String getRestaurantType() {
-        return restaurantType;
-    }
-
-    public void setRestaurantType(String restaurantType) {
-        this.restaurantType = restaurantType;
     }
 
     public byte[] getLogoImage() {
@@ -140,5 +122,13 @@ public class Restaurant {
 
     public void setRestaurantLongitude(double restaurantLongitude) {
         this.restaurantLongitude = restaurantLongitude;
+    }
+
+    public String getRestaurantAddress() {
+        return restaurantAddress;
+    }
+
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
     }
 }

@@ -1,5 +1,11 @@
 package com.bedenko.genaro.expresstable.controllers;
 
+/*
+  Created by Genaro Bedenko for 300CEM Android Application Development Assignment
+  Student ID 7060234
+  @author bedenkog
+ */
+
 import android.content.ContentValues;
 import android.graphics.Bitmap;
 import android.util.Log;
@@ -11,28 +17,21 @@ import java.util.ArrayList;
 
 public class RestaurantController {
 
-<<<<<<< HEAD
     private static final String TAG = "RestaurantController";
 
-    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, byte[] aRestaurantLogo, byte[] aRestaurantMenu, byte[] aRestaurantFloorPlan, String aGpsLocation) {
-=======
-    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, double aRestaurantLatitude, double aRestaurantLongitude) {
->>>>>>> google_maps_and_gps
+    public Restaurant createRestaurant(String aUsername, String aRestaurantName, String aPasswordHash, byte[] aRestaurantLogo, byte[] aRestaurantMenu, byte[] aRestaurantFloorPlan, double aRestaurantLatitude, double aRestaurantLongitude, String aRestaurantAddress) {
 
         Restaurant restaurant = new Restaurant();
 
         restaurant.setUsername(aUsername);
         restaurant.setRestaurantName(aRestaurantName);
         restaurant.setPasswordHash(aPasswordHash);
-<<<<<<< HEAD
         restaurant.setLogoImage(aRestaurantLogo);
         restaurant.setMenuImage(aRestaurantMenu);
         restaurant.setFloorPlanImage(aRestaurantFloorPlan);
-        restaurant.setGpsLocation(aGpsLocation);
-=======
         restaurant.setRestaurantLatitude(aRestaurantLatitude);
         restaurant.setRestaurantLongitude(aRestaurantLongitude);
->>>>>>> google_maps_and_gps
+        restaurant.setRestaurantAddress(aRestaurantAddress);
 
         return(restaurant);
     }
@@ -43,15 +42,12 @@ public class RestaurantController {
         restaurantValues.put("username", restaurant.getUsername());
         restaurantValues.put("restaurant_name", restaurant.getRestaurantName());
         restaurantValues.put("password_hash", restaurant.getPasswordHash());
-<<<<<<< HEAD
         restaurantValues.put("logo", restaurant.getLogoImage());
         restaurantValues.put("menu_image", restaurant.getMenuImage());
         restaurantValues.put("floorplan_image", restaurant.getFloorPlanImage());
-        restaurantValues.put("gps_location", restaurant.getGpsLocation());
-=======
         restaurantValues.put("latitude", restaurant.getRestaurantLatitude());
         restaurantValues.put("longitude", restaurant.getRestaurantLongitude());
->>>>>>> google_maps_and_gps
+        restaurantValues.put("address", restaurant.getRestaurantAddress());
 
         db.write("restaurants", restaurantValues);
     }

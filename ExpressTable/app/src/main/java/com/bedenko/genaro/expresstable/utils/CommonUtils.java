@@ -1,5 +1,11 @@
 package com.bedenko.genaro.expresstable.utils;
 
+/*
+  Created by Genaro Bedenko for 300CEM Android Application Development Assignment
+  Student ID 7060234
+  @author bedenkog
+ */
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

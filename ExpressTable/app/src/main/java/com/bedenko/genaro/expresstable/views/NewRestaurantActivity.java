@@ -1,5 +1,11 @@
 package com.bedenko.genaro.expresstable.views;
 
+/*
+  Created by Genaro Bedenko for 300CEM Android Application Development Assignment
+  Student ID 7060234
+  @author bedenkog
+ */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,6 +18,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bedenko.genaro.expresstable.R;
@@ -31,10 +38,16 @@ public class NewRestaurantActivity extends AppCompatActivity {
     DatabaseHandler db = new DatabaseHandler(this);
     CommonUtils commonUtils = new CommonUtils();
 
+    private static final String TAG = "NewRestaurantActivity";
+
     // Variables to store the images being entered by the user
     private Bitmap restaurantLogo;
     private Bitmap restaurantMenuImage;
     private Bitmap restaurantFloorPlanImage;
+
+    private double restaurantLatitude;
+    private double restaurantLongitude;
+    private String restaurantAddress;
 
     // Different request types for different intents for onActivityResult
     private static final int LOGO_IMAGE_GALLERY_REQUEST = 1;
@@ -74,6 +87,14 @@ public class NewRestaurantActivity extends AppCompatActivity {
             }
         });
 
+        Button setRestaurantLocationButton = findViewById(R.id.enterGpsLocation);
+        setRestaurantLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRestaurantLocationButtonClicked();
+            }
+        });
+
         // Submit all restaurant details button and listener
         Button submitRestaurantButton = findViewById(R.id.submitRestaurantButton);
         submitRestaurantButton.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +105,27 @@ public class NewRestaurantActivity extends AppCompatActivity {
         });
     }
 
-<<<<<<< HEAD
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        try {
+
+            Intent intent = getIntent();
+
+            setRestaurantLatitude(Double.parseDouble(intent.getStringExtra("latitude")));
+            setRestaurantLongitude(Double.parseDouble(intent.getStringExtra("longitude")));
+            setRestaurantAddress(intent.getStringExtra("address"));
+
+            Log.d(TAG, "address " + getRestaurantAddress());
+        } catch (NullPointerException e) {
+
+            setRestaurantLatitude(50.0);
+            setRestaurantLongitude(50.0);
+            setRestaurantAddress("Address not yet known");
+        }
+    }
+
     private void enterLogoImageButtonClicked() {
         // Calls onActivityResult with the intent to select an image from gallery
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
@@ -102,22 +143,11 @@ public class NewRestaurantActivity extends AppCompatActivity {
         // Calls onActivityResult with the intent to capture an image from camera
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, FLOORPLAN_IMAGE_CAMERA_REQUEST);
-=======
-        Button setRestaurantLocationButton = findViewById(R.id.enterGpsLocation);
-
-        setRestaurantLocationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setRestaurantLocationButtonClicked();
-            }
-        });
-
     }
 
     private void setRestaurantLocationButtonClicked() {
 
         startActivity(new Intent(getBaseContext(), SetRestaurantLocationActivity.class));
->>>>>>> google_maps_and_gps
     }
 
     private void submitRestaurantButtonClicked() {
@@ -129,12 +159,15 @@ public class NewRestaurantActivity extends AppCompatActivity {
         String restaurantUsername = restaurantUsernameField.getText().toString();
         String restaurantName = restaurantNameField.getText().toString();
         String restaurantPasswordHash = commonUtils.md5Hash(restaurantPasswordField.getText().toString());
-<<<<<<< HEAD
 
         // Retrieve the images the user entered from the previous intents (run on previous button clicks)
         Bitmap restaurantLogo = getRestaurantLogo();
         Bitmap restaurantMenuImage = getRestaurantMenuImage();
         Bitmap restaurantFloorPlanImage = getRestaurantFloorPlanImage();
+
+        double restaurantLatitude = getRestaurantLatitude();
+        double restaurantLongitude = getRestaurantLongitude();
+        String restaurantAddress = getRestaurantAddress();
 
         // For each of the images, convert them to a byte array so they can be stored in sqlite db
         // Convert logo image
@@ -153,17 +186,8 @@ public class NewRestaurantActivity extends AppCompatActivity {
         byte[] restaurantFloorPlanImageByteArray = stream.toByteArray();
         restaurantFloorPlanImage.recycle();
 
-        // Retrieve the GPS co-ordinates the user is located at (yet to be implemented)
-        String restaurantGpsLocation = "XXXYYYZZZ";
-
         // Create a new restaurant entity from the fields/images/gps that the user entered
-        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLogoByteArray, restaurantMenuImageByteArray, restaurantFloorPlanImageByteArray, restaurantGpsLocation);
-=======
-        double restaurantLatitude = 52.4082385;
-        double restaurantLongitude = -1.5155974;
-
-        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLatitude, restaurantLongitude);
->>>>>>> google_maps_and_gps
+        Restaurant newRestaurant = restaurantController.createRestaurant(restaurantUsername, restaurantName, restaurantPasswordHash, restaurantLogoByteArray, restaurantMenuImageByteArray, restaurantFloorPlanImageByteArray, restaurantLatitude, restaurantLongitude, restaurantAddress);
 
         // Add restaurant details to the local database and send confirmation to user
         restaurantController.addRestaurantToDB(db, newRestaurant);
@@ -240,4 +264,29 @@ public class NewRestaurantActivity extends AppCompatActivity {
     public void setRestaurantFloorPlanImage(Bitmap restaurantFloorPlanImage) {
         this.restaurantFloorPlanImage = restaurantFloorPlanImage;
     }
+
+    public double getRestaurantLatitude() {
+        return restaurantLatitude;
+    }
+
+    public void setRestaurantLatitude(double restaurantLatitude) {
+        this.restaurantLatitude = restaurantLatitude;
+    }
+
+    public double getRestaurantLongitude() {
+        return restaurantLongitude;
+    }
+
+    public void setRestaurantLongitude(double restaurantLongitude) {
+        this.restaurantLongitude = restaurantLongitude;
+    }
+
+    public String getRestaurantAddress() {
+        return restaurantAddress;
+    }
+
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
+    }
+
 }

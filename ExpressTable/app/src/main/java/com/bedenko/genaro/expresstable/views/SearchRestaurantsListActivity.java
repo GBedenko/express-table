@@ -1,5 +1,11 @@
 package com.bedenko.genaro.expresstable.views;
 
+/*
+  Created by Genaro Bedenko for 300CEM Android Application Development Assignment
+  Student ID 7060234
+  @author bedenkog
+ */
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -47,6 +53,11 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
         restaurantDetails = getResources().getStringArray(R.array.default_restaurant_details);
 
         restaurants = restaurantController.getAllRestaurantsFromDB(db);
+
+        for(int i=0; i <= restaurants.size()-1; i++) {
+
+            Log.d(TAG, "address " + restaurants.get(i).getRestaurantAddress());
+        }
 
         listView = findViewById(R.id.listViewComplex);
         listView.setAdapter(new RestaurantAdapter(this, R.layout.list_item, restaurants));

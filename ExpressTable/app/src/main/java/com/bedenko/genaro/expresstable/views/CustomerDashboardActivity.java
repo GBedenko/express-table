@@ -1,5 +1,11 @@
 package com.bedenko.genaro.expresstable.views;
 
+/*
+  Created by Genaro Bedenko for 300CEM Android Application Development Assignment
+  Student ID 7060234
+  @author bedenkog
+ */
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,7 +67,7 @@ public class CustomerDashboardActivity extends AppCompatActivity {
 
     private void viewRestaurantsByGpsButtonClicked() {
 
-        Intent intent = new Intent(CustomerDashboardActivity.this, SearchRestaurantsGpsActivity.class);
+        Intent intent = new Intent(CustomerDashboardActivity.this, MapsActivity.class);
         intent.putExtra("customer_id", getCurrentCustomerLoggedInID());
 
         startActivityForResult(intent, 1);

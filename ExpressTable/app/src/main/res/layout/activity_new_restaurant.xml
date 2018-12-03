@@ -47,6 +47,19 @@
             android:gravity="center_vertical">
 
             <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="40dp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/enterGpsLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enter GPS Location >" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
@@ -133,20 +146,7 @@
                     android:id="@+id/enterFloorPlanButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enter Floor Plan >" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="40dp"
-                android:gravity="center_horizontal">
-
-                <Button
-                    android:id="@+id/enterGpsLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter GPS Location >" />
+                    android:text="Enter Floor Plan Image >" />
             </TableRow>
 
             <TableRow
