@@ -34,57 +34,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.121">
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:id="@+id/bookingIdTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ID:"
-                android:textSize="25sp"
-                tools:layout_editor_absoluteX="63dp"
-                tools:layout_editor_absoluteY="115dp" />
-
-            <TextView
-                android:id="@+id/bookingIdValueTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12345"
-                android:textSize="25sp"
-                android:textAlignment="textEnd"
-                tools:layout_editor_absoluteX="63dp"
-                tools:layout_editor_absoluteY="115dp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:id="@+id/bookingNumberOfPeopleTextView"
-                android:layout_width="wrap_content"
-                android:textSize="25sp"
-                android:layout_height="wrap_content"
-                android:text="Number of People:"
-                tools:layout_editor_absoluteX="204dp"
-                tools:layout_editor_absoluteY="115dp" />
-
-            <TextView
-                android:id="@+id/bookingNumberOfPeopleValueTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2"
-                android:textSize="25sp"
-                android:textAlignment="textEnd"
-                tools:layout_editor_absoluteX="204dp"
-                tools:layout_editor_absoluteY="115dp" />
-        </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
@@ -106,8 +55,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Unknown"
-                android:textSize="25sp"
                 android:textAlignment="textEnd"
+                android:textSize="25sp"
                 tools:layout_editor_absoluteX="63dp"
                 tools:layout_editor_absoluteY="158dp" />
         </TableRow>
