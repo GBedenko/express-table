@@ -24,8 +24,10 @@ import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    // Declare instance of GoogleMap to be used
     private GoogleMap mMap;
 
+    // Activity uses controller and database to find which markers to add to the map
     RestaurantController restaurantController = new RestaurantController();
     DatabaseHandler db = new DatabaseHandler(this);
 
@@ -41,6 +43,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        // Assign map initalised after map loaded
         mMap = googleMap;
 
         // Retrieve all restaurants from the database

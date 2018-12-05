@@ -21,9 +21,11 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_account_type);
 
+        // Retrieve the buttons used in this interface
         Button chooseCustomerButton = findViewById(R.id.chooseCustomerAccountButton);
         Button chooseRestaurantButton = findViewById(R.id.chooseRestaurantAccountButton);
 
+        // Link button to the logic when it is clicked
         chooseCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,6 +33,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
             }
         });
 
+        // Link button to the logic when it is clicked
         chooseRestaurantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,11 +42,12 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
         });
     }
 
-
+    // When Customer option chosen, intent to move to NewCustomerActivity
     private void chooseCustomerButtonClicked() {
         startActivity(new Intent(getBaseContext(), NewCustomerActivity.class));
     }
 
+    // When Restaurant option chosen, intent to move to NewRestaurantActivity
     private void chooseRestaurantButtonClicked() {
         startActivity(new Intent(getBaseContext(), NewRestaurantActivity.class));
     }

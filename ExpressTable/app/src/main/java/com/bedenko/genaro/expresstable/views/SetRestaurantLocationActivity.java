@@ -36,17 +36,19 @@ import java.util.List;
 
 public class SetRestaurantLocationActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
+    // Define TAG used for debugging purposes
     private static final String TAG = "SetRestaurantLocation";
 
+    // Define request type for accessing device's location sensor
     public static int REQUEST_LOCATION = 1;
 
-    // member views
+    // Define variables used in this interface
     protected TextView mLatitudeText;
     protected TextView mLongitudeText;
     protected TextView mOutput;
     protected Button mLocateButton;
 
-    // member variables that hold location info
+    // Define variables which will store location data
     protected GoogleApiClient mGoogleApiClient;
     protected Location mLastLocation;
     protected LocationRequest mLocationRequest;
@@ -57,13 +59,13 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_restaurant_location);
 
-        // initialize views
+        // Retrieve the elements from this activity's interface
         mLatitudeText = findViewById((R.id.latitude_text));
         mLongitudeText = findViewById((R.id.longitude_text));
         mLocateButton = findViewById(R.id.locate);
         mOutput = findViewById((R.id.output));
 
-        // below are placeholder values used when the app doesn't have the permission
+        // Set default values for the location details before the coordinates are located
         mLatitudeText.setText("Waiting for GPS...");
         mLongitudeText.setText("Waiting for GPS...");
         mOutput.setText("Turn On Location Finder Above");
@@ -75,18 +77,16 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
-
         mLocateButton.setEnabled(mGoogleApiClient.isConnected());
 
-        // LocationReques sets how often etc the app receives location updates
+        // LocationRequest sets how often the app receives location updates
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(10000);
         mLocationRequest.setFastestInterval(5000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-
+        // Retrieve the confirm location button and link to its logic when it is clicked
         Button confirmLocationButton = findViewById(R.id.confirmLocationButton);
-
         confirmLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +101,8 @@ public class SetRestaurantLocationActivity extends AppCompatActivity implements 
 
     @Override
     public void onConnected(@Nullable Bundle connectionHint) {
-        // check if the current app has permission to access location of the device
+
+        // Check if the current app has permission to access location of the device
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED) {
 

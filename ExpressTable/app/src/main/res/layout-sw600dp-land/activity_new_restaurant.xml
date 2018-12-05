@@ -31,22 +31,22 @@
         android:id="@+id/restaurantUsernameField"
         android:layout_width="454dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
         android:hint="Enter Username"
         android:inputType="textCapWords"
         android:textAlignment="center"
         android:textColor="@android:color/darker_gray"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantDetailsHeaderView" />
+        app:layout_constraintTop_toBottomOf="@+id/enterGpsLocation" />
 
     <EditText
         android:id="@+id/restaurantNameField"
         android:layout_width="464dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
         android:hint="Enter Restaurant Name"
         android:inputType="textCapWords"
         android:textAlignment="center"
@@ -59,8 +59,8 @@
         android:id="@+id/restaurantPasswordField"
         android:layout_width="464dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Enter Password"
         android:inputType="textPassword"
@@ -73,23 +73,53 @@
         android:id="@+id/enterFloorPlanButton"
         android:layout_width="457dp"
         android:layout_height="67dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="8dp"
         android:text="Enter Floor Plan >"
         android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/restaurantUsernameField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/restaurantPasswordField"
+        app:layout_constraintTop_toBottomOf="@+id/enterMenuImageButton" />
+
+    <Button
+        android:id="@+id/enterLogoImageButton"
+        android:layout_width="457dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="Enter Logo Image >"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/enterGpsLocation"
         app:layout_constraintTop_toBottomOf="@+id/restaurantDetailsHeaderView" />
+
+
+    <Button
+        android:id="@+id/enterMenuImageButton"
+        android:layout_width="457dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
+        android:text="Enter Menu Image >"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toEndOf="@+id/restaurantUsernameField"
+        app:layout_constraintTop_toBottomOf="@+id/enterLogoImageButton" />
 
     <Button
         android:id="@+id/enterGpsLocation"
         android:layout_width="456dp"
         android:layout_height="66dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="Enter GPS Location >"
         android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/restaurantNameField"
-        app:layout_constraintTop_toBottomOf="@+id/enterFloorPlanButton" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantDetailsHeaderView" />
 
     <Button
         android:id="@+id/submitRestaurantButton"
@@ -97,13 +127,13 @@
         android:layout_width="407dp"
         android:layout_height="68dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Submit Restaurant Details"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterGpsLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurantPasswordField" />
 
 
 </android.support.constraint.ConstraintLayout>
