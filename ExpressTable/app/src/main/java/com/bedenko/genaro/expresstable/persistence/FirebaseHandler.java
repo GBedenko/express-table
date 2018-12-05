@@ -79,32 +79,13 @@ public class FirebaseHandler {
 
         Task<QuerySnapshot> snapshots = collectionReference.whereEqualTo("restaurantID", Integer.parseInt(restaurantID)).get();
 
-        Thread.sleep(1000);
+        // Sleep to ensure result of query is recieved by the device
+        Thread.sleep(3000);
 
         for (QueryDocumentSnapshot document : snapshots.getResult()) {
             Log.d(TAG, "Data: " + document.getData());
             bookingsList.add(document.toObject(Booking.class));
         }
-
-//        Log.d(TAG, "bookings: " + getBookingsList());
-//
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                Log.d(TAG, "Data: " + document.getData());
-//                                bookingsList.add(document.toObject(Booking.class));
-//                            }
-//                            Log.d(TAG, "bookings: " + getBookingsList());
-//                        } else {
-//                            Log.d(TAG, "Error getting documents: ", task.getException());
-//                        }
-//                    }
-//
-//                });
-
 
         return getBookingsList();
     }
