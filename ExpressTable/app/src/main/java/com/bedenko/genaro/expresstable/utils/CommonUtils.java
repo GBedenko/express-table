@@ -11,6 +11,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class CommonUtils {
 
+    // Hash function used to one way hash user's passwords, which are then stored in the database
+    // instead of plain text passwords
     public String md5Hash(String input) {
 
         try {

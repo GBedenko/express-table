@@ -22,12 +22,15 @@ import com.bedenko.genaro.expresstable.models.Booking;
 
 public class BookRestaurantActivity extends AppCompatActivity {
 
+    // Define the elements in the interface
     String restaurantIDBeingViewed;
     String restaurantNameBeingViewed;
     String currentCustomerLoggedInID;
 
+    // Define TAG used for debugging purpose
     private static final String TAG = "BookRestaurantActivity";
 
+    // Instance of BookingController used for interactions from this activity
     BookingController bookingController = new BookingController();
 
     @Override
@@ -45,6 +48,7 @@ public class BookRestaurantActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.bookingRestaurantTextView);
         textView.setText(getRestaurantNameBeingViewed());
 
+        // Define button and link to its logic when it is clicked
         Button enterBookingButton = findViewById(R.id.enterBookingButton);
         enterBookingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,21 +74,26 @@ public class BookRestaurantActivity extends AppCompatActivity {
         int customerID = Integer.parseInt(getCurrentCustomerLoggedInID());
         int restaurantID = Integer.parseInt(getRestaurantIDBeingViewed());
 
+        // Create a new Booking object based on the values the user entered
         Booking newBooking = bookingController.createBooking(customerID, restaurantID, bookingDate, bookingTime, bookingTable);
 
+        // Add the new Booking object to remote database/Firebase
         bookingController.addBookingToFirebase(newBooking);
 
+        // Intent to move to the Booking Confirmation and send the entered values to the next activity
         Intent intent = new Intent(BookRestaurantActivity.this, BookingConfirmationActivity.class);
         intent.putExtra("restaurant_name", getRestaurantNameBeingViewed());
         intent.putExtra("booking_date", bookingDate);
         intent.putExtra("booking_time", bookingTime);
         intent.putExtra("booking_table", bookingTable);
 
+        // Logging values to check what values are being sent with the intent
         Log.d(TAG, "intent " + getRestaurantNameBeingViewed());
         Log.d(TAG, "intent " + bookingDate);
         Log.d(TAG, "intent " + bookingTime);
         Log.d(TAG, "intent " + bookingTable);
 
+        // Start the intent
         startActivityForResult(intent, 1);
     }
 
