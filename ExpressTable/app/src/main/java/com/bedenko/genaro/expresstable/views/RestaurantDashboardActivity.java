@@ -34,8 +34,8 @@ public class RestaurantDashboardActivity extends AppCompatActivity {
         // Store the user id for use later to be passed to future activities
         setCurrentRestaurantLoggedInID(intent.getStringExtra("restaurant_id"));
 
+        // Retrieve the button from the interface and link to its logic when it is clicked
         Button viewReservationsButton = findViewById(R.id.viewReservationsButton);
-
         viewReservationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,9 +47,13 @@ public class RestaurantDashboardActivity extends AppCompatActivity {
 
     private void viewReservationsButtonClicked() {
 
+        // Intent to go to the RestaurantReservations activity
         Intent intent = new Intent(RestaurantDashboardActivity.this, RestaurantReservationsActivity.class);
+
+        // Pass the restaurant's id to the next activity
         intent.putExtra("restaurant_id", getCurrentRestaurantLoggedInID());
 
+        // Start intent
         startActivityForResult(intent, 1);
     }
 

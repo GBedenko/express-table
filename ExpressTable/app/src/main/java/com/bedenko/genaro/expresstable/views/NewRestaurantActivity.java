@@ -38,6 +38,7 @@ public class NewRestaurantActivity extends AppCompatActivity {
     DatabaseHandler db = new DatabaseHandler(this);
     CommonUtils commonUtils = new CommonUtils();
 
+    // Define TAG used for debugging purpose
     private static final String TAG = "NewRestaurantActivity";
 
     // Variables to store the images being entered by the user
@@ -109,17 +110,21 @@ public class NewRestaurantActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        // When the user comes back to this activity, it maintains the details for the restaurant's location
         try {
-
             Intent intent = getIntent();
 
+            // Get values from intent when returning to this activity, assign them to class attributes
             setRestaurantLatitude(Double.parseDouble(intent.getStringExtra("latitude")));
             setRestaurantLongitude(Double.parseDouble(intent.getStringExtra("longitude")));
             setRestaurantAddress(intent.getStringExtra("address"));
 
+            // Log to confirm the address description is sent to this activity on a resume
             Log.d(TAG, "address " + getRestaurantAddress());
         } catch (NullPointerException e) {
 
+            // If intent doesn't send the values correctly, set a default but will appear to the user as incorrect
+            // (shouldn't happen with normal use of the set location activity)
             setRestaurantLatitude(50.0);
             setRestaurantLongitude(50.0);
             setRestaurantAddress("Address not yet known");
@@ -146,7 +151,7 @@ public class NewRestaurantActivity extends AppCompatActivity {
     }
 
     private void setRestaurantLocationButtonClicked() {
-
+        // Go to the activity to set location details and gps coordinates
         startActivity(new Intent(getBaseContext(), SetRestaurantLocationActivity.class));
     }
 
@@ -165,21 +170,25 @@ public class NewRestaurantActivity extends AppCompatActivity {
         Bitmap restaurantMenuImage = getRestaurantMenuImage();
         Bitmap restaurantFloorPlanImage = getRestaurantFloorPlanImage();
 
+        // Retrieve the GPS values and address description from previous SetRestaurantLocationActivity
         double restaurantLatitude = getRestaurantLatitude();
         double restaurantLongitude = getRestaurantLongitude();
         String restaurantAddress = getRestaurantAddress();
 
         // For each of the images, convert them to a byte array so they can be stored in sqlite db
+
         // Convert logo image
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         restaurantLogo.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] restaurantLogoByteArray = stream.toByteArray();
         restaurantLogo.recycle();
+
         // Convert menu image
         stream = new ByteArrayOutputStream();
         restaurantMenuImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] restaurantMenuImageByteArray = stream.toByteArray();
         restaurantMenuImage.recycle();
+
         // Convert floor plan image
         stream = new ByteArrayOutputStream();
         restaurantFloorPlanImage.compress(Bitmap.CompressFormat.PNG, 100, stream);

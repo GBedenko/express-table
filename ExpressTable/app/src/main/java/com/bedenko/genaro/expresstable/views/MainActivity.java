@@ -22,9 +22,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Retrieve buttons from the interface
         Button createAccountButton = findViewById(R.id.createAccountButton);
         Button loginButton = findViewById(R.id.logInButton);
 
+        // Link create account button to its logic when it is clicked
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Link login button to its logic when it is clicked
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,10 +44,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createAccountButtonClicked() {
+
+        // Intent to go to choose account activity
         startActivity(new Intent(getBaseContext(), ChooseAccountTypeActivity.class));
     }
 
     private void loginButtonClicked() {
+
+        // Intent to go to login activity
         startActivity(new Intent(getBaseContext(), LoginActivity.class));
     }
 }

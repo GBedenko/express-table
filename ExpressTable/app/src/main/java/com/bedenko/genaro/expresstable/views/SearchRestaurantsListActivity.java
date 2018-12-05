@@ -27,17 +27,22 @@ import java.util.ArrayList;
 
 public class SearchRestaurantsListActivity extends AppCompatActivity {
 
+    // Define class attributes used for this activity
     private ListView listView;
     private String[] restaurantNames;
     private String[] restaurantDetails;
 
+    // Define TAG used for debugging purposes
     private static final String TAG = "SearchRestaurantsList";
 
+    // Variable to store the current customer's id viewing the activity
     String currentCustomerLoggedInID;
 
+    // Instances of controller and local database handler used for this activity
     RestaurantController restaurantController = new RestaurantController();
     DatabaseHandler db = new DatabaseHandler(this);
 
+    // Array list which will be populated with all the restaurants to create list items
     private ArrayList<Restaurant> restaurants = new ArrayList<>();
 
     @Override
@@ -45,33 +50,45 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_restaurants_list);
 
+        // Retrieve the customer id from the intent of the previous activity
         Intent intent = getIntent();
         setCurrentCustomerLoggedInID(intent.getStringExtra("customer_id"));
 
+        // Log the customer id from previous activity to verify it was passed here
         Log.d(TAG, "intent " + intent.getStringExtra("customer_id"));
+
         restaurantNames = getResources().getStringArray(R.array.default_restaurant_names);
         restaurantDetails = getResources().getStringArray(R.array.default_restaurant_details);
 
+        // Retrieve all of the restaurants stored in the local sqlite database
         restaurants = restaurantController.getAllRestaurantsFromDB(db);
 
+        // Log each restaurant retrieve to verify they are returned from the database
         for(int i=0; i <= restaurants.size()-1; i++) {
-
             Log.d(TAG, "address " + restaurants.get(i).getRestaurantAddress());
         }
 
+        // Retrieve the list view in the interface
         listView = findViewById(R.id.listViewComplex);
+
+        // Create new list items based on the restaurants list retrieved from the database
         listView.setAdapter(new RestaurantAdapter(this, R.layout.list_item, restaurants));
         listView.setOnItemClickListener(
 
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        // When clicking on a restaurant in the listview, intent is to view that restaurant's details in ViewRestaurantActivity
                         Intent intent = new Intent(SearchRestaurantsListActivity.this, ViewRestaurantActivity.class);
+
+                        // Send the restaurant and customer details to the next activity as well
                         intent.putExtra("restaurant_name", restaurants.get(position).getRestaurantName());
                         intent.putExtra("restaurant_id", restaurants.get(position).getRestaurantID());
                         intent.putExtra("customer_id", getCurrentCustomerLoggedInID());
-                        startActivityForResult(intent, 1);
 
+                        // Start intent
+                        startActivityForResult(intent, 1);
                     }
                 }
         );
