@@ -57,9 +57,6 @@ public class SearchRestaurantsListActivity extends AppCompatActivity {
         // Log the customer id from previous activity to verify it was passed here
         Log.d(TAG, "intent " + intent.getStringExtra("customer_id"));
 
-        restaurantNames = getResources().getStringArray(R.array.default_restaurant_names);
-        restaurantDetails = getResources().getStringArray(R.array.default_restaurant_details);
-
         // Retrieve all of the restaurants stored in the local sqlite database
         restaurants = restaurantController.getAllRestaurantsFromDB(db);
 
