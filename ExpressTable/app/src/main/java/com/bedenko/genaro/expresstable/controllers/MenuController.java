@@ -1,9 +1,9 @@
 package com.bedenko.genaro.expresstable.controllers;
 
 /*
-  Created by Genaro Bedenko for 300CEM Android Application Development Assignment
-  Student ID 7060234
-  @author bedenkog
+  Created by Genaro Bedenko
+  
+  @author gbedenko
  */
 
 import com.bedenko.genaro.expresstable.models.Menu;
