@@ -1,4 +1,3 @@
-# 300CEM Assignment - Genaro Bedenko - Student ID 7060234
+# express-table
 
-## ExpressTable - An Android Application to make booking a table at a restaurant even easier
-
+ExpressTable - An Android Application to make booking a table at a restaurant even easier
